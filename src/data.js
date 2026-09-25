@@ -1,22 +1,33 @@
 // ============================================================
 //  EDIT FILE INI SAJA untuk mengganti seluruh isi portofolio.
 //  Semua teks, pengalaman, proyek, dan kontak diambil dari sini.
+//
+//  Teks yang berbeda per bahasa ditulis sebagai { id: '...', en: '...' }.
+//  Teks yang sama di kedua bahasa (nama, teknologi, dll.) cukup ditulis biasa.
 // ============================================================
 
 export const profile = {
   name: 'Raihan Evanza',
   role: 'Frontend & Mobile Developer',
   location: 'Bogor, Indonesia',
-  tagline:
-    'Membangun aplikasi web dan mobile untuk sektor perbankan dan keuangan dengan React, React Native, dan Vue — dari kebutuhan bisnis menjadi kode yang rapi dan mudah dirawat.',
-  about: [
-    'Saya frontend developer dengan pengalaman lebih dari 6 tahun di bidang rekayasa perangkat lunak. Fokus utama saya adalah ReactJS, VueJS, dan React Native, dan saat ini saya menjadi Lead Mobile Developer untuk aplikasi Madani Tumbuh di PT Permodalan Nasional Madani.',
-    'Saya juga menguasai pengembangan backend dengan Laravel dan CodeIgniter, serta terbiasa mengintegrasikan REST API dan gRPC. Saya senang menerjemahkan kebutuhan bisnis menjadi produk yang fungsional, dan terus mengeksplorasi teknologi baru untuk meningkatkan pengalaman pengguna — khususnya di aplikasi Android.',
-  ],
+  tagline: {
+    id: 'Membangun aplikasi web dan mobile untuk sektor perbankan dan keuangan dengan React, React Native, dan Vue — dari kebutuhan bisnis menjadi kode yang rapi dan mudah dirawat.',
+    en: 'Building web and mobile apps for the banking and finance sector with React, React Native, and Vue — turning business needs into clean, maintainable code.',
+  },
+  about: {
+    id: [
+      'Saya frontend developer dengan pengalaman lebih dari 6 tahun di bidang rekayasa perangkat lunak. Fokus utama saya adalah ReactJS, VueJS, dan React Native, dan saat ini saya menjadi Lead Mobile Developer untuk aplikasi Madani Tumbuh di PT Permodalan Nasional Madani.',
+      'Saya juga menguasai pengembangan backend dengan Laravel dan CodeIgniter, serta terbiasa mengintegrasikan REST API dan gRPC. Saya senang menerjemahkan kebutuhan bisnis menjadi produk yang fungsional, dan terus mengeksplorasi teknologi baru untuk meningkatkan pengalaman pengguna — khususnya di aplikasi Android.',
+    ],
+    en: [
+      "I'm a frontend developer with more than 6 years of experience in software engineering. My main focus is ReactJS, VueJS, and React Native, and I'm currently the Lead Mobile Developer for the Madani Tumbuh app at PT Permodalan Nasional Madani.",
+      "I'm also experienced in backend development with Laravel and CodeIgniter, and comfortable integrating REST APIs and gRPC. I enjoy turning business requirements into functional products, and I keep exploring new technologies to improve the user experience — especially in Android apps.",
+    ],
+  },
   // Letakkan file CV di folder /public, lalu isi path-nya, misal '/cv.pdf'. Kosongkan ('') untuk menyembunyikan tombol.
   cvUrl: '',
   // Foto profil: taruh di /public lalu isi misal '/foto.jpg'. Kosongkan untuk memakai inisial.
-  photo: '',
+  photo: '/foto.jpg',
   available: true, // tampilkan badge "Terbuka untuk peluang baru"
 }
 
@@ -27,9 +38,9 @@ export const contacts = [
 ]
 
 export const stats = [
-  { value: '6+', label: 'Tahun pengalaman' },
-  { value: '5', label: 'Perusahaan' },
-  { value: '2', label: 'Aplikasi perbankan & pembiayaan' },
+  { value: '6+', label: { id: 'Tahun pengalaman', en: 'Years of experience' } },
+  { value: '5', label: { id: 'Perusahaan', en: 'Companies' } },
+  { value: '2', label: { id: 'Aplikasi perbankan & pembiayaan', en: 'Banking & financing apps' } },
 ]
 
 export const skills = [
@@ -41,7 +52,10 @@ export const skills = [
     group: 'Backend & Database',
     items: ['Laravel', 'CodeIgniter', 'REST API', 'gRPC', 'MySQL', 'PostgreSQL', 'WatermelonDB', 'Node.js', 'Python', 'Go'],
   },
-  { group: 'Tools & Lainnya', items: ['Git', 'GitHub', 'Bitbucket', 'Figma', 'Axios', 'jQuery / Ajax'] },
+  {
+    group: { id: 'Tools & Lainnya', en: 'Tools & Others' },
+    items: ['Git', 'GitHub', 'Bitbucket', 'Figma', 'Axios', 'jQuery / Ajax'],
+  },
 ]
 
 // Urutkan dari yang terbaru. `end: ''` berarti masih bekerja di sana (ditampilkan "Sekarang").
@@ -53,15 +67,25 @@ export const experiences = [
     location: '',
     start: 'Jun 2026',
     end: '',
-    summary:
-      'Memimpin pengembangan dan pemeliharaan aplikasi mobile MT (Madani Tumbuh), aplikasi untuk proses pembiayaan nasabah.',
-    highlights: [
-      // TODO: tambahkan 1–2 poin khas peran lead, misal ukuran tim, code review, keputusan arsitektur, atau mentoring.
-      'Pipeline: pengelolaan data nasabah untuk pengajuan pinjaman.',
-      'Community: penanganan kelompok nasabah yang mengajukan pinjaman.',
-      'Prospect: penilaian peluang dan risiko sebagai panduan perencanaan jangka pendek dan panjang.',
-      'Survey: survei permintaan dan penawaran pembiayaan untuk memetakan kebutuhan finansial pelaku usaha dan rumah tangga.',
-    ],
+    summary: {
+      id: 'Memimpin pengembangan dan pemeliharaan aplikasi mobile MT (Madani Tumbuh), aplikasi untuk proses pembiayaan nasabah.',
+      en: 'Leading the development and maintenance of the MT (Madani Tumbuh) mobile app, used to process customer financing.',
+    },
+    // TODO: tambahkan 1–2 poin khas peran lead, misal ukuran tim, code review, keputusan arsitektur, atau mentoring.
+    highlights: {
+      id: [
+        'Pipeline: pengelolaan data nasabah untuk pengajuan pinjaman.',
+        'Community: penanganan kelompok nasabah yang mengajukan pinjaman.',
+        'Prospect: penilaian peluang dan risiko sebagai panduan perencanaan jangka pendek dan panjang.',
+        'Survey: survei permintaan dan penawaran pembiayaan untuk memetakan kebutuhan finansial pelaku usaha dan rumah tangga.',
+      ],
+      en: [
+        'Pipeline: managing customer data for loan applications.',
+        'Community: handling groups of customers applying for loans.',
+        'Prospect: assessing opportunities and risks to guide short- and long-term planning.',
+        'Survey: financing supply-and-demand surveys to map the financial needs of businesses and households.',
+      ],
+    },
     tech: ['React Native', 'TypeScript', 'Redux', 'Redux Saga', 'WatermelonDB', 'Axios'],
   },
   {
@@ -71,8 +95,10 @@ export const experiences = [
     location: '',
     start: 'Apr 2024',
     end: 'Jun 2026',
-    summary:
-      'Mengembangkan dan memelihara fitur Pipeline, Community, Prospect, dan Survey pada aplikasi mobile MT (Madani Tumbuh).',
+    summary: {
+      id: 'Mengembangkan dan memelihara fitur Pipeline, Community, Prospect, dan Survey pada aplikasi mobile MT (Madani Tumbuh).',
+      en: 'Developed and maintained the Pipeline, Community, Prospect, and Survey features of the MT (Madani Tumbuh) mobile app.',
+    },
     highlights: [],
     tech: ['React Native', 'TypeScript', 'Redux', 'Redux Saga', 'WatermelonDB', 'Axios'],
   },
@@ -83,14 +109,26 @@ export const experiences = [
     location: '',
     start: 'Feb 2023',
     end: 'Apr 2024',
-    summary: 'Mengembangkan dan memelihara modul Loan pada proyek NDS.',
-    highlights: [
-      'Mengembangkan fitur setoran, pelunasan, dan pencairan dana tunai maupun non-tunai.',
-      'Mendesain dan mengembangkan modul pinjaman Brimitra.',
-      'Membangun fitur split manual transaksi tunai dan non-tunai untuk fleksibilitas operasional.',
-      'Merilis fitur baru: laporan pembayaran kolektif dan transaksi massal untuk setoran skala besar.',
-      'Membuat laporan inquiry rekening pinjaman.',
-    ],
+    summary: {
+      id: 'Mengembangkan dan memelihara modul Loan pada proyek NDS.',
+      en: 'Developed and maintained the Loan module of the NDS project.',
+    },
+    highlights: {
+      id: [
+        'Mengembangkan fitur setoran, pelunasan, dan pencairan dana tunai maupun non-tunai.',
+        'Mendesain dan mengembangkan modul pinjaman Brimitra.',
+        'Membangun fitur split manual transaksi tunai dan non-tunai untuk fleksibilitas operasional.',
+        'Merilis fitur baru: laporan pembayaran kolektif dan transaksi massal untuk setoran skala besar.',
+        'Membuat laporan inquiry rekening pinjaman.',
+      ],
+      en: [
+        'Built cash and non-cash deposit, repayment, and disbursement features.',
+        'Designed and developed the Brimitra loan module.',
+        'Built manual splitting of cash and non-cash transactions for operational flexibility.',
+        'Shipped new features: collective payment reports and bulk transactions for large-scale deposits.',
+        'Created loan account inquiry reports.',
+      ],
+    },
     tech: ['Vue 2 & 3', 'Vuex', 'Options & Composition API', 'gRPC'],
   },
   {
@@ -100,13 +138,24 @@ export const experiences = [
     location: '',
     start: 'Sep 2022',
     end: 'Feb 2023',
-    summary: 'Menangani sistem pelaporan permintaan iklan dari tim sales ke tim marketing.',
-    highlights: [
-      'Mengoptimalkan query dan menambahkan indeks tabel untuk meningkatkan performa aplikasi.',
-      'Membangun alur pengajuan iklan dari tim sales hingga ditindaklanjuti tim marketing.',
-      'Memelihara aplikasi agar sesuai dengan alur kerja iklan dan promosi yang terus berkembang.',
-      'Merancang mockup antarmuka di Figma.',
-    ],
+    summary: {
+      id: 'Menangani sistem pelaporan permintaan iklan dari tim sales ke tim marketing.',
+      en: 'Handled the reporting system for ad requests from the sales team to the marketing team.',
+    },
+    highlights: {
+      id: [
+        'Mengoptimalkan query dan menambahkan indeks tabel untuk meningkatkan performa aplikasi.',
+        'Membangun alur pengajuan iklan dari tim sales hingga ditindaklanjuti tim marketing.',
+        'Memelihara aplikasi agar sesuai dengan alur kerja iklan dan promosi yang terus berkembang.',
+        'Merancang mockup antarmuka di Figma.',
+      ],
+      en: [
+        'Optimized queries and added table indexes to improve application performance.',
+        'Built the ad request flow from the sales team through to follow-up by the marketing team.',
+        'Maintained the app to keep up with evolving advertising and promotion workflows.',
+        'Designed UI mockups in Figma.',
+      ],
+    },
     tech: ['Laravel', 'React', 'Redux', 'Figma', 'Bitbucket'],
   },
   {
@@ -114,15 +163,26 @@ export const experiences = [
     role: 'Fullstack Developer',
     type: '',
     location: '',
-    start: 'Agu 2021',
+    start: { id: 'Agu 2021', en: 'Aug 2021' },
     end: 'Jul 2022',
-    summary: 'Bertanggung jawab atas pelaporan pergerakan paket dari pabrik hingga ke pelanggan.',
-    highlights: [
-      'Membangun sistem antrean untuk unduhan laporan agar proses unduh tetap lancar.',
-      'Mengembangkan modul pelaporan (Excel dan grafik) untuk data pengiriman, barang keluar, dan barang masuk.',
-      'Mengoptimalkan query dan indeks database untuk mempercepat pengambilan data.',
-      'Membuat scheduler dengan Python dan mengelola dua database (PostgreSQL dan MySQL) untuk pelaporan.',
-    ],
+    summary: {
+      id: 'Bertanggung jawab atas pelaporan pergerakan paket dari pabrik hingga ke pelanggan.',
+      en: 'Responsible for reporting package movements from the factory to the customer.',
+    },
+    highlights: {
+      id: [
+        'Membangun sistem antrean untuk unduhan laporan agar proses unduh tetap lancar.',
+        'Mengembangkan modul pelaporan (Excel dan grafik) untuk data pengiriman, barang keluar, dan barang masuk.',
+        'Mengoptimalkan query dan indeks database untuk mempercepat pengambilan data.',
+        'Membuat scheduler dengan Python dan mengelola dua database (PostgreSQL dan MySQL) untuk pelaporan.',
+      ],
+      en: [
+        'Built a queue system for report downloads to keep downloads running smoothly.',
+        'Developed reporting modules (Excel and charts) for shipment, outbound, and inbound data.',
+        'Optimized database queries and indexes to speed up data retrieval.',
+        'Built a scheduler in Python and managed two databases (PostgreSQL and MySQL) for reporting.',
+      ],
+    },
     tech: ['CodeIgniter', 'React', 'Redux', 'Python', 'PostgreSQL', 'MySQL'],
   },
   {
@@ -132,7 +192,10 @@ export const experiences = [
     location: '',
     start: 'Jun 2020',
     end: 'Jun 2021',
-    summary: 'Mengembangkan antarmuka aplikasi dan situs web untuk pemesanan (booking) pelanggan.',
+    summary: {
+      id: 'Mengembangkan antarmuka aplikasi dan situs web untuk pemesanan (booking) pelanggan.',
+      en: 'Developed application and website interfaces for customer bookings.',
+    },
     highlights: [],
     tech: ['CodeIgniter', 'CSS', 'SQL'],
   },
@@ -142,9 +205,11 @@ export const experiences = [
 // `image`: taruh gambar di /public/projects lalu isi path-nya, misal '/projects/nama.png'.
 export const projects = [
   {
-    title: 'Asisten — Chatbot AI',
-    description:
-      'Proyek pribadi: chatbot web dengan jawaban yang mengalir kata per kata lewat Server-Sent Events dan bisa dihentikan di tengah jalan. Backend Go tanpa dependency eksternal mendukung Gemini, OpenAI, dan Anthropic (dipilih otomatis sesuai API key), lengkap dengan mode demo tanpa API key.',
+    title: { id: 'Asisten — Chatbot AI', en: 'Asisten — AI Chatbot' },
+    description: {
+      id: 'Proyek pribadi: chatbot web dengan jawaban yang mengalir kata per kata lewat Server-Sent Events dan bisa dihentikan di tengah jalan. Backend Go tanpa dependency eksternal mendukung Gemini, OpenAI, dan Anthropic (dipilih otomatis sesuai API key), lengkap dengan mode demo tanpa API key.',
+      en: 'Personal project: a web chatbot whose answers stream word by word over Server-Sent Events and can be stopped mid-response. A dependency-free Go backend supports Gemini, OpenAI, and Anthropic (picked automatically based on the API key), plus a demo mode that needs no API key.',
+    },
     tech: ['Go', 'React', 'Vite', 'SSE', 'Gemini API'],
     image: '/projects/chat-bot-go.png',
     link: '',
@@ -152,24 +217,30 @@ export const projects = [
   },
   {
     title: 'Madani Tumbuh (MT)',
-    description:
-      'Aplikasi mobile PNM untuk pengelolaan pipeline nasabah, kelompok peminjam, prospek, dan survei kebutuhan pembiayaan — dengan dukungan data lokal menggunakan WatermelonDB.',
+    description: {
+      id: 'Aplikasi mobile PNM untuk pengelolaan pipeline nasabah, kelompok peminjam, prospek, dan survei kebutuhan pembiayaan — dengan dukungan data lokal menggunakan WatermelonDB.',
+      en: "PNM's mobile app for managing the customer pipeline, borrower groups, prospects, and financing needs surveys — with local data support using WatermelonDB.",
+    },
     tech: ['React Native', 'TypeScript', 'Redux Saga', 'WatermelonDB'],
     link: '',
     repo: '',
   },
   {
-    title: 'NDS — Modul Loan BRI',
-    description:
-      'Modul pinjaman untuk setoran, pelunasan, pencairan, split transaksi, pinjaman Brimitra, laporan pembayaran kolektif, dan transaksi massal.',
+    title: { id: 'NDS — Modul Loan BRI', en: 'NDS — BRI Loan Module' },
+    description: {
+      id: 'Modul pinjaman untuk setoran, pelunasan, pencairan, split transaksi, pinjaman Brimitra, laporan pembayaran kolektif, dan transaksi massal.',
+      en: 'Loan module for deposits, repayments, disbursements, transaction splitting, Brimitra loans, collective payment reports, and bulk transactions.',
+    },
     tech: ['Vue.js', 'Vuex', 'gRPC'],
     link: '',
     repo: '',
   },
   {
-    title: 'Sistem Pelaporan Pengiriman',
-    description:
-      'Modul laporan pergerakan paket dari pabrik ke pelanggan, dengan antrean unduhan, ekspor Excel, grafik, dan scheduler Python.',
+    title: { id: 'Sistem Pelaporan Pengiriman', en: 'Shipment Reporting System' },
+    description: {
+      id: 'Modul laporan pergerakan paket dari pabrik ke pelanggan, dengan antrean unduhan, ekspor Excel, grafik, dan scheduler Python.',
+      en: 'Reporting module for package movements from factory to customer, with a download queue, Excel export, charts, and a Python scheduler.',
+    },
     tech: ['CodeIgniter', 'React', 'PostgreSQL', 'MySQL'],
     link: '',
     repo: '',
@@ -179,19 +250,22 @@ export const projects = [
 export const education = [
   {
     school: 'Universitas Esa Unggul',
-    degree: 'S2 Ilmu Komputer',
-    period: '2025 – Sekarang',
+    degree: { id: 'S2 Ilmu Komputer', en: "Master's in Computer Science" },
+    period: { id: '2025 – Sekarang', en: '2025 – Present' },
     note: '',
   },
   {
     school: 'Politeknik Negeri Jakarta',
-    degree: 'D4 Teknik Informatika',
+    degree: { id: 'D4 Teknik Informatika', en: "Applied Bachelor's in Informatics Engineering" },
     period: '2018 – 2022',
-    note: 'Juara 3 IT Business Competition KMIPN · Top 10 Finalis Codig 3.0',
+    note: {
+      id: 'Juara 3 IT Business Competition KMIPN · Top 10 Finalis Codig 3.0',
+      en: '3rd Place, KMIPN IT Business Competition · Top 10 Finalist, Codig 3.0',
+    },
   },
   {
     school: 'CCIT – FTUI',
-    degree: 'Teknik Informatika',
+    degree: { id: 'Teknik Informatika', en: 'Informatics Engineering' },
     period: '2018 – 2020',
     note: '',
   },

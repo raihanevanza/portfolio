@@ -232,6 +232,34 @@ a {
 .icon-btn:hover {
   transform: translateY(-1px);
 }
+.lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 40px;
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-strong);
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+.lang-btn span {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding: 0 10px;
+  border-radius: 999px;
+  transition: background 0.2s, color 0.2s;
+}
+.lang-btn .on {
+  background: var(--ink);
+  color: var(--ink-text);
+}
 .menu-btn {
   display: none;
 }

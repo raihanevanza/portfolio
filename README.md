@@ -8,6 +8,7 @@ Situs portofolio pribadi saya sebagai **Frontend & Mobile Developer**. Isinya ri
 
 - Satu halaman dengan navigasi ke bagian Tentang, Pengalaman, Proyek, Keahlian, dan Kontak.
 - Mode terang dan gelap, mengikuti pengaturan sistem, dan bisa diganti manual.
+- Dua bahasa (Indonesia dan Inggris). Bahasa awal mengikuti browser pengunjung, dan bisa diganti lewat tombol ID/EN di header.
 - Responsif di desktop dan mobile.
 - Timeline pengalaman kerja dan kartu proyek dengan screenshot opsional.
 - Tombol salin email untuk pengunjung yang tidak memakai aplikasi email default.
@@ -58,6 +59,18 @@ Semua konten ada di [`src/data.js`](src/data.js):
 | `education`      | Riwayat pendidikan                                     |
 | `certifications` | Sertifikasi. Kosongkan array untuk menyembunyikan bagian ini |
 
+Teks yang berbeda per bahasa ditulis sebagai objek `{ id, en }`. Teks yang sama di kedua bahasa, seperti nama perusahaan atau teknologi, cukup ditulis biasa:
+
+```js
+summary: {
+  id: 'Mengembangkan modul Loan pada proyek NDS.',
+  en: 'Developed the Loan module of the NDS project.',
+},
+tech: ['Vue.js', 'Vuex', 'gRPC'],
+```
+
+Teks antarmuka seperti menu, judul bagian, dan tombol ada di [`src/i18n.js`](src/i18n.js).
+
 File statis seperti foto profil, CV, dan screenshot proyek ditaruh di folder `public/`, lalu dirujuk dengan path yang diawali `/`. Contohnya `photo: '/foto.jpg'`, `cvUrl: '/cv.pdf'`, dan `image: '/projects/chat-bot-go.png'`.
 
 ## Struktur folder
@@ -70,6 +83,7 @@ File statis seperti foto profil, CV, dan screenshot proyek ditaruh di folder `pu
 ├── src/
 │   ├── App.jsx          # semua komponen halaman
 │   ├── data.js          # semua konten
+│   ├── i18n.js          # teks antarmuka ID/EN
 │   ├── main.jsx
 │   └── styles.css       # tema terang/gelap dan layout
 ├── index.html
