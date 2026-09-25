@@ -57,8 +57,11 @@ function Header() {
     <header className="header">
       <div className="container header-inner">
         <a href="#top" className="logo" onClick={() => setOpen(false)}>
-          {initials(profile.name)}
-          <span>.</span>
+          <span className="logo-mark">{initials(profile.name)}</span>
+          <span className="logo-text">
+            <strong>{profile.name}</strong>
+            <small>{profile.role}</small>
+          </span>
         </a>
         <nav className={`nav ${open ? 'nav-open' : ''}`}>
           {NAV.map((n) => (
@@ -87,50 +90,54 @@ function Header() {
 function Hero() {
   return (
     <section className="hero" id="top">
-      <div className="container hero-inner">
-        <div className="hero-text">
-          {profile.available && (
-            <span className="badge">
-              <span className="dot" /> Terbuka untuk peluang baru
-            </span>
-          )}
-          <h1>
-            Halo, saya <span className="accent">{profile.name}</span>
-          </h1>
-          <p className="hero-role">
-            {profile.role} · {profile.location}
-          </p>
-          <p className="hero-tagline">{profile.tagline}</p>
-          <div className="hero-cta">
-            <a href="#pengalaman" className="btn btn-primary">
-              Lihat Pengalaman
-            </a>
-            {profile.cvUrl ? (
-              <a href={profile.cvUrl} className="btn btn-ghost" download>
-                Unduh CV
-              </a>
-            ) : (
-              <a href="#kontak" className="btn btn-ghost">
-                Hubungi Saya
-              </a>
-            )}
+      <div className="container">
+        <div className="panel hero-panel">
+          <div className="hero-inner">
+            <div className="hero-text">
+              {profile.available && (
+                <span className="badge">
+                  <span className="dot" /> Terbuka untuk peluang baru
+                </span>
+              )}
+              <p className="hero-hello">Halo, saya</p>
+              <h1>{profile.name}</h1>
+              <p className="hero-role accent">{profile.role}</p>
+              <p className="hero-location">{profile.location}</p>
+              <p className="hero-tagline">{profile.tagline}</p>
+              <div className="hero-cta">
+                <a href="#pengalaman" className="btn btn-primary">
+                  Lihat Pengalaman
+                </a>
+                {profile.cvUrl ? (
+                  <a href={profile.cvUrl} className="btn btn-ghost" download>
+                    Unduh CV
+                  </a>
+                ) : (
+                  <a href="#kontak" className="btn btn-ghost">
+                    Hubungi Saya
+                  </a>
+                )}
+              </div>
+            </div>
+            <div className="hero-visual">
+              <div className="hero-avatar">
+                {profile.photo ? (
+                  <img src={profile.photo} alt={profile.name} />
+                ) : (
+                  <span>{initials(profile.name)}</span>
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="stats">
+            {stats.map((s) => (
+              <div key={s.label} className="stat">
+                <strong>{s.value}</strong>
+                <span>{s.label}</span>
+              </div>
+            ))}
           </div>
         </div>
-        <div className="hero-avatar">
-          {profile.photo ? (
-            <img src={profile.photo} alt={profile.name} />
-          ) : (
-            <span>{initials(profile.name)}</span>
-          )}
-        </div>
-      </div>
-      <div className="container stats">
-        {stats.map((s) => (
-          <div key={s.label} className="stat">
-            <strong>{s.value}</strong>
-            <span>{s.label}</span>
-          </div>
-        ))}
       </div>
     </section>
   )
@@ -140,9 +147,11 @@ function Section({ id, eyebrow, title, children }) {
   return (
     <section id={id} className="section">
       <div className="container">
-        <p className="eyebrow">{eyebrow}</p>
-        <h2>{title}</h2>
-        {children}
+        <div className="panel">
+          <p className="eyebrow">{eyebrow}</p>
+          <h2>{title}</h2>
+          {children}
+        </div>
       </div>
     </section>
   )
