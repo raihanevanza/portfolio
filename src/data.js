@@ -8,7 +8,7 @@
 
 export const profile = {
   name: 'Raihan Evanza',
-  role: 'Frontend & Mobile Developer',
+  role: 'Fullstack & Mobile Developer',
   location: 'Bogor, Indonesia',
   tagline: {
     id: 'Membangun aplikasi web dan mobile untuk sektor perbankan dan keuangan dengan React, React Native, dan Vue — dari kebutuhan bisnis menjadi kode yang rapi dan mudah dirawat.',
@@ -16,12 +16,12 @@ export const profile = {
   },
   about: {
     id: [
-      'Saya frontend developer dengan pengalaman lebih dari 6 tahun di bidang rekayasa perangkat lunak. Fokus utama saya adalah ReactJS, VueJS, dan React Native, dan saat ini saya menjadi Lead Mobile Developer untuk aplikasi Madani Tumbuh di PT Permodalan Nasional Madani.',
-      'Saya juga menguasai pengembangan backend dengan Laravel dan CodeIgniter, serta terbiasa mengintegrasikan REST API dan gRPC. Saya senang menerjemahkan kebutuhan bisnis menjadi produk yang fungsional, dan terus mengeksplorasi teknologi baru untuk meningkatkan pengalaman pengguna — khususnya di aplikasi Android.',
+      'Saya fullstack dan mobile developer dengan pengalaman lebih dari 6 tahun di bidang rekayasa perangkat lunak. Keahlian utama saya adalah ReactJS, VueJS, dan React Native, dan saat ini saya menjadi Lead Mobile Developer untuk aplikasi Madani Tumbuh di PT Permodalan Nasional Madani.',
+      'Saya berpengalaman mengembangkan backend dengan Laravel dan CodeIgniter, serta terbiasa mengintegrasikan REST API dan gRPC. Saat ini saya juga mempelajari dan memperdalam Go melalui proyek pribadi Mini ERP dan chatbot AI. Saya senang menerjemahkan kebutuhan bisnis menjadi aplikasi web dan mobile yang fungsional dan mudah dirawat.',
     ],
     en: [
-      "I'm a frontend developer with more than 6 years of experience in software engineering. My main focus is ReactJS, VueJS, and React Native, and I'm currently the Lead Mobile Developer for the Madani Tumbuh app at PT Permodalan Nasional Madani.",
-      "I'm also experienced in backend development with Laravel and CodeIgniter, and comfortable integrating REST APIs and gRPC. I enjoy turning business requirements into functional products, and I keep exploring new technologies to improve the user experience — especially in Android apps.",
+      "I'm a fullstack and mobile developer with more than 6 years of experience in software engineering. My core strengths are ReactJS, VueJS, and React Native, and I'm currently the Lead Mobile Developer for the Madani Tumbuh app at PT Permodalan Nasional Madani.",
+      "I'm experienced in backend development with Laravel and CodeIgniter, and comfortable integrating REST APIs and gRPC. I'm currently learning Go and building my skills through personal projects: Mini ERP and an AI chatbot. I enjoy turning business requirements into functional, maintainable web and mobile apps.",
     ],
   },
   // File CV di folder /public, dibuat otomatis dengan `npm run cv`. Kosongkan ('') untuk menyembunyikan tombol.
@@ -204,6 +204,17 @@ export const experiences = [
 // `link`, `repo`, dan `image` opsional — kosongkan jika tidak ada.
 // `image`: taruh gambar di /public/projects lalu isi path-nya, misal '/projects/nama.png'.
 export const projects = [
+  {
+    title: 'Mini ERP',
+    description: {
+      id: 'Proyek pribadi: aplikasi inventori dan order dengan purchase order ber-approval, penerimaan barang parsial, sales order dengan reservasi stok otomatis, dan buku besar mutasi stok per gudang. Setiap perubahan stok berjalan dalam satu transaksi database agar stok tidak pernah minus. Dilengkapi hak akses per role, dashboard KPI, dua bahasa, dan dark mode.',
+      en: 'Personal project: an inventory and order management app with approval-based purchase orders, partial goods receipts, sales orders with automatic stock reservation, and a per-warehouse stock ledger. Every stock change runs in a single database transaction so stock can never go negative. Includes role-based access, a KPI dashboard, two languages, and dark mode.',
+    },
+    tech: ['Go', 'Gin', 'GORM', 'React', 'TypeScript', 'RTK Query', 'Tailwind CSS', 'SQL Server'],
+    image: '/projects/project-erp.png',
+    link: '',
+    repo: 'https://github.com/raihanevanza/project-erp',
+  },
   {
     title: { id: 'Asisten — Chatbot AI', en: 'Asisten — AI Chatbot' },
     description: {
