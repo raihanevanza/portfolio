@@ -68,22 +68,20 @@ export const experiences = [
     start: 'Jun 2026',
     end: '',
     summary: {
-      id: 'Memimpin pengembangan dan pemeliharaan aplikasi mobile MT (Madani Tumbuh), aplikasi untuk proses pembiayaan nasabah.',
-      en: 'Leading the development and maintenance of the MT (Madani Tumbuh) mobile app, used to process customer financing.',
+      id: 'Mengoordinasikan pengembangan dan pemeliharaan aplikasi mobile Madani Tumbuh untuk mendukung operasional pembiayaan nasabah, mencakup menu Pipeline, Community, Prospect, Survey, Top Up, 3R, DNPT, dan INI.',
+      en: 'Coordinating the development and maintenance of the Madani Tumbuh mobile app to support customer financing operations across the Pipeline, Community, Prospect, Survey, Top Up, 3R, DNPT, and INI menus.',
     },
     // TODO: tambahkan 1–2 poin khas peran lead, misal ukuran tim, code review, keputusan arsitektur, atau mentoring.
     highlights: {
       id: [
-        'Pipeline: pengelolaan data nasabah untuk pengajuan pinjaman.',
-        'Community: penanganan kelompok nasabah yang mengajukan pinjaman.',
-        'Prospect: penilaian peluang dan risiko sebagai panduan perencanaan jangka pendek dan panjang.',
-        'Survey: survei permintaan dan penawaran pembiayaan untuk memetakan kebutuhan finansial pelaku usaha dan rumah tangga.',
+        'Mengoordinasikan pengembangan fitur Pipeline dan Community untuk mendukung pengelolaan data pengajuan pinjaman dan kelompok nasabah.',
+        'Mengoordinasikan pengembangan fitur Prospect dan Survey untuk mendukung penilaian peluang pembiayaan dan pencatatan kebutuhan nasabah.',
+        'Mengoordinasikan pengembangan fitur Top Up untuk mendukung pengajuan tambahan pembiayaan nasabah.',
       ],
       en: [
-        'Pipeline: managing customer data for loan applications.',
-        'Community: handling groups of customers applying for loans.',
-        'Prospect: assessing opportunities and risks to guide short- and long-term planning.',
-        'Survey: financing supply-and-demand surveys to map the financial needs of businesses and households.',
+        'Coordinating development of Pipeline and Community features to support loan application data and customer group management.',
+        'Coordinating development of Prospect and Survey features to support financing opportunity assessments and records of customer needs.',
+        'Coordinating development of the Top Up feature to support customer requests for additional financing.',
       ],
     },
     tech: ['React Native', 'TypeScript', 'Redux', 'Redux Saga', 'WatermelonDB', 'Axios'],
@@ -96,10 +94,23 @@ export const experiences = [
     start: 'Apr 2024',
     end: 'Jun 2026',
     summary: {
-      id: 'Mengembangkan dan memelihara fitur Pipeline, Community, Prospect, dan Survey pada aplikasi mobile MT (Madani Tumbuh).',
-      en: 'Developed and maintained the Pipeline, Community, Prospect, and Survey features of the MT (Madani Tumbuh) mobile app.',
+      id: 'Mengembangkan dan memelihara fitur aplikasi mobile Madani Tumbuh menggunakan React Native dan TypeScript untuk mendukung operasional pembiayaan nasabah.',
+      en: 'Developed and maintained features for the Madani Tumbuh mobile app using React Native and TypeScript to support customer financing operations.',
     },
-    highlights: [],
+    highlights: {
+      id: [
+        'Mengembangkan fitur Pipeline untuk pengelolaan data nasabah dalam proses pengajuan pinjaman.',
+        'Mengembangkan fitur Community untuk pengelolaan kelompok nasabah yang mengajukan pinjaman.',
+        'Mengembangkan fitur Prospect untuk mendukung penilaian peluang dan risiko pembiayaan.',
+        'Mengembangkan fitur Survey untuk pencatatan survei kebutuhan pembiayaan pelaku usaha dan rumah tangga.',
+      ],
+      en: [
+        'Developed the Pipeline feature to manage customer data for loan applications.',
+        'Developed the Community feature to manage customer groups applying for loans.',
+        'Developed the Prospect feature to support assessments of financing opportunities and risks.',
+        'Developed the Survey feature to record financing needs surveys for businesses and households.',
+      ],
+    },
     tech: ['React Native', 'TypeScript', 'Redux', 'Redux Saga', 'WatermelonDB', 'Axios'],
   },
   {
@@ -110,23 +121,23 @@ export const experiences = [
     start: 'Feb 2023',
     end: 'Apr 2024',
     summary: {
-      id: 'Mengembangkan dan memelihara modul Loan pada proyek NDS.',
-      en: 'Developed and maintained the Loan module of the NDS project.',
+      id: 'Mengembangkan dan memelihara antarmuka modul pinjaman pada proyek NDS di BRI menggunakan Vue.js untuk mendukung transaksi dan pelaporan pinjaman.',
+      en: 'Developed and maintained the loan module interface for the NDS project at BRI using Vue.js to support loan transactions and reporting.',
     },
     highlights: {
       id: [
         'Mengembangkan fitur setoran, pelunasan, dan pencairan dana tunai maupun non-tunai.',
         'Mendesain dan mengembangkan modul pinjaman Brimitra.',
-        'Membangun fitur split manual transaksi tunai dan non-tunai untuk fleksibilitas operasional.',
-        'Merilis fitur baru: laporan pembayaran kolektif dan transaksi massal untuk setoran skala besar.',
-        'Membuat laporan inquiry rekening pinjaman.',
+        'Mengembangkan fitur pemisahan transaksi tunai dan non-tunai secara manual untuk mendukung kebutuhan operasional pinjaman.',
+        'Mengembangkan laporan pembayaran kolektif dan fitur transaksi massal untuk pemrosesan setoran dalam jumlah besar.',
+        'Membuat laporan informasi rekening pinjaman untuk mendukung pengecekan data rekening.',
       ],
       en: [
         'Built cash and non-cash deposit, repayment, and disbursement features.',
         'Designed and developed the Brimitra loan module.',
-        'Built manual splitting of cash and non-cash transactions for operational flexibility.',
-        'Shipped new features: collective payment reports and bulk transactions for large-scale deposits.',
-        'Created loan account inquiry reports.',
+        'Developed a feature for manually splitting cash and non-cash transactions to support loan operations.',
+        'Developed collective payment reports and bulk transaction features for processing large volumes of deposits.',
+        'Created loan account information reports to support account data checks.',
       ],
     },
     tech: ['Vue 2 & 3', 'Vuex', 'Options & Composition API', 'gRPC'],
@@ -139,8 +150,8 @@ export const experiences = [
     start: 'Sep 2022',
     end: 'Feb 2023',
     summary: {
-      id: 'Menangani sistem pelaporan permintaan iklan dari tim sales ke tim marketing.',
-      en: 'Handled the reporting system for ad requests from the sales team to the marketing team.',
+      id: 'Mengembangkan dan memelihara sistem pengajuan dan pelaporan permintaan iklan menggunakan React dan Laravel, dari pengajuan tim sales hingga tindak lanjut tim marketing.',
+      en: 'Developed and maintained an ad request and reporting system using React and Laravel, covering submissions by the sales team through follow-up by the marketing team.',
     },
     highlights: {
       id: [
@@ -166,8 +177,8 @@ export const experiences = [
     start: { id: 'Agu 2021', en: 'Aug 2021' },
     end: 'Jul 2022',
     summary: {
-      id: 'Bertanggung jawab atas pelaporan pergerakan paket dari pabrik hingga ke pelanggan.',
-      en: 'Responsible for reporting package movements from the factory to the customer.',
+      id: 'Mengembangkan sistem pelaporan pergerakan paket dari pabrik hingga pelanggan menggunakan React dan CodeIgniter, dengan data dari PostgreSQL dan MySQL.',
+      en: 'Developed a system for reporting package movements from factories to customers using React and CodeIgniter, with data from PostgreSQL and MySQL.',
     },
     highlights: {
       id: [
@@ -193,8 +204,8 @@ export const experiences = [
     start: 'Jun 2020',
     end: 'Jun 2021',
     summary: {
-      id: 'Mengembangkan antarmuka aplikasi dan situs web untuk pemesanan (booking) pelanggan.',
-      en: 'Developed application and website interfaces for customer bookings.',
+      id: 'Mengembangkan antarmuka aplikasi dan situs web untuk mendukung proses pemesanan pelanggan menggunakan CodeIgniter dan CSS.',
+      en: 'Developed application and website interfaces to support customer bookings using CodeIgniter and CSS.',
     },
     highlights: [],
     tech: ['CodeIgniter', 'CSS', 'SQL'],
@@ -229,8 +240,8 @@ export const projects = [
   {
     title: 'Madani Tumbuh (MT)',
     description: {
-      id: 'Aplikasi mobile PNM untuk pengelolaan pipeline nasabah, kelompok peminjam, prospek, dan survei kebutuhan pembiayaan — dengan dukungan data lokal menggunakan WatermelonDB.',
-      en: "PNM's mobile app for managing the customer pipeline, borrower groups, prospects, and financing needs surveys — with local data support using WatermelonDB.",
+      id: 'Aplikasi mobile PNM untuk mendukung operasional pembiayaan melalui menu Pipeline, Community, Prospect, Survey, Top Up, 3R, DNPT, dan INI. Mencakup pengelolaan data nasabah, kelompok peminjam, prospek, survei kebutuhan pembiayaan, dan pengajuan tambahan pembiayaan, dengan dukungan data lokal menggunakan WatermelonDB.',
+      en: "PNM's mobile app supporting financing operations through the Pipeline, Community, Prospect, Survey, Top Up, 3R, DNPT, and INI menus. Covers customer data, borrower groups, prospects, financing needs surveys, and requests for additional financing, with local data support using WatermelonDB.",
     },
     tech: ['React Native', 'TypeScript', 'Redux Saga', 'WatermelonDB'],
     link: '',
