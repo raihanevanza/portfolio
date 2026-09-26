@@ -24,8 +24,8 @@ export const profile = {
       "I'm also experienced in backend development with Laravel and CodeIgniter, and comfortable integrating REST APIs and gRPC. I enjoy turning business requirements into functional products, and I keep exploring new technologies to improve the user experience — especially in Android apps.",
     ],
   },
-  // Letakkan file CV di folder /public, lalu isi path-nya, misal '/cv.pdf'. Kosongkan ('') untuk menyembunyikan tombol.
-  cvUrl: '',
+  // File CV di folder /public, dibuat otomatis dengan `npm run cv`. Kosongkan ('') untuk menyembunyikan tombol.
+  cvUrl: { id: '/Raihan-Evanza-CV-ID.pdf', en: '/Raihan-Evanza-CV-EN.pdf' },
   // Foto profil: taruh di /public lalu isi misal '/foto.jpg'. Kosongkan untuk memakai inisial.
   photo: '/foto.jpg',
   available: true, // tampilkan badge "Terbuka untuk peluang baru"
@@ -272,3 +272,14 @@ export const education = [
 ]
 
 export const certifications = []
+
+// Data tambahan yang hanya muncul di CV PDF (tidak ditampilkan di web).
+// Catatan: CV bisa diunduh publik dari web, jadi nomor HP ikut terlihat. Kosongkan ('') jika tidak mau.
+export const cv = {
+  website: 'https://portfolio-raihanevanza.vercel.app',
+  phone: '0821-1182-8461',
+  languages: [
+    { id: 'Indonesia (Bahasa ibu)', en: 'Indonesian (Native)' },
+    { id: 'Inggris (Menengah)', en: 'English (Intermediate)' },
+  ],
+}

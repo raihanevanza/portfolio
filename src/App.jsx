@@ -145,15 +145,14 @@ function Hero() {
                 <a href="#pengalaman" className="btn btn-primary">
                   {t.viewExperience}
                 </a>
-                {profile.cvUrl ? (
-                  <a href={profile.cvUrl} className="btn btn-ghost" download>
+
+                  <a href={tr(profile.cvUrl)} className="btn btn-ghost" download>
                     {t.downloadCv}
                   </a>
-                ) : (
                   <a href="#kontak" className="btn btn-ghost">
                     {t.contactMe}
                   </a>
-                )}
+          
               </div>
             </div>
             <div className="hero-visual">
