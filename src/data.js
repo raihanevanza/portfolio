@@ -228,7 +228,7 @@ export const projects = [
     image: '/projects/project-erp-web-mobile.png',
     link: 'https://raihan-evanza-erp.vercel.app',
     video: '/projects/mini-erp-demo.mp4',
-    repo: 'https://github.com/raihanevanza/project-erp',
+    repo: '',
   },
   {
     title: { id: 'Asisten — Chatbot AI', en: 'Asisten — AI Chatbot' },
