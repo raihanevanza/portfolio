@@ -224,7 +224,7 @@ export const projects = [
       en: 'Personal project: an inventory and order management app with approval-based purchase orders, partial goods receipts, sales orders with automatic stock reservation, and a per-warehouse stock ledger. Every stock change runs in a single database transaction so stock can never go negative. Includes role-based access, a KPI dashboard, two languages, and dark mode, plus a React Native mobile app (Android + iOS) for managers: dashboard, PO approve/reject, and sales order and stock monitoring.',
     },
     tech: ['Go', 'Gin', 'GORM', 'React', 'React Native', 'TypeScript', 'RTK Query', 'Tailwind CSS', 'SQL Server'],
-    image: '/projects/project-erp.png',
+    image: '/projects/project-erp-web-mobile.png',
     link: '',
     repo: 'https://github.com/raihanevanza/project-erp',
   },
