@@ -226,7 +226,7 @@ export const projects = [
     },
     tech: ['Go', 'Gin', 'GORM', 'React', 'React Native', 'TypeScript', 'RTK Query', 'Tailwind CSS', 'SQL Server'],
     image: '/projects/project-erp-web-mobile.png',
-    link: '',
+    link: 'https://raihan-evanza-erp.vercel.app',
     video: '/projects/mini-erp-demo.mp4',
     repo: 'https://github.com/raihanevanza/project-erp',
   },
