@@ -288,43 +288,51 @@ function Projects() {
   const { t, tr } = useLang()
   return (
     <Section id="proyek" eyebrow={t.projectsEyebrow} title={t.projectsTitle}>
-      <div className="grid">
-        {projects.map((p, i) => (
-          <article key={i} className="card project">
-            {p.image && (
-              <img
-                className="project-image"
-                src={p.image}
-                alt={`${t.screenshotOf} ${tr(p.title)}`}
-                loading="lazy"
-              />
-            )}
-            <h3>{tr(p.title)}</h3>
-            <p>{tr(p.description)}</p>
-            <div className="tags">
-              {p.tech.map((tech) => (
-                <span key={tech} className="tag">
-                  {tech}
-                </span>
-              ))}
-            </div>
-            {(p.link || p.repo) && (
-              <div className="project-links">
-                {p.link && (
-                  <a href={p.link} target="_blank" rel="noreferrer">
-                    {t.demo}
-                  </a>
+      {[
+        ['personal', t.personalProjects],
+        ['professional', t.professionalProjects],
+      ].map(([category, label]) => (
+        <section key={category} className="project-group" aria-labelledby={`projects-${category}`}>
+          <h3 id={`projects-${category}`} className="project-group-title">{label}</h3>
+          <div className="grid">
+            {projects.filter((p) => p.category === category).map((p, i) => (
+              <article key={i} className="card project">
+                {p.image && (
+                  <img
+                    className="project-image"
+                    src={p.image}
+                    alt={`${t.screenshotOf} ${tr(p.title)}`}
+                    loading="lazy"
+                  />
                 )}
-                {p.repo && (
-                  <a href={p.repo} target="_blank" rel="noreferrer">
-                    {t.code}
-                  </a>
+                <h4>{tr(p.title)}</h4>
+                <p>{tr(p.description)}</p>
+                <div className="tags">
+                  {p.tech.map((tech) => (
+                    <span key={tech} className="tag">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                {(p.link || p.repo) && (
+                  <div className="project-links">
+                    {p.link && (
+                      <a href={p.link} target="_blank" rel="noreferrer">
+                        {t.demo}
+                      </a>
+                    )}
+                    {p.repo && (
+                      <a href={p.repo} target="_blank" rel="noreferrer">
+                        {t.code}
+                      </a>
+                    )}
+                  </div>
                 )}
-              </div>
-            )}
-          </article>
-        ))}
-      </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
     </Section>
   )
 }

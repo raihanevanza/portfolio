@@ -599,6 +599,23 @@ h3 {
 }
 
 /* Grid / projects */
+.project-group + .project-group {
+  margin-top: 36px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.project-group-title {
+  margin-bottom: 18px;
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+.project h4 {
+  font-size: 1.075rem;
+  letter-spacing: -0.01em;
+}
+.project-group .grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));

@@ -213,10 +213,12 @@ export const experiences = [
 ]
 
 // `link`, `repo`, dan `image` opsional — kosongkan jika tidak ada.
+// `category`: gunakan 'personal' untuk proyek pribadi atau 'professional' untuk proyek pekerjaan.
 // `image`: taruh gambar di /public/projects lalu isi path-nya, misal '/projects/nama.png'.
 export const projects = [
   {
     title: 'Mini ERP',
+    category: 'personal',
     description: {
       id: 'Proyek pribadi: aplikasi inventori dan order dengan purchase order ber-approval, penerimaan barang parsial, sales order dengan reservasi stok otomatis, dan buku besar mutasi stok per gudang. Setiap perubahan stok berjalan dalam satu transaksi database agar stok tidak pernah minus. Dilengkapi hak akses per role, dashboard KPI, dua bahasa, dan dark mode.',
       en: 'Personal project: an inventory and order management app with approval-based purchase orders, partial goods receipts, sales orders with automatic stock reservation, and a per-warehouse stock ledger. Every stock change runs in a single database transaction so stock can never go negative. Includes role-based access, a KPI dashboard, two languages, and dark mode.',
@@ -228,6 +230,7 @@ export const projects = [
   },
   {
     title: { id: 'Asisten — Chatbot AI', en: 'Asisten — AI Chatbot' },
+    category: 'personal',
     description: {
       id: 'Proyek pribadi: chatbot web dengan jawaban yang mengalir kata per kata lewat Server-Sent Events dan bisa dihentikan di tengah jalan. Backend Go tanpa dependency eksternal mendukung Gemini, OpenAI, dan Anthropic (dipilih otomatis sesuai API key), lengkap dengan mode demo tanpa API key.',
       en: 'Personal project: a web chatbot whose answers stream word by word over Server-Sent Events and can be stopped mid-response. A dependency-free Go backend supports Gemini, OpenAI, and Anthropic (picked automatically based on the API key), plus a demo mode that needs no API key.',
@@ -239,6 +242,7 @@ export const projects = [
   },
   {
     title: 'Madani Tumbuh (MT)',
+    category: 'professional',
     description: {
       id: 'Aplikasi mobile PNM untuk mendukung operasional pembiayaan melalui menu Pipeline, Community, Prospect, Survey, Top Up, 3R, DNPT, dan INI. Mencakup pengelolaan data nasabah, kelompok peminjam, prospek, survei kebutuhan pembiayaan, dan pengajuan tambahan pembiayaan, dengan dukungan data lokal menggunakan WatermelonDB.',
       en: "PNM's mobile app supporting financing operations through the Pipeline, Community, Prospect, Survey, Top Up, 3R, DNPT, and INI menus. Covers customer data, borrower groups, prospects, financing needs surveys, and requests for additional financing, with local data support using WatermelonDB.",
@@ -249,6 +253,7 @@ export const projects = [
   },
   {
     title: { id: 'NDS — Modul Loan BRI', en: 'NDS — BRI Loan Module' },
+    category: 'professional',
     description: {
       id: 'Modul pinjaman untuk setoran, pelunasan, pencairan, split transaksi, pinjaman Brimitra, laporan pembayaran kolektif, dan transaksi massal.',
       en: 'Loan module for deposits, repayments, disbursements, transaction splitting, Brimitra loans, collective payment reports, and bulk transactions.',
@@ -259,6 +264,7 @@ export const projects = [
   },
   {
     title: { id: 'Sistem Pelaporan Pengiriman', en: 'Shipment Reporting System' },
+    category: 'professional',
     description: {
       id: 'Modul laporan pergerakan paket dari pabrik ke pelanggan, dengan antrean unduhan, ekspor Excel, grafik, dan scheduler Python.',
       en: 'Reporting module for package movements from factory to customer, with a download queue, Excel export, charts, and a Python scheduler.',
