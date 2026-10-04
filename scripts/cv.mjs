@@ -15,7 +15,8 @@ const labels = {
   id: {
     summary: 'Ringkasan',
     experience: 'Pengalaman Kerja',
-    projects: 'Proyek',
+    personalProjects: 'Proyek Pribadi',
+    professionalProjects: 'Proyek Profesional',
     skills: 'Keahlian',
     education: 'Pendidikan',
     certifications: 'Sertifikasi',
@@ -25,7 +26,8 @@ const labels = {
   en: {
     summary: 'Summary',
     experience: 'Experience',
-    projects: 'Projects',
+    personalProjects: 'Personal Projects',
+    professionalProjects: 'Professional Projects',
     skills: 'Skills',
     education: 'Education',
     certifications: 'Certifications',
@@ -79,15 +81,14 @@ function renderExperience(lang, L) {
     .join('')
 }
 
-function renderProjects(lang) {
-  // Proyek tanpa link/repo sudah tercakup di Pengalaman, jadi hanya proyek publik yang ditampilkan.
+function renderProjects(lang, category) {
   return projects
-    .filter((p) => p.link || p.repo)
+    .filter((p) => p.category === category)
     .map((p) => {
       const url = p.link || p.repo
       return `
       <div class="entry">
-        <div class="row"><span class="role">${esc(pick(p.title, lang))}</span><a class="date" href="${esc(url)}">${esc(stripProtocol(url))}</a></div>
+        <div class="row"><span class="role">${esc(pick(p.title, lang))}</span>${url ? `<a class="date" href="${esc(url)}">${esc(stripProtocol(url))}</a>` : ''}</div>
         <p>${esc(pick(p.description, lang))}</p>
         <p class="tech">${p.tech.map(esc).join(' · ')}</p>
       </div>`
@@ -188,7 +189,8 @@ function renderHtml(lang) {
   </header>
   ${section(L.summary, pick(profile.about, lang).map((p) => `<p>${esc(p)}</p>`).join(''))}
   ${section(L.experience, renderExperience(lang, L))}
-  ${section(L.projects, renderProjects(lang))}
+  ${section(L.personalProjects, renderProjects(lang, 'personal'))}
+  ${section(L.professionalProjects, renderProjects(lang, 'professional'))}
   ${section(L.skills, skillsBody)}
   ${section(L.education, renderEducation(lang))}
   ${section(L.certifications, certBody)}
