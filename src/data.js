@@ -17,11 +17,11 @@ export const profile = {
   about: {
     id: [
       'Saya fullstack dan mobile developer dengan pengalaman lebih dari 6 tahun di bidang rekayasa perangkat lunak. Keahlian utama saya adalah ReactJS, VueJS, dan React Native, dan saat ini saya menjadi Lead Mobile Developer untuk aplikasi Madani Tumbuh di PT Permodalan Nasional Madani.',
-      'Saya berpengalaman mengembangkan backend dengan Laravel dan CodeIgniter, serta terbiasa mengintegrasikan REST API dan gRPC. Saat ini saya juga mempelajari dan memperdalam Go melalui proyek pribadi Mini ERP dan chatbot AI. Saya senang menerjemahkan kebutuhan bisnis menjadi aplikasi web dan mobile yang fungsional dan mudah dirawat.',
+      'Saya berpengalaman mengembangkan backend dengan Laravel dan CodeIgniter, serta terbiasa mengintegrasikan REST API dan gRPC. Saat ini saya juga mempelajari dan memperdalam Go dan Flutter melalui proyek pribadi Patungan, Mini ERP, dan chatbot AI. Saya senang menerjemahkan kebutuhan bisnis menjadi aplikasi web dan mobile yang fungsional dan mudah dirawat.',
     ],
     en: [
       "I'm a fullstack and mobile developer with more than 6 years of experience in software engineering. My core strengths are ReactJS, VueJS, and React Native, and I'm currently the Lead Mobile Developer for the Madani Tumbuh app at PT Permodalan Nasional Madani.",
-      "I'm experienced in backend development with Laravel and CodeIgniter, and comfortable integrating REST APIs and gRPC. I'm currently learning Go and building my skills through personal projects: Mini ERP and an AI chatbot. I enjoy turning business requirements into functional, maintainable web and mobile apps.",
+      "I'm experienced in backend development with Laravel and CodeIgniter, and comfortable integrating REST APIs and gRPC. I'm currently learning Go and Flutter and building my skills through personal projects: Patungan, Mini ERP, and an AI chatbot. I enjoy turning business requirements into functional, maintainable web and mobile apps.",
     ],
   },
   // File CV di folder /public, dibuat otomatis dengan `npm run cv`. Kosongkan ('') untuk menyembunyikan tombol.
@@ -46,7 +46,7 @@ export const stats = [
 export const skills = [
   {
     group: 'Frontend & Mobile',
-    items: ['React', 'React Native', 'Vue.js', 'Redux', 'Redux Saga', 'Vuex', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'Sass'],
+    items: ['React', 'React Native', 'Flutter', 'Vue.js', 'Redux', 'Redux Saga', 'Vuex', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'Sass'],
   },
   {
     group: 'Backend & Database',
@@ -217,6 +217,19 @@ export const experiences = [
 // `category`: gunakan 'personal' untuk proyek pribadi atau 'professional' untuk proyek pekerjaan.
 // `image`: taruh gambar di /public/projects lalu isi path-nya, misal '/projects/nama.png'.
 export const projects = [
+  {
+    title: 'Patungan — Split Bill',
+    category: 'personal',
+    description: {
+      id: 'Proyek pribadi: aplikasi split bill untuk patungan bersama teman. Tagihan bisa dibagi rata, per item (lengkap dengan pajak, servis, dan diskon), atau manual, dan jumlah bagian selalu pas dengan total berkat metode largest remainder. Saldo grup disederhanakan menjadi transfer seminimal mungkin, dengan konfirmasi pembayaran oleh penerima dan pengingat otomatis. Backend Go dengan API gRPC (Connect), web dashboard React, dan aplikasi Flutter (Android + iOS) yang bisa scan struk on-device.',
+      en: 'Personal project: a split bill app for sharing costs with friends. Bills can be split equally, by item (with tax, service charge, and discounts), or manually, and the shares always add up exactly to the total thanks to the largest remainder method. Group balances are simplified into the fewest possible transfers, with payment confirmation by the recipient and automatic reminders. A Go backend with a gRPC (Connect) API, a React web dashboard, and a Flutter app (Android + iOS) with on-device receipt scanning.',
+    },
+    tech: ['Go', 'gRPC', 'Protocol Buffers', 'PostgreSQL', 'React', 'TypeScript', 'RTK Query', 'Tailwind CSS', 'Flutter', 'Riverpod'],
+    image: '/projects/patungan-web-mobile.png',
+    link: 'https://raihan-evanza-patungan.vercel.app/login',
+    video: '/projects/patungan-demo.mp4',
+    repo: '',
+  },
   {
     title: 'Mini ERP',
     category: 'personal',
