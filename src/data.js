@@ -216,6 +216,7 @@ export const experiences = [
 // `video`: rekaman demo di /public/projects, misal '/projects/nama.mp4'.
 // `category`: gunakan 'personal' untuk proyek pribadi atau 'professional' untuk proyek pekerjaan.
 // `image`: taruh gambar di /public/projects lalu isi path-nya, misal '/projects/nama.png'.
+// `gallery`: opsional, daftar { src, thumb, caption } yang dibuka saat gambar diklik. Tanpa ini, yang dibuka `image`.
 export const projects = [
   {
     title: 'Patungan — Split Bill',
@@ -226,6 +227,26 @@ export const projects = [
     },
     tech: ['Go', 'gRPC', 'Protocol Buffers', 'PostgreSQL', 'React', 'TypeScript', 'RTK Query', 'Tailwind CSS', 'Flutter', 'Riverpod'],
     image: '/projects/patungan-web-mobile.png',
+    gallery: [
+      ['overview', { id: 'Web, Android, dan iOS memakai API gRPC yang sama', en: 'Web, Android, and iOS share the same gRPC API' }],
+      ['web-dashboard-light', { id: 'Web: ringkasan piutang dan hutang di semua grup', en: 'Web: what you are owed and owe across all groups' }],
+      ['web-balances-light', { id: 'Web: saldo grup dan saran transfer seminimal mungkin', en: 'Web: group balances and the fewest suggested transfers' }],
+      ['web-bill-form', { id: 'Web: tagihan per item, pajak, servis, dan diskon dibagi proporsional dengan pratinjau langsung', en: 'Web: itemized bill with tax, service, and discount split proportionally, previewed live' }],
+      ['web-bill-detail', { id: 'Web: detail tagihan dengan foto struk', en: 'Web: bill details with the receipt photo' }],
+      ['web-payments', { id: 'Web: pembayaran menunggu konfirmasi penerima', en: 'Web: payments waiting for the recipient to confirm' }],
+      ['web-dashboard-dark', { id: 'Web: mode gelap', en: 'Web: dark mode' }],
+      ['android-home', { id: 'Android: beranda', en: 'Android: home' }],
+      ['android-balances', { id: 'Android: saldo grup dan saran transfer', en: 'Android: group balances and suggested transfers' }],
+      ['android-bill-preview', { id: 'Android: pratinjau pembagian per item', en: 'Android: itemized split preview' }],
+      ['android-payments', { id: 'Android: konfirmasi atau tolak pembayaran', en: 'Android: confirm or reject a payment' }],
+      ['ios-home', { id: 'iOS: beranda dengan ringkasan saldo', en: 'iOS: home with the balance summary' }],
+      ['ios-bill-detail', { id: 'iOS: detail tagihan per item', en: 'iOS: itemized bill details' }],
+      ['ios-home-dark', { id: 'iOS: mode gelap dan bahasa Inggris', en: 'iOS: dark mode in English' }],
+    ].map(([name, caption]) => ({
+      src: `/projects/patungan/${name}.jpg`,
+      thumb: `/projects/patungan/thumbs/${name}.jpg`,
+      caption,
+    })),
     link: 'https://raihan-evanza-patungan.vercel.app/login',
     video: '/projects/patungan-demo.mp4',
     repo: '',

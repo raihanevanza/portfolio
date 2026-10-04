@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import {
   profile,
   contacts,
@@ -284,8 +285,126 @@ function Experience() {
   )
 }
 
+// Galeri layar penuh: ←/→ atau geser untuk pindah, klik gambar untuk ukuran asli, Esc untuk tutup.
+function Lightbox({ title, images, start, onClose }) {
+  const { t, tr } = useLang()
+  const [index, setIndex] = useState(start)
+  // Lebar gambar saat diperbesar (px); null = muat di layar
+  const [zoomed, setZoomed] = useState(null)
+  const [touchX, setTouchX] = useState(null)
+  const count = images.length
+  const go = (step) => {
+    setZoomed(null)
+    setIndex((i) => (i + step + count) % count)
+  }
+
+  useEffect(() => {
+    const previousFocus = document.activeElement
+    const overflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    document.querySelector('.lightbox-close')?.focus()
+    return () => {
+      document.body.style.overflow = overflow
+      previousFocus?.focus?.()
+    }
+  }, [])
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === 'Escape') onClose()
+      else if (e.key === 'ArrowRight' && count > 1) go(1)
+      else if (e.key === 'ArrowLeft' && count > 1) go(-1)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  })
+
+  const image = images[index]
+  // Lewat portal ke <body>: backdrop-filter pada kartu section membuat position: fixed ikut terkurung
+  return createPortal(
+    <div
+      className="lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label={title}
+      onClick={(e) => e.target === e.currentTarget && onClose()}
+      onTouchStart={(e) => setTouchX(e.touches[0].clientX)}
+      onTouchEnd={(e) => {
+        const dx = e.changedTouches[0].clientX - (touchX ?? e.changedTouches[0].clientX)
+        if (!zoomed && count > 1 && Math.abs(dx) > 50) go(dx < 0 ? 1 : -1)
+        setTouchX(null)
+      }}
+    >
+      <div className="lightbox-bar">
+        <span className="lightbox-title">
+          {title}
+          {count > 1 && <span className="lightbox-count">{index + 1} / {count}</span>}
+        </span>
+        <button className="lightbox-close" onClick={onClose} aria-label={t.close}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+      </div>
+      <div
+        className={`lightbox-stage ${zoomed ? 'lightbox-zoomed' : ''}`}
+        onClick={(e) => e.target === e.currentTarget && onClose()}
+      >
+        <img
+          key={image.src}
+          src={image.src}
+          alt={tr(image.caption) || `${t.screenshotOf} ${title}`}
+          style={zoomed ? { width: zoomed } : undefined}
+          onClick={(e) => {
+            // Gambar 2× ditampilkan seukuran aslinya di layar retina, minimal 1,75× ukuran muat
+            const img = e.currentTarget
+            setZoomed(zoomed ? null : Math.max(img.naturalWidth / 2, img.clientWidth * 1.75))
+          }}
+          title={zoomed ? t.zoomOut : t.zoomIn}
+        />
+      </div>
+      {count > 1 && (
+        <>
+          <button className="lightbox-nav lightbox-prev" onClick={() => go(-1)} aria-label={t.previous}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+              <path d="M15 5l-7 7 7 7" />
+            </svg>
+          </button>
+          <button className="lightbox-nav lightbox-next" onClick={() => go(1)} aria-label={t.next}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+              <path d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </>
+      )}
+      <div className="lightbox-footer">
+        {image.caption && <p className="lightbox-caption">{tr(image.caption)}</p>}
+        {count > 1 && (
+          <div className="lightbox-thumbs">
+            {images.map((img, i) => (
+              <button
+                key={img.src}
+                className={i === index ? 'on' : ''}
+                onClick={() => {
+                  setZoomed(null)
+                  setIndex(i)
+                }}
+                aria-label={`${i + 1} / ${count}`}
+              >
+                <img src={img.thumb || img.src} alt="" loading="lazy" />
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>,
+    document.body,
+  )
+}
+
 function Projects() {
   const { t, tr } = useLang()
+  const [viewer, setViewer] = useState(null)
   return (
     <Section id="proyek" eyebrow={t.projectsEyebrow} title={t.projectsTitle}>
       {[
@@ -298,12 +417,27 @@ function Projects() {
             {projects.filter((p) => p.category === category).map((p, i) => (
               <article key={i} className="card project">
                 {p.image && (
-                  <img
-                    className="project-image"
-                    src={p.image}
-                    alt={`${t.screenshotOf} ${tr(p.title)}`}
-                    loading="lazy"
-                  />
+                  <button
+                    className="project-image-btn"
+                    onClick={() =>
+                      setViewer({ title: tr(p.title), images: p.gallery?.length ? p.gallery : [{ src: p.image }] })
+                    }
+                    aria-label={`${t.viewDetail}: ${tr(p.title)}`}
+                  >
+                    <img
+                      className="project-image"
+                      src={p.image}
+                      alt={`${t.screenshotOf} ${tr(p.title)}`}
+                      loading="lazy"
+                    />
+                    <span className="project-image-hint">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                      </svg>
+                      {t.viewDetail}
+                      {p.gallery?.length > 1 && ` · ${p.gallery.length} ${t.photos}`}
+                    </span>
+                  </button>
                 )}
                 <h4>{tr(p.title)}</h4>
                 {(p.link || p.video || p.repo) && (
@@ -348,6 +482,7 @@ function Projects() {
           </div>
         </section>
       ))}
+      {viewer && <Lightbox {...viewer} start={0} onClose={() => setViewer(null)} />}
     </Section>
   )
 }

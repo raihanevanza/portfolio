@@ -10,7 +10,7 @@ Situs portofolio pribadi saya sebagai **Frontend & Mobile Developer**. Isinya ri
 - Mode terang dan gelap, mengikuti pengaturan sistem, dan bisa diganti manual.
 - Dua bahasa (Indonesia dan Inggris). Bahasa awal mengikuti browser pengunjung, dan bisa diganti lewat tombol ID/EN di header.
 - Responsif di desktop dan mobile.
-- Timeline pengalaman kerja dan kartu proyek dengan screenshot opsional.
+- Timeline pengalaman kerja dan kartu proyek dengan screenshot opsional. Screenshot bisa diklik untuk dibuka layar penuh, lengkap dengan galeri (geser/←→, zoom ukuran asli).
 - Tombol salin email untuk pengunjung yang tidak memakai aplikasi email default.
 - Semua konten diambil dari satu file data, jadi mengganti isi tidak perlu menyentuh komponen.
 
@@ -54,7 +54,7 @@ Semua konten ada di [`src/data.js`](src/data.js):
 | `contacts`       | Email, LinkedIn, GitHub                                |
 | `stats`          | Angka ringkas di bawah hero                            |
 | `experiences`    | Riwayat kerja, dari yang terbaru. `end: ''` berarti masih bekerja di sana |
-| `projects`       | Proyek. `link`, `repo`, dan `image` opsional           |
+| `projects`       | Proyek. `link`, `video`, `repo`, `image`, dan `gallery` opsional |
 | `skills`         | Keahlian per kelompok                                  |
 | `education`      | Riwayat pendidikan                                     |
 | `certifications` | Sertifikasi. Kosongkan array untuk menyembunyikan bagian ini |
