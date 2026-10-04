@@ -306,6 +306,35 @@ function Projects() {
                   />
                 )}
                 <h4>{tr(p.title)}</h4>
+                {(p.link || p.video || p.repo) && (
+                  <div className="project-links">
+                    {p.link && (
+                      <a className="project-link project-link-primary" href={p.link} target="_blank" rel="noreferrer">
+                        {t.demo}
+                      </a>
+                    )}
+                    {p.video && (
+                      <a
+                        className={p.link ? 'project-link' : 'project-link project-link-primary'}
+                        href={p.video}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {t.video}
+                      </a>
+                    )}
+                    {p.repo && (
+                      <a
+                        className={p.link || p.video ? 'project-link' : 'project-link project-link-primary'}
+                        href={p.repo}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {t.code}
+                      </a>
+                    )}
+                  </div>
+                )}
                 <p>{tr(p.description)}</p>
                 <div className="tags">
                   {p.tech.map((tech) => (
@@ -314,25 +343,6 @@ function Projects() {
                     </span>
                   ))}
                 </div>
-                {(p.link || p.video || p.repo) && (
-                  <div className="project-links">
-                    {p.link && (
-                      <a href={p.link} target="_blank" rel="noreferrer">
-                        {t.demo}
-                      </a>
-                    )}
-                    {p.video && (
-                      <a href={p.video} target="_blank" rel="noreferrer">
-                        {t.video}
-                      </a>
-                    )}
-                    {p.repo && (
-                      <a href={p.repo} target="_blank" rel="noreferrer">
-                        {t.code}
-                      </a>
-                    )}
-                  </div>
-                )}
               </article>
             ))}
           </div>

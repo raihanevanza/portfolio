@@ -648,15 +648,40 @@ h3 {
 }
 .project-links {
   display: flex;
-  gap: 16px;
-  margin-top: 20px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--accent);
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
 }
-.project-links a:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 9px 15px;
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  border-radius: 12px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.2;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.project-link-primary {
+  border-color: transparent;
+  background: var(--ink);
+  color: var(--ink-text);
+  box-shadow: 0 8px 18px -12px var(--ink);
+}
+.project-link:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+.project-link-primary:hover {
+  box-shadow: var(--shadow-hover);
+}
+.project-links + p {
+  margin-top: 16px;
 }
 
 /* Contact */
