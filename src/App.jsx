@@ -314,11 +314,16 @@ function Projects() {
                     </span>
                   ))}
                 </div>
-                {(p.link || p.repo) && (
+                {(p.link || p.video || p.repo) && (
                   <div className="project-links">
                     {p.link && (
                       <a href={p.link} target="_blank" rel="noreferrer">
                         {t.demo}
+                      </a>
+                    )}
+                    {p.video && (
+                      <a href={p.video} target="_blank" rel="noreferrer">
+                        {t.video}
                       </a>
                     )}
                     {p.repo && (

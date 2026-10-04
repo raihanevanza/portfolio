@@ -212,7 +212,8 @@ export const experiences = [
   },
 ]
 
-// `link`, `repo`, dan `image` opsional — kosongkan jika tidak ada.
+// `link`, `video`, `repo`, dan `image` opsional — kosongkan jika tidak ada.
+// `video`: rekaman demo di /public/projects, misal '/projects/nama.mp4'.
 // `category`: gunakan 'personal' untuk proyek pribadi atau 'professional' untuk proyek pekerjaan.
 // `image`: taruh gambar di /public/projects lalu isi path-nya, misal '/projects/nama.png'.
 export const projects = [
@@ -226,6 +227,7 @@ export const projects = [
     tech: ['Go', 'Gin', 'GORM', 'React', 'React Native', 'TypeScript', 'RTK Query', 'Tailwind CSS', 'SQL Server'],
     image: '/projects/project-erp-web-mobile.png',
     link: '',
+    video: '/projects/mini-erp-demo.mp4',
     repo: 'https://github.com/raihanevanza/project-erp',
   },
   {
