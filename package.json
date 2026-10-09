@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "cv": "node scripts/cv.mjs"
+    "cv": "node scripts/cv.mjs",
+    "docs": "node scripts/project-docs.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

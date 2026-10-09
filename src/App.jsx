@@ -402,6 +402,35 @@ function Lightbox({ title, images, start, onClose }) {
   )
 }
 
+// Tautan pertama (biasanya demo) ditampilkan sebagai tombol utama.
+function ProjectLinks({ project: p }) {
+  const { t, tr } = useLang()
+  const links = [
+    [p.link, t.demo],
+    [p.video, t.video, t.videoTitle],
+    [p.tutorial, t.tutorial, t.tutorialTitle],
+    [tr(p.doc), t.doc, t.docTitle],
+    [p.repo, t.code, t.codeTitle],
+  ].filter(([href]) => href)
+  if (!links.length) return null
+  return (
+    <div className="project-links">
+      {links.map(([href, label, title], i) => (
+        <a
+          key={href}
+          title={title}
+          className={i === 0 ? 'project-link project-link-primary' : 'project-link'}
+          href={href}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {label}
+        </a>
+      ))}
+    </div>
+  )
+}
+
 function Projects() {
   const { t, tr } = useLang()
   const [viewer, setViewer] = useState(null)
@@ -440,35 +469,7 @@ function Projects() {
                   </button>
                 )}
                 <h4>{tr(p.title)}</h4>
-                {(p.link || p.video || p.repo) && (
-                  <div className="project-links">
-                    {p.link && (
-                      <a className="project-link project-link-primary" href={p.link} target="_blank" rel="noreferrer">
-                        {t.demo}
-                      </a>
-                    )}
-                    {p.video && (
-                      <a
-                        className={p.link ? 'project-link' : 'project-link project-link-primary'}
-                        href={p.video}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {t.video}
-                      </a>
-                    )}
-                    {p.repo && (
-                      <a
-                        className={p.link || p.video ? 'project-link' : 'project-link project-link-primary'}
-                        href={p.repo}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {t.code}
-                      </a>
-                    )}
-                  </div>
-                )}
+                <ProjectLinks project={p} />
                 <p>{tr(p.description)}</p>
                 <div className="tags">
                   {p.tech.map((tech) => (

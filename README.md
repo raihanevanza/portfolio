@@ -11,6 +11,7 @@ Situs portofolio pribadi saya sebagai **Frontend & Mobile Developer**. Isinya ri
 - Dua bahasa (Indonesia dan Inggris). Bahasa awal mengikuti browser pengunjung, dan bisa diganti lewat tombol ID/EN di header.
 - Responsif di desktop dan mobile.
 - Timeline pengalaman kerja dan kartu proyek dengan screenshot opsional. Screenshot bisa diklik untuk dibuka layar penuh, lengkap dengan galeri (geser/←→, zoom ukuran asli).
+- Tiap proyek pribadi punya video tutorial dan PDF penjelasan (fitur, arsitektur, keputusan teknis, panduan) dalam bahasa Indonesia dan Inggris.
 - Tombol salin email untuk pengunjung yang tidak memakai aplikasi email default.
 - Semua konten diambil dari satu file data, jadi mengganti isi tidak perlu menyentuh komponen.
 
@@ -43,6 +44,8 @@ Buka http://localhost:5173.
 | `npm run dev`     | Server development dengan hot reload    |
 | `npm run build`   | Build produksi ke folder `dist/`        |
 | `npm run preview` | Menjalankan hasil build secara lokal    |
+| `npm run cv`      | Membuat ulang CV PDF (ID/EN) dari `src/data.js` |
+| `npm run docs`    | Membuat ulang PDF penjelasan proyek (ID/EN) dari `scripts/project-docs/` |
 
 ## Mengubah isi
 
@@ -54,7 +57,7 @@ Semua konten ada di [`src/data.js`](src/data.js):
 | `contacts`       | Email, LinkedIn, GitHub                                |
 | `stats`          | Angka ringkas di bawah hero                            |
 | `experiences`    | Riwayat kerja, dari yang terbaru. `end: ''` berarti masih bekerja di sana |
-| `projects`       | Proyek. `link`, `video`, `repo`, `image`, dan `gallery` opsional |
+| `projects`       | Proyek. `link`, `video`, `tutorial`, `doc`, `repo`, `image`, dan `gallery` opsional |
 | `skills`         | Keahlian per kelompok                                  |
 | `education`      | Riwayat pendidikan                                     |
 | `certifications` | Sertifikasi. Kosongkan array untuk menyembunyikan bagian ini |
@@ -71,6 +74,8 @@ tech: ['Vue.js', 'Vuex', 'gRPC'],
 
 Teks antarmuka seperti menu, judul bagian, dan tombol ada di [`src/i18n.js`](src/i18n.js).
 
+Isi PDF penjelasan proyek ada di [`scripts/project-docs/`](scripts/project-docs/), satu file per proyek (skemanya di [README](scripts/project-docs/README.md) folder itu). Screenshot untuk bagian panduan ada di `scripts/project-docs/img/<slug>/`. Setelah mengedit, jalankan `npm run docs` (atau `npm run docs -- <slug>`); hasilnya di `public/projects/<slug>/<slug>-ID.pdf` dan `-EN.pdf`.
+
 File statis seperti foto profil, CV, dan screenshot proyek ditaruh di folder `public/`, lalu dirujuk dengan path yang diawali `/`. Contohnya `photo: '/foto.jpg'`, `cvUrl: '/cv.pdf'`, dan `image: '/projects/chat-bot-go.png'`.
 
 ## Struktur folder
@@ -79,7 +84,11 @@ File statis seperti foto profil, CV, dan screenshot proyek ditaruh di folder `pu
 .
 ├── public/
 │   ├── favicon.svg
-│   └── projects/        # screenshot proyek
+│   └── projects/        # screenshot, video demo & tutorial, PDF penjelasan
+├── scripts/
+│   ├── cv.mjs           # CV PDF
+│   ├── project-docs.mjs # PDF penjelasan proyek
+│   └── project-docs/    # isi PDF per proyek + screenshot panduan
 ├── src/
 │   ├── App.jsx          # semua komponen halaman
 │   ├── data.js          # semua konten

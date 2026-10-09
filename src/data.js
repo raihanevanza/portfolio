@@ -212,8 +212,9 @@ export const experiences = [
   },
 ]
 
-// `link`, `video`, `repo`, dan `image` opsional — kosongkan jika tidak ada.
+// `link`, `video`, `tutorial`, `doc`, `repo`, dan `image` opsional — kosongkan jika tidak ada.
 // `video`: rekaman demo di /public/projects, misal '/projects/nama.mp4'.
+// `tutorial`: video tutorial langkah demi langkah. `doc`: PDF penjelasan { id, en }, dibuat dengan `npm run docs`.
 // `category`: gunakan 'personal' untuk proyek pribadi atau 'professional' untuk proyek pekerjaan.
 // `image`: taruh gambar di /public/projects lalu isi path-nya, misal '/projects/nama.png'.
 // `gallery`: opsional, daftar { src, thumb, caption } yang dibuka saat gambar diklik. Tanpa ini, yang dibuka `image`.
@@ -222,8 +223,8 @@ export const projects = [
     title: 'Patungan — Split Bill',
     category: 'personal',
     description: {
-      id: 'Proyek pribadi: aplikasi split bill untuk patungan bersama teman. Tagihan bisa dibagi rata, per item (lengkap dengan pajak, servis, dan diskon), atau manual, dan jumlah bagian selalu pas dengan total berkat metode largest remainder. Saldo grup disederhanakan menjadi transfer seminimal mungkin, dengan konfirmasi pembayaran oleh penerima dan pengingat otomatis. Backend Go dengan API gRPC (Connect), web dashboard React, dan aplikasi Flutter (Android + iOS) yang bisa scan struk on-device.',
-      en: 'Personal project: a split bill app for sharing costs with friends. Bills can be split equally, by item (with tax, service charge, and discounts), or manually, and the shares always add up exactly to the total thanks to the largest remainder method. Group balances are simplified into the fewest possible transfers, with payment confirmation by the recipient and automatic reminders. A Go backend with a gRPC (Connect) API, a React web dashboard, and a Flutter app (Android + iOS) with on-device receipt scanning.',
+      id: 'Proyek pribadi: aplikasi split bill untuk patungan bersama teman. Tagihan bisa dibagi rata, per item (lengkap dengan pajak, servis, dan diskon), atau manual, dan jumlah bagian selalu pas dengan total berkat metode largest remainder. Saldo grup disederhanakan menjadi beberapa transfer saja (paling banyak n−1), dengan konfirmasi pembayaran oleh penerima dan pengingat otomatis. Backend Go dengan API gRPC (Connect), web dashboard React, dan aplikasi Flutter (Android + iOS) yang bisa scan struk on-device.',
+      en: 'Personal project: a split bill app for sharing costs with friends. Bills can be split equally, by item (with tax, service charge, and discounts), or manually, and the shares always add up exactly to the total thanks to the largest remainder method. Group balances are simplified into just a few transfers (at most n−1), with payment confirmation by the recipient and automatic reminders. A Go backend with a gRPC (Connect) API, a React web dashboard, and a Flutter app (Android + iOS) with on-device receipt scanning.',
     },
     tech: ['Go', 'gRPC', 'Protocol Buffers', 'PostgreSQL', 'React', 'TypeScript', 'RTK Query', 'Tailwind CSS', 'Flutter', 'Riverpod'],
     image: '/projects/patungan-web-mobile.png',
@@ -249,6 +250,8 @@ export const projects = [
     })),
     link: 'https://raihan-evanza-patungan.vercel.app/login',
     video: '/projects/patungan-demo.mp4',
+    tutorial: '/projects/patungan/tutorial.mp4',
+    doc: { id: '/projects/patungan/patungan-ID.pdf', en: '/projects/patungan/patungan-EN.pdf' },
     repo: '',
   },
   {
@@ -262,6 +265,74 @@ export const projects = [
     image: '/projects/project-erp-web-mobile.png',
     link: 'https://raihan-evanza-erp.vercel.app',
     video: '/projects/mini-erp-demo.mp4',
+    tutorial: '/projects/mini-erp/tutorial.mp4',
+    doc: { id: '/projects/mini-erp/mini-erp-ID.pdf', en: '/projects/mini-erp/mini-erp-EN.pdf' },
+    repo: '',
+  },
+  {
+    title: 'Market Live',
+    category: 'personal',
+    description: {
+      id: 'Proyek pribadi: dashboard harga live untuk 80 instrumen (saham IDX & AS, indeks, kripto, emas termasuk Antam, komoditas, dan kurs) dari sumber data gratis tanpa API key. Kripto dan emas spot bergerak real-time lewat WebSocket Binance langsung dari browser, sedangkan data Yahoo Finance diambil lewat Vercel Functions yang di-cache di CDN. Ada rencana trading dengan aturan breakout yang dipilih lewat backtest 5 tahun, screener sinyal harian (Vercel Cron + Blob), grafik prakiraan, kalkulator konversi, dan berita pasar.',
+      en: 'Personal project: a live price dashboard for 80 instruments (IDX and US stocks, indices, crypto, gold including Antam, commodities, and currencies) built on free data sources with no API key. Crypto and spot gold update in real time over a Binance WebSocket straight from the browser, while Yahoo Finance data goes through Vercel Functions cached on the CDN. It has a trading plan with a breakout rule chosen through a 5-year backtest, a daily signal screener (Vercel Cron + Blob), price projections, a converter, and market news.',
+    },
+    tech: ['React', 'Vite', 'Vercel Functions', 'Vercel Cron & Blob', 'WebSocket', 'Lightweight Charts'],
+    image: '/projects/market-live/cover.jpg',
+    gallery: [
+      ['overview', { id: 'Desktop dan ponsel', en: 'Desktop and mobile' }],
+      ['web-crypto', { id: 'Kripto real-time lewat WebSocket Binance', en: 'Real-time crypto over the Binance WebSocket' }],
+      ['web-chart-forecast', { id: 'Grafik dengan prakiraan dan kisaran 80%', en: 'Chart with a projection and an 80% range' }],
+      ['web-trading-plan', { id: 'Rencana trading: entry, stop awal 3×ATR, trailing stop', en: 'Trading plan: entry, 3×ATR initial stop, trailing stop' }],
+      ['web-backtest', { id: 'Backtest 5 tahun aturan yang sama di instrumen ini', en: '5-year backtest of the same rule on this instrument' }],
+      ['web-screener', { id: 'Screener sinyal breakout harian', en: 'Daily breakout signal screener' }],
+      ['web-movers', { id: 'Penggerak pasar dan perbandingan kinerja', en: 'Market movers and performance comparison' }],
+      ['web-antam', { id: 'Harga emas Antam: jual, buyback, premi vs spot', en: 'Antam gold: sell, buyback, premium over spot' }],
+      ['web-antam-table', { id: 'Tabel harga Antam 0,5–100 gram', en: 'Antam price table, 0.5–100 grams' }],
+      ['web-converter-news', { id: 'Dividen, kalkulator konversi, dan berita pasar', en: 'Dividends, converter, and market news' }],
+      ['web-light', { id: 'Mode terang', en: 'Light mode' }],
+      ['mobile-crypto', { id: 'Ponsel: harga live', en: 'Mobile: live prices' }],
+      ['mobile-plan', { id: 'Ponsel: rencana trading', en: 'Mobile: trading plan' }],
+      ['mobile-antam', { id: 'Ponsel: emas Antam', en: 'Mobile: Antam gold' }],
+    ].map(([name, caption]) => ({
+      src: `/projects/market-live/${name}.jpg`,
+      thumb: `/projects/market-live/thumbs/${name}.jpg`,
+      caption,
+    })),
+    link: 'https://market-live-raihan-evanza.vercel.app',
+    tutorial: '/projects/market-live/tutorial.mp4',
+    doc: { id: '/projects/market-live/market-live-ID.pdf', en: '/projects/market-live/market-live-EN.pdf' },
+    repo: '',
+  },
+  {
+    title: 'Bola Live',
+    category: 'personal',
+    description: {
+      id: 'Proyek pribadi: situs skor live, jadwal, dan klasemen sepak bola berbahasa Indonesia untuk 28 kompetisi Eropa, Asia, ASEAN, dan timnas, semua dalam WIB. Data ESPN di-cache di server lewat revalidate Next.js, sehingga berapa pun pengunjungnya, API hanya dipanggil sesekali. Ada detail pertandingan, profil tim, tebak skor, notifikasi gol, dan kartu skor untuk dibagikan, semuanya tanpa database dan tanpa akun.',
+      en: 'Personal project: an Indonesian-language football site with live scores, fixtures, and standings for 28 European, Asian, Southeast Asian, and national-team competitions, all in Jakarta time. ESPN data is cached on the server with Next.js revalidation, so the API is only called occasionally no matter how many people visit. It has match details, team profiles, score predictions, goal alerts, and shareable score cards, all without a database or user accounts.',
+    },
+    tech: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS', 'ESPN API'],
+    image: '/projects/bola-live/cover.jpg',
+    gallery: [
+      ['overview', { id: 'Desktop dan ponsel', en: 'Desktop and mobile' }],
+      ['web-home', { id: 'Beranda: semua laga hari ini dalam WIB, laga live di atas', en: "Home: today's matches in WIB, live matches on top" }],
+      ['web-jadwal', { id: 'Jadwal per tanggal dan wilayah', en: 'Fixtures by date and region' }],
+      ['web-klasemen', { id: 'Klasemen dengan zona Liga Champions dan degradasi', en: 'Standings with Champions League and relegation zones' }],
+      ['web-match', { id: 'Detail laga: momen penting dan statistik', en: 'Match details: key moments and stats' }],
+      ['web-team', { id: 'Profil tim, form, dan hitung mundur laga berikutnya', en: 'Team profile, form, and countdown to the next match' }],
+      ['web-timnas', { id: 'Timnas Indonesia dan pencarian 193 negara', en: 'Indonesia national team and a search across 193 countries' }],
+      ['web-wonderkid', { id: 'Daftar wonderkid Football Manager 26', en: 'Football Manager 26 wonderkids' }],
+      ['web-home-dark', { id: 'Mode gelap', en: 'Dark mode' }],
+      ['mobile-home', { id: 'Ponsel: beranda', en: 'Mobile: home' }],
+      ['mobile-match', { id: 'Ponsel: detail laga dan tombol bagikan', en: 'Mobile: match details and share buttons' }],
+      ['mobile-klasemen', { id: 'Ponsel: klasemen', en: 'Mobile: standings' }],
+    ].map(([name, caption]) => ({
+      src: `/projects/bola-live/${name}.jpg`,
+      thumb: `/projects/bola-live/thumbs/${name}.jpg`,
+      caption,
+    })),
+    link: 'https://bola-live-olive.vercel.app',
+    tutorial: '/projects/bola-live/tutorial.mp4',
+    doc: { id: '/projects/bola-live/bola-live-ID.pdf', en: '/projects/bola-live/bola-live-EN.pdf' },
     repo: '',
   },
   {
@@ -274,6 +345,8 @@ export const projects = [
     tech: ['Go', 'React', 'Vite', 'SSE', 'Gemini API'],
     image: '/projects/chat-bot-go.png',
     link: '',
+    tutorial: '/projects/chatbot/tutorial.mp4',
+    doc: { id: '/projects/chatbot/chatbot-ID.pdf', en: '/projects/chatbot/chatbot-EN.pdf' },
     repo: 'https://github.com/raihanevanza/chat-bot-go',
   },
   {
