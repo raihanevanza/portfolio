@@ -1,5 +1,5 @@
 // Isi PDF penjelasan proyek Market Live. Skema: lihat README.md di folder ini.
-// Isi mengikuti versi yang live di Vercel (commit e1c3fe0, 10 Okt 2026).
+// Isi mengikuti versi yang live di https://market-live-raihan-evanza.vercel.app (10 Okt 2026).
 export default {
   slug: 'market-live',
   title: 'Market Live',
@@ -176,7 +176,7 @@ export default {
     },
     {
       layer: { id: 'Kualitas & riset', en: 'Quality & research' },
-      items: ['node:test unit tests', 'GitHub Actions CI', 'Node.js backtest scripts'],
+      items: ['node:test unit tests', 'Node.js backtest scripts'],
     },
   ],
 
