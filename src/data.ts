@@ -32,11 +32,11 @@ export const profile: Profile = {
   about: {
     id: [
       'Saya fullstack dan mobile developer dengan pengalaman lebih dari 6 tahun di bidang rekayasa perangkat lunak. Keahlian utama saya adalah ReactJS, VueJS, dan React Native, dan saat ini saya menjadi Lead Mobile Developer untuk aplikasi Madani Tumbuh di PT Permodalan Nasional Madani.',
-      'Saya berpengalaman mengembangkan backend dengan Laravel dan CodeIgniter, serta terbiasa mengintegrasikan REST API dan gRPC. Saat ini saya juga mempelajari dan memperdalam Go dan Flutter melalui proyek pribadi seperti Patungan, Mini ERP, Market Live, Bola Live, Logbook 42·50, dan chatbot AI. Saya senang menerjemahkan kebutuhan bisnis menjadi aplikasi web dan mobile yang fungsional dan mudah dirawat.',
+      'Saya berpengalaman mengembangkan backend dengan Laravel dan CodeIgniter, serta terbiasa mengintegrasikan REST API dan gRPC. Saat ini saya juga mempelajari dan memperdalam Go dan Flutter melalui proyek pribadi seperti AgentGate, Patungan, Mini ERP, Market Live, Bola Live, Logbook 42·50, dan chatbot AI. Saya senang menerjemahkan kebutuhan bisnis menjadi aplikasi web dan mobile yang fungsional dan mudah dirawat.',
     ],
     en: [
       "I'm a fullstack and mobile developer with more than 6 years of experience in software engineering. My core strengths are ReactJS, VueJS, and React Native, and I'm currently the Lead Mobile Developer for the Madani Tumbuh app at PT Permodalan Nasional Madani.",
-      "I'm experienced in backend development with Laravel and CodeIgniter, and comfortable integrating REST APIs and gRPC. I'm currently learning Go and Flutter and building my skills through personal projects such as Patungan, Mini ERP, Market Live, Bola Live, Logbook 42·50, and an AI chatbot. I enjoy turning business requirements into functional, maintainable web and mobile apps.",
+      "I'm experienced in backend development with Laravel and CodeIgniter, and comfortable integrating REST APIs and gRPC. I'm currently learning Go and Flutter and building my skills through personal projects such as AgentGate, Patungan, Mini ERP, Market Live, Bola Live, Logbook 42·50, and an AI chatbot. I enjoy turning business requirements into functional, maintainable web and mobile apps.",
     ],
   },
   // File CV di folder /public, dibuat otomatis dengan `npm run cv`. Kosongkan ('') untuk menyembunyikan tombol.
@@ -59,7 +59,7 @@ export const stats: Stat[] = [
   { value: '6+', label: { id: 'Tahun pengalaman', en: 'Years of experience' } },
   { value: '5', label: { id: 'Perusahaan', en: 'Companies' } },
   { value: '2', label: { id: 'Aplikasi perbankan & pembiayaan', en: 'Banking & financing apps' } },
-  { value: '6', label: { id: 'Proyek pribadi', en: 'Personal projects' } },
+  { value: '7', label: { id: 'Proyek pribadi', en: 'Personal projects' } },
 ]
 
 export const skills: SkillGroup[] = [
@@ -247,6 +247,30 @@ function gallery(slug: string, items: [string, Localized][]): GalleryImage[] {
 }
 
 export const projects: Project[] = [
+  {
+    title: 'AgentGate',
+    category: 'personal',
+    description: {
+      id: 'Proyek pribadi: gateway persetujuan untuk tool call AI agent seperti refund, query atau ubah database, kirim email, dan deploy. Setiap panggilan melewati policy engine per tool: aksi aman langsung jalan, aksi berisiko menunggu persetujuan manusia, aksi terlarang ditolak, dan bila aturan gagal dievaluasi hasilnya dialihkan ke persetujuan (fail-closed). Pemilik agent tidak bisa menyetujui aksi agent-nya sendiri, status dijaga di database sehingga dari dua approver yang menekan bersamaan hanya satu yang berhasil, dan argumen yang disetujui dikunci dengan hash. Perubahan muncul realtime lewat Server-Sent Events, agent menunggu hasil lewat long-poll, dan semua jejak tercatat di audit log. Backend Go + PostgreSQL, console web React, dan aplikasi React Native (Android + iOS) untuk approver; demo berjalan penuh di browser dengan simulator agent.',
+      en: 'Personal project: an approval gateway for AI agent tool calls such as refunds, database queries and writes, emails, and deployments. Every call goes through a per-tool policy engine: safe actions run immediately, risky ones wait for a human, forbidden ones are refused, and a rule that cannot be evaluated falls back to approval (fail-closed). An agent’s owner cannot approve that agent’s actions, status changes are guarded in the database so only one of two approvers clicking at once succeeds, and approved arguments are locked with a hash. Changes appear in real time over Server-Sent Events, agents wait for the outcome with long polling, and everything lands in an audit log. A Go + PostgreSQL backend, a React web console, and a React Native app (Android + iOS) for approvers; the demo runs entirely in the browser with an agent simulator.',
+    },
+    tech: ['Go', 'Gin', 'GORM', 'PostgreSQL', 'Server-Sent Events', 'React', 'React Native', 'TypeScript', 'RTK Query', 'Tailwind CSS'],
+    image: '/projects/agentgate-web.png',
+    gallery: gallery('agentgate', [
+      ['web-dashboard', { id: 'Dashboard: tool call 24 jam per keputusan policy, status, dan waktu persetujuan', en: 'Dashboard: 24-hour tool calls by policy decision, status, and approval time' }],
+      ['web-simulator', { id: 'Simulator agent: panggil gateway sebagai agent dan lihat respons 200 / 202 / 403 secara realtime', en: 'Agent simulator: call the gateway as an agent and watch 200 / 202 / 403 responses live' }],
+      ['web-approvals', { id: 'Inbox persetujuan, yang paling dekat kedaluwarsa di atas', en: 'Approvals inbox, closest to expiry first' }],
+      ['web-approval-detail', { id: 'Detail tool call: argumen (data sensitif dimasking), hash argumen, dan alasan keputusan policy', en: 'Tool call detail: arguments (sensitive data masked), argument hash, and why the policy decided' }],
+      ['web-self-approval-dark', { id: 'Pemisahan tugas: pemilik agent tidak bisa menyetujui aksi agent-nya sendiri (mode gelap)', en: 'Separation of duties: an agent’s owner cannot approve its actions (dark mode)' }],
+      ['web-policy', { id: 'Policy per tool dalam bahasa manusia, urut sesuai evaluasi', en: 'Per-tool policy in plain language, in evaluation order' }],
+      ['web-playground', { id: 'Playground: form dari skema argumen tool', en: 'Playground: a form generated from the tool’s argument schema' }],
+      ['web-audit', { id: 'Log audit untuk login, persetujuan, dan perubahan agent', en: 'Audit log of sign-ins, decisions, and agent changes' }],
+      ['web-login', { id: 'Login dengan lima akun demo per role', en: 'Sign-in with five demo accounts, one per role' }],
+      ['web-dashboard-id', { id: 'Dua bahasa: Indonesia dan Inggris', en: 'Two languages: Indonesian and English' }],
+    ]),
+    link: 'https://raihan-evanza-agentgate.vercel.app/?as=approver',
+    repo: '',
+  },
   {
     title: 'Patungan — Split Bill',
     category: 'personal',
