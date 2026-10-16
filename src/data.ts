@@ -4,9 +4,24 @@
 //
 //  Teks yang berbeda per bahasa ditulis sebagai { id: '...', en: '...' }.
 //  Teks yang sama di kedua bahasa (nama, teknologi, dll.) cukup ditulis biasa.
+//  Bentuk tiap bagian ada di types.ts.
 // ============================================================
 
-export const profile = {
+import type {
+  Certification,
+  Contact,
+  CvExtra,
+  Education,
+  Experience,
+  GalleryImage,
+  Localized,
+  Profile,
+  Project,
+  SkillGroup,
+  Stat,
+} from './types.ts'
+
+export const profile: Profile = {
   name: 'Raihan Evanza',
   role: 'Fullstack & Mobile Developer',
   location: 'Bogor, Indonesia',
@@ -17,11 +32,11 @@ export const profile = {
   about: {
     id: [
       'Saya fullstack dan mobile developer dengan pengalaman lebih dari 6 tahun di bidang rekayasa perangkat lunak. Keahlian utama saya adalah ReactJS, VueJS, dan React Native, dan saat ini saya menjadi Lead Mobile Developer untuk aplikasi Madani Tumbuh di PT Permodalan Nasional Madani.',
-      'Saya berpengalaman mengembangkan backend dengan Laravel dan CodeIgniter, serta terbiasa mengintegrasikan REST API dan gRPC. Saat ini saya juga mempelajari dan memperdalam Go dan Flutter melalui proyek pribadi Patungan, Mini ERP, dan chatbot AI. Saya senang menerjemahkan kebutuhan bisnis menjadi aplikasi web dan mobile yang fungsional dan mudah dirawat.',
+      'Saya berpengalaman mengembangkan backend dengan Laravel dan CodeIgniter, serta terbiasa mengintegrasikan REST API dan gRPC. Saat ini saya juga mempelajari dan memperdalam Go dan Flutter melalui proyek pribadi seperti Patungan, Mini ERP, Market Live, Bola Live, Logbook 42·50, dan chatbot AI. Saya senang menerjemahkan kebutuhan bisnis menjadi aplikasi web dan mobile yang fungsional dan mudah dirawat.',
     ],
     en: [
       "I'm a fullstack and mobile developer with more than 6 years of experience in software engineering. My core strengths are ReactJS, VueJS, and React Native, and I'm currently the Lead Mobile Developer for the Madani Tumbuh app at PT Permodalan Nasional Madani.",
-      "I'm experienced in backend development with Laravel and CodeIgniter, and comfortable integrating REST APIs and gRPC. I'm currently learning Go and Flutter and building my skills through personal projects: Patungan, Mini ERP, and an AI chatbot. I enjoy turning business requirements into functional, maintainable web and mobile apps.",
+      "I'm experienced in backend development with Laravel and CodeIgniter, and comfortable integrating REST APIs and gRPC. I'm currently learning Go and Flutter and building my skills through personal projects such as Patungan, Mini ERP, Market Live, Bola Live, Logbook 42·50, and an AI chatbot. I enjoy turning business requirements into functional, maintainable web and mobile apps.",
     ],
   },
   // File CV di folder /public, dibuat otomatis dengan `npm run cv`. Kosongkan ('') untuk menyembunyikan tombol.
@@ -29,37 +44,41 @@ export const profile = {
   // Foto profil: taruh di /public lalu isi misal '/foto.jpg'. Kosongkan untuk memakai inisial.
   photo: '/foto.jpg',
   available: true, // tampilkan badge "Terbuka untuk peluang baru"
+  // Kata yang bergantian di hero: "Saya membangun aplikasi dengan …"
+  focus: ['React Native', 'React', 'Vue.js', 'TypeScript', 'Go', 'Flutter'],
+  timeZone: 'Asia/Jakarta',
 }
 
-export const contacts = [
+export const contacts: Contact[] = [
   { label: 'Email', value: 'raihan.evanza20@gmail.com', href: 'mailto:raihan.evanza20@gmail.com' },
   { label: 'LinkedIn', value: 'linkedin.com/in/raihan-evanza', href: 'https://www.linkedin.com/in/raihan-evanza' },
   { label: 'GitHub', value: 'github.com/raihanevanza', href: 'https://github.com/raihanevanza' },
 ]
 
-export const stats = [
+export const stats: Stat[] = [
   { value: '6+', label: { id: 'Tahun pengalaman', en: 'Years of experience' } },
   { value: '5', label: { id: 'Perusahaan', en: 'Companies' } },
   { value: '2', label: { id: 'Aplikasi perbankan & pembiayaan', en: 'Banking & financing apps' } },
+  { value: '6', label: { id: 'Proyek pribadi', en: 'Personal projects' } },
 ]
 
-export const skills = [
+export const skills: SkillGroup[] = [
   {
     group: 'Frontend & Mobile',
-    items: ['React', 'React Native', 'Flutter', 'Vue.js', 'Redux', 'Redux Saga', 'Vuex', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'Sass'],
+    items: ['React', 'React Native', 'Flutter', 'Vue.js', 'Redux', 'Redux Saga', 'Vuex', 'TypeScript', 'JavaScript', 'Next.js', 'Tailwind CSS', 'HTML', 'CSS', 'Sass'],
   },
   {
     group: 'Backend & Database',
-    items: ['Laravel', 'CodeIgniter', 'REST API', 'gRPC', 'MySQL', 'PostgreSQL', 'WatermelonDB', 'Node.js', 'Python', 'Go'],
+    items: ['Laravel', 'CodeIgniter', 'REST API', 'gRPC', 'MySQL', 'PostgreSQL', 'WatermelonDB', 'Redis', 'Node.js', 'Python', 'Go'],
   },
   {
     group: { id: 'Tools & Lainnya', en: 'Tools & Others' },
-    items: ['Git', 'GitHub', 'Bitbucket', 'Figma', 'Axios', 'jQuery / Ajax'],
+    items: ['Git', 'GitHub', 'Bitbucket', 'Figma', 'Vercel', 'PWA', 'Gemini API', 'Axios', 'jQuery / Ajax'],
   },
 ]
 
 // Urutkan dari yang terbaru. `end: ''` berarti masih bekerja di sana (ditampilkan "Sekarang").
-export const experiences = [
+export const experiences: Experience[] = [
   {
     company: 'PT Permodalan Nasional Madani',
     role: 'Lead Mobile Developer',
@@ -218,7 +237,16 @@ export const experiences = [
 // `category`: gunakan 'personal' untuk proyek pribadi atau 'professional' untuk proyek pekerjaan.
 // `image`: taruh gambar di /public/projects lalu isi path-nya, misal '/projects/nama.png'.
 // `gallery`: opsional, daftar { src, thumb, caption } yang dibuka saat gambar diklik. Tanpa ini, yang dibuka `image`.
-export const projects = [
+//   gallery('slug', [['nama-file', caption], ...]) memakai /projects/<slug>/<nama>.jpg dan thumbs/<nama>.jpg.
+function gallery(slug: string, items: [string, Localized][]): GalleryImage[] {
+  return items.map(([name, caption]) => ({
+    src: `/projects/${slug}/${name}.jpg`,
+    thumb: `/projects/${slug}/thumbs/${name}.jpg`,
+    caption,
+  }))
+}
+
+export const projects: Project[] = [
   {
     title: 'Patungan — Split Bill',
     category: 'personal',
@@ -228,7 +256,7 @@ export const projects = [
     },
     tech: ['Go', 'gRPC', 'Protocol Buffers', 'PostgreSQL', 'React', 'TypeScript', 'RTK Query', 'Tailwind CSS', 'Flutter', 'Riverpod'],
     image: '/projects/patungan-web-mobile.png',
-    gallery: [
+    gallery: gallery('patungan', [
       ['overview', { id: 'Web, Android, dan iOS memakai API gRPC yang sama', en: 'Web, Android, and iOS share the same gRPC API' }],
       ['web-dashboard-light', { id: 'Web: ringkasan piutang dan hutang di semua grup', en: 'Web: what you are owed and owe across all groups' }],
       ['web-balances-light', { id: 'Web: saldo grup dan saran transfer seminimal mungkin', en: 'Web: group balances and the fewest suggested transfers' }],
@@ -243,11 +271,7 @@ export const projects = [
       ['ios-home', { id: 'iOS: beranda dengan ringkasan saldo', en: 'iOS: home with the balance summary' }],
       ['ios-bill-detail', { id: 'iOS: detail tagihan per item', en: 'iOS: itemized bill details' }],
       ['ios-home-dark', { id: 'iOS: mode gelap dan bahasa Inggris', en: 'iOS: dark mode in English' }],
-    ].map(([name, caption]) => ({
-      src: `/projects/patungan/${name}.jpg`,
-      thumb: `/projects/patungan/thumbs/${name}.jpg`,
-      caption,
-    })),
+    ]),
     link: 'https://raihan-evanza-patungan.vercel.app/login',
     video: '/projects/patungan-demo.mp4',
     tutorial: '/projects/patungan/tutorial.mp4',
@@ -278,7 +302,7 @@ export const projects = [
     },
     tech: ['React', 'Vite', 'Vercel Functions', 'Vercel Cron & Blob', 'WebSocket', 'Lightweight Charts'],
     image: '/projects/market-live/cover.jpg',
-    gallery: [
+    gallery: gallery('market-live', [
       ['overview', { id: 'Desktop dan ponsel', en: 'Desktop and mobile' }],
       ['web-crypto', { id: 'Kripto real-time lewat WebSocket Binance', en: 'Real-time crypto over the Binance WebSocket' }],
       ['web-chart-forecast', { id: 'Grafik dengan prakiraan dan kisaran 80%', en: 'Chart with a projection and an 80% range' }],
@@ -293,11 +317,7 @@ export const projects = [
       ['mobile-crypto', { id: 'Ponsel: harga live', en: 'Mobile: live prices' }],
       ['mobile-plan', { id: 'Ponsel: rencana trading', en: 'Mobile: trading plan' }],
       ['mobile-antam', { id: 'Ponsel: emas Antam', en: 'Mobile: Antam gold' }],
-    ].map(([name, caption]) => ({
-      src: `/projects/market-live/${name}.jpg`,
-      thumb: `/projects/market-live/thumbs/${name}.jpg`,
-      caption,
-    })),
+    ]),
     link: 'https://market-live-raihan-evanza.vercel.app',
     tutorial: '/projects/market-live/tutorial.mp4',
     doc: { id: '/projects/market-live/market-live-ID.pdf', en: '/projects/market-live/market-live-EN.pdf' },
@@ -312,7 +332,7 @@ export const projects = [
     },
     tech: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS', 'ESPN API'],
     image: '/projects/bola-live/cover.jpg',
-    gallery: [
+    gallery: gallery('bola-live', [
       ['overview', { id: 'Desktop dan ponsel', en: 'Desktop and mobile' }],
       ['web-home', { id: 'Beranda: semua laga hari ini dalam WIB, laga live di atas', en: "Home: today's matches in WIB, live matches on top" }],
       ['web-jadwal', { id: 'Jadwal per tanggal dan wilayah', en: 'Fixtures by date and region' }],
@@ -325,14 +345,41 @@ export const projects = [
       ['mobile-home', { id: 'Ponsel: beranda', en: 'Mobile: home' }],
       ['mobile-match', { id: 'Ponsel: detail laga dan tombol bagikan', en: 'Mobile: match details and share buttons' }],
       ['mobile-klasemen', { id: 'Ponsel: klasemen', en: 'Mobile: standings' }],
-    ].map(([name, caption]) => ({
-      src: `/projects/bola-live/${name}.jpg`,
-      thumb: `/projects/bola-live/thumbs/${name}.jpg`,
-      caption,
-    })),
+    ]),
     link: 'https://bola-live-olive.vercel.app',
     tutorial: '/projects/bola-live/tutorial.mp4',
     doc: { id: '/projects/bola-live/bola-live-ID.pdf', en: '/projects/bola-live/bola-live-EN.pdf' },
+    repo: '',
+  },
+  {
+    title: 'Logbook 42·50',
+    category: 'personal',
+    description: {
+      id: 'Proyek pribadi: PWA jadwal latihan dan jurnal lari yang saya pakai setiap hari menuju relay 14 km, full marathon, dan ultra 50 km. Jadwal mingguan disusun otomatis dari tanggal race lalu disesuaikan dengan check-in pagi, sesi tercatat, dan data jam Huawei lewat intervals.icu. Ada peringatan beban sebelum cedera, grafik VO2max dan Fitness · Fatigue · Form, rencana race day, AI coach Gemini, notifikasi push, dan mode offline. Satu file index.html tanpa framework, 9 Vercel Functions, dan Upstash Redis.',
+      en: 'Personal project: a training-plan and running-journal PWA I use every day on the way to a 14 km relay leg, a full marathon, and a 50 km ultra. The weekly plan is generated from race dates and adjusted using a morning check-in, logged sessions, and Huawei watch data via intervals.icu. It has load warnings before injuries, VO2max and Fitness · Fatigue · Form charts, a race-day plan, a Gemini AI coach, push notifications, and offline mode. A single framework-free index.html, 9 Vercel Functions, and Upstash Redis.',
+    },
+    tech: ['JavaScript', 'PWA', 'Vercel Functions', 'Vercel Cron', 'Upstash Redis', 'Gemini API', 'intervals.icu API', 'Web Push'],
+    image: '/projects/logbook/cover.jpg',
+    gallery: gallery('logbook', [
+      ['overview', { id: 'Desktop dan ponsel (data demo)', en: 'Desktop and mobile (demo data)' }],
+      ['web-today', { id: 'Hari ini: sesi sesuai fase, peringatan beban, cuaca, dan check-in', en: 'Today: the session for this phase, load warnings, weather, and check-in' }],
+      ['web-week', { id: 'Jadwal mingguan: sesi kualitas, long run, dan strength', en: 'Weekly plan: quality sessions, long run, and strength' }],
+      ['web-progress', { id: 'Progres: volume mingguan, long run, dan HR easy', en: 'Progress: weekly volume, long runs, and easy-run HR' }],
+      ['web-fitness', { id: 'VO2max dan Fitness · Fatigue · Form', en: 'VO2max and Fitness · Fatigue · Form' }],
+      ['web-achievements', { id: 'Pencapaian, Road to race, rekap bulanan, dan beban sRPE', en: 'Achievements, Road to race, monthly recap, and sRPE load' }],
+      ['web-log', { id: 'Riwayat sesi dengan pace, HR, RPE, dan nyeri', en: 'Session history with pace, HR, RPE, and pain' }],
+      ['web-detail-map', { id: 'Detail sesi dari jam: peta nyeri dan peta rute', en: 'Watch session detail: pain map and route map' }],
+      ['web-detail-charts', { id: 'Grafik pace, HR, cadence, dan elevasi sepanjang sesi', en: 'Pace, HR, cadence, and elevation across the run' }],
+      ['web-season', { id: 'Rencana race day: pace per segmen dan jadwal gel', en: 'Race-day plan: pace per segment and gel schedule' }],
+      ['web-profile', { id: 'Profil: data diri, VO2max, HR maks, dan zona', en: 'Profile: body data, VO2max, max HR, and zones' }],
+      ['web-dark', { id: 'Mode gelap', en: 'Dark mode' }],
+      ['mobile-today', { id: 'Ponsel: Hari ini', en: 'Mobile: Today' }],
+      ['mobile-log', { id: 'Ponsel: riwayat sesi', en: 'Mobile: session history' }],
+      ['mobile-progress', { id: 'Ponsel: grafik progres', en: 'Mobile: progress charts' }],
+    ]),
+    link: '',
+    tutorial: '/projects/logbook/tutorial.mp4',
+    doc: { id: '/projects/logbook/logbook-ID.pdf', en: '/projects/logbook/logbook-EN.pdf' },
     repo: '',
   },
   {
@@ -384,7 +431,7 @@ export const projects = [
   },
 ]
 
-export const education = [
+export const education: Education[] = [
   {
     school: 'Universitas Esa Unggul',
     degree: { id: 'S2 Ilmu Komputer', en: "Master's in Computer Science" },
@@ -408,11 +455,11 @@ export const education = [
   },
 ]
 
-export const certifications = []
+export const certifications: Certification[] = []
 
 // Data tambahan yang hanya muncul di CV PDF (tidak ditampilkan di web).
 // Catatan: CV bisa diunduh publik dari web, jadi nomor HP ikut terlihat. Kosongkan ('') jika tidak mau.
-export const cv = {
+export const cv: CvExtra = {
   website: 'https://portfolio-raihanevanza.vercel.app',
   phone: '0821-1182-8461',
   languages: [

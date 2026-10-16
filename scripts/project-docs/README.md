@@ -1,7 +1,7 @@
 # Isi PDF penjelasan proyek
 
-Satu file `<slug>.mjs` per proyek, dirender jadi `public/projects/<slug>/<slug>-penjelasan-ID.pdf`
-dan `...-EN.pdf` oleh `npm run docs` (scripts/project-docs.mjs).
+Satu file `<slug>.mjs` per proyek, dirender jadi `public/projects/<slug>/<slug>-ID.pdf`
+dan `<slug>-EN.pdf` oleh `npm run docs` (scripts/project-docs.mjs). `links: []` boleh kosong untuk proyek tanpa demo publik.
 
 Teks per bahasa ditulis `{ id: '...', en: '...' }`; daftar paragraf/poin per bahasa `{ id: [...], en: [...] }`.
 

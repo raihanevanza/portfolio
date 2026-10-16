@@ -8,7 +8,7 @@ import { existsSync, mkdirSync, mkdtempSync, readdirSync, writeFileSync } from '
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
-import { profile, cv } from '../src/data.js'
+import { profile, cv } from '../src/data.ts'
 
 const root = resolve(fileURLToPath(import.meta.url), '../..')
 const docsDir = join(root, 'scripts/project-docs')
@@ -48,7 +48,7 @@ const labels = {
   },
 }
 
-// Sama dengan pick() di src/i18n.js (tidak diimpor karena file itu memuat React).
+// Sama dengan pick() di src/i18n.ts (tidak diimpor karena file itu memuat React).
 const pick = (value, lang) =>
   value && typeof value === 'object' && !Array.isArray(value) ? value[lang] ?? value.id : value
 

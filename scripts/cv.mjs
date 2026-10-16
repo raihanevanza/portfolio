@@ -1,4 +1,4 @@
-// Membuat CV PDF (ID dan EN) dari isi src/data.js, memakai Google Chrome headless.
+// Membuat CV PDF (ID dan EN) dari isi src/data.ts, memakai Google Chrome headless.
 // Jalankan: npm run cv  → hasilnya di public/, sesuai path profile.cvUrl.
 // Path Chrome bisa diganti lewat env CHROME_PATH.
 
@@ -7,7 +7,7 @@ import { existsSync, mkdtempSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
-import { profile, contacts, skills, experiences, projects, education, certifications, cv } from '../src/data.js'
+import { profile, contacts, skills, experiences, projects, education, certifications, cv } from '../src/data.ts'
 
 const root = resolve(fileURLToPath(import.meta.url), '../..')
 
@@ -36,7 +36,7 @@ const labels = {
   },
 }
 
-// Sama dengan pick() di src/i18n.js (tidak diimpor karena file itu memuat React).
+// Sama dengan pick() di src/i18n.ts (tidak diimpor karena file itu memuat React).
 const pick = (value, lang) =>
   value && typeof value === 'object' && !Array.isArray(value) ? value[lang] ?? value.id : value
 

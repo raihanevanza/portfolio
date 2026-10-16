@@ -1,34 +1,38 @@
 # Raihan Evanza — Portofolio
 
-Situs portofolio pribadi saya sebagai **Frontend & Mobile Developer**. Isinya ringkasan pengalaman kerja, proyek, keahlian, pendidikan, dan kontak.
+Situs portofolio pribadi saya sebagai **Fullstack & Mobile Developer**, dengan gaya *modern interactive* dan tema putih–hitam minimal. Isinya Hero, Tentang, Pengalaman, Proyek, Tech Stack, Resume, dan Kontak.
 
 <!-- Tambahkan link situs di sini setelah deploy, misal: **Live:** https://raihan-evanza.vercel.app -->
 
 ## Fitur
 
-- Satu halaman dengan navigasi ke bagian Tentang, Pengalaman, Proyek, Keahlian, dan Kontak.
-- Mode terang dan gelap, mengikuti pengaturan sistem, dan bisa diganti manual.
-- Dua bahasa (Indonesia dan Inggris). Bahasa awal mengikuti browser pengunjung, dan bisa diganti lewat tombol ID/EN di header.
-- Responsif di desktop dan mobile.
-- Timeline pengalaman kerja dan kartu proyek dengan screenshot opsional. Screenshot bisa diklik untuk dibuka layar penuh, lengkap dengan galeri (geser/←→, zoom ukuran asli).
+- **Hero**: nama besar, kata yang diketik bergantian ("Saya membangun aplikasi dengan …"), grid titik yang mengikuti kursor, angka ringkas yang menghitung naik, dan pita teknologi berjalan.
+- **Pengalaman**: garis karier proporsional per tahun plus tab per peran (bisa dipilih dengan klik atau ←/→/↑/↓); panel detail menampilkan lama bekerja, ringkasan, poin, dan teknologi.
+- **Proyek**: filter Semua/Pribadi/Profesional dengan kartu bento. Klik kartu untuk membuka detail berisi galeri, video tutorial/demo yang bisa diputar langsung, deskripsi lengkap, dan tautan (demo, PDF, kode). Gambar bisa dibuka layar penuh (geser/←→, zoom ukuran asli).
+- **Tech Stack**: pilih teknologi untuk melihat peran dan proyek yang memakainya; angka di tiap chip dihitung otomatis dari data.
+- **Resume**: pratinjau CV yang miring mengikuti kursor, pilihan CV Indonesia/Inggris, tombol unduh dan buka, plus pendidikan dan bahasa.
+- **Kontak**: email besar dengan tombol salin, LinkedIn/GitHub, jam lokal WIB, dan form singkat yang membuka aplikasi email dengan subjek dan pesan terisi.
+- **Palet perintah** (⌘K / Ctrl+K): lompat ke bagian, buka proyek, ganti tema/bahasa, unduh CV, salin email.
+- Menu aktif mengikuti bagian yang sedang dibaca, garis progres gulir di header, dan animasi muncul saat menggulir. Semua animasi mati jika pengunjung memilih *reduce motion*.
+- Mode terang (putih) dan gelap (hitam), mengikuti sistem dan bisa diganti manual. Dua bahasa (ID/EN), bahasa awal mengikuti browser.
 - Tiap proyek pribadi punya video tutorial dan PDF penjelasan (fitur, arsitektur, keputusan teknis, panduan) dalam bahasa Indonesia dan Inggris.
-- Tombol salin email untuk pengunjung yang tidak memakai aplikasi email default.
-- Semua konten diambil dari satu file data, jadi mengganti isi tidak perlu menyentuh komponen.
+- Semua konten diambil dari satu file data bertipe, jadi mengganti isi tidak perlu menyentuh komponen.
 
 ## Teknologi
 
 | Bagian  | Teknologi                    |
 |---------|------------------------------|
-| UI      | React 18                     |
+| UI      | React 18 + TypeScript (strict) |
 | Build   | Vite 5                       |
 | Styling | CSS biasa dengan variabel tema |
+| Font    | Geist & Geist Mono (Google Fonts) |
 | Hosting | Vercel                       |
 
-Tidak ada dependency lain selain React.
+Tidak ada dependency runtime lain selain React; animasi, palet perintah, dan galeri ditulis sendiri.
 
 ## Menjalankan di komputer lokal
 
-**Kebutuhan:** Node.js 18 atau lebih baru.
+**Kebutuhan:** Node.js 22.18 atau lebih baru (`npm run cv` dan `npm run docs` membaca `src/data.ts` langsung dengan type stripping bawaan Node), serta Google Chrome untuk membuat PDF.
 
 ```bash
 git clone https://github.com/raihanevanza/portfolio.git
@@ -42,23 +46,24 @@ Buka http://localhost:5173.
 | Perintah          | Fungsi                                  |
 |-------------------|-----------------------------------------|
 | `npm run dev`     | Server development dengan hot reload    |
-| `npm run build`   | Build produksi ke folder `dist/`        |
+| `npm run build`   | Cek tipe (tsc) lalu build produksi ke `dist/` |
+| `npm run typecheck` | Cek tipe TypeScript saja             |
 | `npm run preview` | Menjalankan hasil build secara lokal    |
-| `npm run cv`      | Membuat ulang CV PDF (ID/EN) dari `src/data.js` |
+| `npm run cv`      | Membuat ulang CV PDF (ID/EN) dari `src/data.ts` |
 | `npm run docs`    | Membuat ulang PDF penjelasan proyek (ID/EN) dari `scripts/project-docs/` |
 
 ## Mengubah isi
 
-Semua konten ada di [`src/data.js`](src/data.js):
+Semua konten ada di [`src/data.ts`](src/data.ts). Bentuk tiap bagian didefinisikan di [`src/types.ts`](src/types.ts), jadi salah ketik nama field langsung ketahuan saat `npm run typecheck`.
 
 | Export           | Isi                                                    |
 |------------------|--------------------------------------------------------|
-| `profile`        | Nama, peran, lokasi, tagline, paragraf tentang, foto, file CV |
+| `profile`        | Nama, peran, lokasi, tagline, paragraf tentang, kata yang bergantian di hero (`focus`), foto, file CV, zona waktu |
 | `contacts`       | Email, LinkedIn, GitHub                                |
 | `stats`          | Angka ringkas di bawah hero                            |
 | `experiences`    | Riwayat kerja, dari yang terbaru. `end: ''` berarti masih bekerja di sana |
-| `projects`       | Proyek. `link`, `video`, `tutorial`, `doc`, `repo`, `image`, dan `gallery` opsional |
-| `skills`         | Keahlian per kelompok                                  |
+| `projects`       | Proyek. `link`, `video`, `tutorial`, `doc`, `repo`, `image`, dan `gallery` opsional. `gallery('slug', [...])` membuat daftar gambar dari `public/projects/<slug>/` |
+| `skills`         | Tech stack per kelompok. Jika nama tidak sama persis dengan tag teknologi, tambahkan alias di `TECH_ALIASES` ([`src/lib.ts`](src/lib.ts)) |
 | `education`      | Riwayat pendidikan                                     |
 | `certifications` | Sertifikasi. Kosongkan array untuk menyembunyikan bagian ini |
 
@@ -72,7 +77,7 @@ summary: {
 tech: ['Vue.js', 'Vuex', 'gRPC'],
 ```
 
-Teks antarmuka seperti menu, judul bagian, dan tombol ada di [`src/i18n.js`](src/i18n.js).
+Teks antarmuka seperti menu, judul bagian, dan tombol ada di [`src/i18n.ts`](src/i18n.ts).
 
 Isi PDF penjelasan proyek ada di [`scripts/project-docs/`](scripts/project-docs/), satu file per proyek (skemanya di [README](scripts/project-docs/README.md) folder itu). Screenshot untuk bagian panduan ada di `scripts/project-docs/img/<slug>/`. Setelah mengedit, jalankan `npm run docs` (atau `npm run docs -- <slug>`); hasilnya di `public/projects/<slug>/<slug>-ID.pdf` dan `-EN.pdf`.
 
@@ -90,13 +95,19 @@ File statis seperti foto profil, CV, dan screenshot proyek ditaruh di folder `pu
 │   ├── project-docs.mjs # PDF penjelasan proyek
 │   └── project-docs/    # isi PDF per proyek + screenshot panduan
 ├── src/
-│   ├── App.jsx          # semua komponen halaman
-│   ├── data.js          # semua konten
-│   ├── i18n.js          # teks antarmuka ID/EN
-│   ├── main.jsx
-│   └── styles.css       # tema terang/gelap dan layout
+│   ├── components/      # Header, Hero, About, Experience, Projects, ProjectModal,
+│   │                    # Lightbox, TechStack, Resume, Contact, CommandPalette, Section, Icon
+│   ├── App.tsx          # susunan halaman, palet ⌘K, dan detail proyek
+│   ├── data.ts          # semua konten
+│   ├── types.ts         # bentuk data
+│   ├── i18n.ts          # teks antarmuka ID/EN
+│   ├── hooks.ts         # tema, bahasa, menu aktif, animasi, jam, salin
+│   ├── lib.ts           # durasi kerja, pencocokan teknologi
+│   ├── main.tsx
+│   └── styles.css       # tema putih/hitam dan layout
 ├── index.html
-└── vite.config.js
+├── tsconfig.json
+└── vite.config.ts
 ```
 
 ## Deploy
