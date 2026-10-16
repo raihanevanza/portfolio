@@ -213,7 +213,7 @@ export const experiences: Experience[] = [
         'Built a scheduler in Python and managed two databases (PostgreSQL and MySQL) for reporting.',
       ],
     },
-    tech: ['CodeIgniter', 'React', 'Redux', 'Python', 'PostgreSQL', 'MySQL'],
+    tech: ['CodeIgniter', 'React', 'Redux', 'Python', 'PostgreSQL', 'MySQL', 'GitHub'],
   },
   {
     company: 'Dbisnis Network Indonesia',
@@ -227,7 +227,7 @@ export const experiences: Experience[] = [
       en: 'Developed application and website interfaces to support customer bookings using CodeIgniter and CSS.',
     },
     highlights: [],
-    tech: ['CodeIgniter', 'CSS', 'SQL'],
+    tech: ['CodeIgniter', 'HTML', 'CSS', 'SQL'],
   },
 ]
 
@@ -287,6 +287,19 @@ export const projects: Project[] = [
     },
     tech: ['Go', 'Gin', 'GORM', 'React', 'React Native', 'TypeScript', 'RTK Query', 'Tailwind CSS', 'SQL Server'],
     image: '/projects/project-erp-web-mobile.png',
+    gallery: gallery('mini-erp', [
+      ['overview', { id: 'Web dan aplikasi mobile manager (Android + iOS)', en: 'Web and the manager mobile app (Android + iOS)' }],
+      ['web-login', { id: 'Login dengan empat akun demo per role', en: 'Sign-in with four demo accounts, one per role' }],
+      ['web-dashboard', { id: 'Dashboard KPI, arus barang 14 hari, dan nilai stok per kategori', en: 'KPI dashboard, 14-day goods flow, and stock value by category' }],
+      ['web-purchase-orders', { id: 'Daftar purchase order dengan status', en: 'Purchase orders with their status' }],
+      ['web-po-detail', { id: 'Detail PO menunggu approval: Approve atau Reject oleh manager', en: 'PO awaiting approval: approve or reject as a manager' }],
+      ['web-sales-orders', { id: 'Daftar sales order', en: 'Sales orders' }],
+      ['web-so-detail', { id: 'SO terkonfirmasi: stok sudah di-reserve', en: 'Confirmed SO: stock already reserved' }],
+      ['web-stocks', { id: 'Stok per gudang: on hand, reserved, tersedia, dan stok menipis', en: 'Stock per warehouse: on hand, reserved, available, and low stock' }],
+      ['web-movements', { id: 'Buku besar mutasi stok dengan referensi PO/SO/GR', en: 'Stock movement ledger with PO/SO/GR references' }],
+      ['web-products', { id: 'Master data produk', en: 'Product master data' }],
+      ['web-dark-en', { id: 'Mode gelap dan bahasa Inggris', en: 'Dark mode in English' }],
+    ]),
     link: 'https://raihan-evanza-erp.vercel.app',
     video: '/projects/mini-erp-demo.mp4',
     tutorial: '/projects/mini-erp/tutorial.mp4',
@@ -377,7 +390,8 @@ export const projects: Project[] = [
       ['mobile-log', { id: 'Ponsel: riwayat sesi', en: 'Mobile: session history' }],
       ['mobile-progress', { id: 'Ponsel: grafik progres', en: 'Mobile: progress charts' }],
     ]),
-    link: '',
+    // Demo publik: build terpisah dari repo logbook (node scripts/build-demo.mjs), data contoh tanpa kata sandi.
+    link: 'https://raihan-evanza-logbook.vercel.app',
     tutorial: '/projects/logbook/tutorial.mp4',
     doc: { id: '/projects/logbook/logbook-ID.pdf', en: '/projects/logbook/logbook-EN.pdf' },
     repo: '',
@@ -391,6 +405,14 @@ export const projects: Project[] = [
     },
     tech: ['Go', 'React', 'Vite', 'SSE', 'Gemini API'],
     image: '/projects/chat-bot-go.png',
+    gallery: gallery('chatbot', [
+      ['overview', { id: 'Tersambung ke Gemini: badge "Gemini aktif"', en: 'Connected to Gemini: the "Gemini aktif" badge' }],
+      ['web-welcome', { id: 'Tanpa API key: mode demo dengan contoh pertanyaan', en: 'No API key: demo mode with suggested prompts' }],
+      ['web-streaming', { id: 'Jawaban mengalir kata per kata lewat SSE; tombol kirim jadi tombol stop', en: 'The answer streams word by word over SSE; send turns into stop' }],
+      ['web-stopped', { id: 'Jawaban dihentikan di tengah jalan', en: 'An answer stopped midway' }],
+      ['mobile-welcome', { id: 'Ponsel: halaman awal', en: 'Mobile: welcome screen' }],
+      ['mobile-stopped', { id: 'Ponsel: percakapan', en: 'Mobile: conversation' }],
+    ]),
     link: '',
     tutorial: '/projects/chatbot/tutorial.mp4',
     doc: { id: '/projects/chatbot/chatbot-ID.pdf', en: '/projects/chatbot/chatbot-EN.pdf' },
@@ -460,7 +482,7 @@ export const certifications: Certification[] = []
 // Data tambahan yang hanya muncul di CV PDF (tidak ditampilkan di web).
 // Catatan: CV bisa diunduh publik dari web, jadi nomor HP ikut terlihat. Kosongkan ('') jika tidak mau.
 export const cv: CvExtra = {
-  website: 'https://portfolio-raihanevanza.vercel.app',
+  website: 'https://portfolio-raihan-evanza.vercel.app',
   phone: '0821-1182-8461',
   languages: [
     { id: 'Indonesia (Bahasa ibu)', en: 'Indonesian (Native)' },

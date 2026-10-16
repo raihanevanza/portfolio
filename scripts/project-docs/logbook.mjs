@@ -15,7 +15,7 @@ export default {
     id: 'PWA (iPhone, Android, desktop), bisa dipasang di Home Screen dan dibuka tanpa sinyal',
     en: 'PWA (iPhone, Android, desktop), installable on the Home Screen and usable offline',
   },
-  links: [],
+  links: [{ label: { id: 'Demo (data contoh)', en: 'Demo (sample data)' }, url: 'https://raihan-evanza-logbook.vercel.app' }],
   tech: ['Vanilla JavaScript', 'PWA + Service Worker', 'Vercel Functions & Cron', 'Upstash Redis', 'Gemini API', 'intervals.icu API', 'Web Push', 'jsPDF', 'OpenStreetMap', 'Open-Meteo'],
 
   overview: {
@@ -270,7 +270,7 @@ export default {
       'Grafik Fitness · Fatigue · Form, detail sesi dengan peta, dan check-in otomatis butuh sinkron intervals.icu; sesi manual hanya menampilkan statistik.',
       'Paket gratis Gemini dibatasi sekitar 20 permintaan per hari untuk review, tanya, dan import bersama.',
       'Di paket Hobby, Vercel Cron berjalan sekali sehari dalam jam yang ditentukan, jadi jam notifikasi tidak presisi.',
-      'Aplikasinya pribadi dan dilindungi kata sandi, jadi tidak ada demo publik; video dan screenshot di portofolio memakai data demo dalam mode lokal.',
+      'Aplikasi aslinya pribadi dan dilindungi kata sandi. Demo publik adalah build terpisah tanpa API: berjalan dalam mode lokal dengan data contoh yang direset setiap hari, sehingga sinkron jam, AI coach, dan notifikasi tidak aktif di sana.',
     ],
     en: [
       'One user per deployment: access is locked with a single password, with no account system.',
@@ -278,17 +278,15 @@ export default {
       'The Fitness · Fatigue · Form chart, session detail with a map, and automatic check-ins need intervals.icu sync; manual sessions only show their stats.',
       'Gemini’s free tier allows roughly 20 requests per day across reviews, questions, and imports.',
       'On the Hobby plan, Vercel Cron runs once a day within the given hour, so notification times are not exact.',
-      'The app is private and password-protected, so there is no public demo; the portfolio video and screenshots use demo data in local mode.',
+      'The real app is private and password-protected. The public demo is a separate build with no API: it runs in local mode with sample data that resets daily, so watch sync, the AI coach, and notifications are off there.',
     ],
   },
   next: {
     id: [
-      'Mode demo publik yang memakai data contoh tanpa kata sandi.',
       'Memecah index.html menjadi modul dengan tes untuk logika jadwal dan peringatan.',
       'Dukungan multi-pengguna untuk dipakai bersama teman satu klub lari.',
     ],
     en: [
-      'A public demo mode with sample data and no password.',
       'Splitting index.html into modules with tests for the planning and warning logic.',
       'Multi-user support so running-club friends can use it too.',
     ],

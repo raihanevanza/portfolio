@@ -9,7 +9,8 @@
     "typecheck": "tsc -p .",
     "preview": "vite preview",
     "cv": "node scripts/cv.mjs",
-    "docs": "node scripts/project-docs.mjs"
+    "docs": "node scripts/project-docs.mjs",
+    "og": "node scripts/og.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

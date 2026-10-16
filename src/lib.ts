@@ -33,7 +33,11 @@ const TECH_ALIASES: Record<string, string[]> = {
   'vue.js': ['vue 2 & 3', 'options & composition api'],
   'rest api': ['gin', 'axios'],
   redis: ['upstash redis'],
-  vercel: ['vercel functions', 'vercel cron & blob'],
+  vercel: ['vercel functions', 'vercel cron & blob', 'vercel cron'],
+  // Vercel Functions di proyek ini berjalan di runtime Node.js
+  'node.js': ['vercel functions'],
+  // Git dipakai lewat GitHub atau Bitbucket
+  git: ['github', 'bitbucket'],
   'jquery / ajax': ['jquery', 'ajax'],
 }
 
