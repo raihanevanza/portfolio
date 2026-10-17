@@ -320,6 +320,7 @@ kbd {
 }
 .lang-btn {
   display: inline-flex;
+  align-items: center;
   height: 40px;
   padding: 4px;
   gap: 2px;
@@ -333,6 +334,8 @@ kbd {
   display: grid;
   place-items: center;
   min-width: 32px;
+  /* Tinggi eksplisit (40 − 2 border − 8 padding): Safari tidak me-stretch anak flex di dalam <button> */
+  height: 30px;
   border-radius: 999px;
   color: var(--muted);
   transition: background 0.25s, color 0.25s;
