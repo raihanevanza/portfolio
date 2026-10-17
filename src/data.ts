@@ -32,11 +32,11 @@ export const profile: Profile = {
   about: {
     id: [
       'Saya fullstack dan mobile developer dengan pengalaman lebih dari 6 tahun di bidang rekayasa perangkat lunak. Keahlian utama saya adalah ReactJS, VueJS, dan React Native, dan saat ini saya menjadi Lead Mobile Developer untuk aplikasi Madani Tumbuh di PT Permodalan Nasional Madani.',
-      'Saya berpengalaman mengembangkan backend dengan Laravel dan CodeIgniter, serta terbiasa mengintegrasikan REST API dan gRPC. Saat ini saya juga mempelajari dan memperdalam Go dan Flutter melalui proyek pribadi seperti AgentGate, Patungan, Mini ERP, Market Live, Bola Live, Logbook 42·50, dan chatbot AI. Saya senang menerjemahkan kebutuhan bisnis menjadi aplikasi web dan mobile yang fungsional dan mudah dirawat.',
+      'Saya berpengalaman mengembangkan backend dengan Laravel dan CodeIgniter, serta terbiasa mengintegrasikan REST API dan gRPC. Saat ini saya juga mempelajari dan memperdalam Go dan Flutter melalui proyek pribadi seperti AgentGate, Rupa (design system), Patungan, Mini ERP, Market Live, Bola Live, Logbook 42·50, dan chatbot AI. Saya senang menerjemahkan kebutuhan bisnis menjadi aplikasi web dan mobile yang fungsional dan mudah dirawat.',
     ],
     en: [
       "I'm a fullstack and mobile developer with more than 6 years of experience in software engineering. My core strengths are ReactJS, VueJS, and React Native, and I'm currently the Lead Mobile Developer for the Madani Tumbuh app at PT Permodalan Nasional Madani.",
-      "I'm experienced in backend development with Laravel and CodeIgniter, and comfortable integrating REST APIs and gRPC. I'm currently learning Go and Flutter and building my skills through personal projects such as AgentGate, Patungan, Mini ERP, Market Live, Bola Live, Logbook 42·50, and an AI chatbot. I enjoy turning business requirements into functional, maintainable web and mobile apps.",
+      "I'm experienced in backend development with Laravel and CodeIgniter, and comfortable integrating REST APIs and gRPC. I'm currently learning Go and Flutter and building my skills through personal projects such as AgentGate, Rupa (a design system), Patungan, Mini ERP, Market Live, Bola Live, Logbook 42·50, and an AI chatbot. I enjoy turning business requirements into functional, maintainable web and mobile apps.",
     ],
   },
   // File CV di folder /public, dibuat otomatis dengan `npm run cv`. Kosongkan ('') untuk menyembunyikan tombol.
@@ -59,7 +59,7 @@ export const stats: Stat[] = [
   { value: '6+', label: { id: 'Tahun pengalaman', en: 'Years of experience' } },
   { value: '5', label: { id: 'Perusahaan', en: 'Companies' } },
   { value: '2', label: { id: 'Aplikasi perbankan & pembiayaan', en: 'Banking & financing apps' } },
-  { value: '7', label: { id: 'Proyek pribadi', en: 'Personal projects' } },
+  { value: '8', label: { id: 'Proyek pribadi', en: 'Personal projects' } },
 ]
 
 export const skills: SkillGroup[] = [
@@ -247,6 +247,28 @@ function gallery(slug: string, items: [string, Localized][]): GalleryImage[] {
 }
 
 export const projects: Project[] = [
+  {
+    title: 'Rupa — Design System',
+    category: 'personal',
+    description: {
+      id: 'Proyek pribadi: design system multi-brand yang dipakai ulang oleh proyek-proyek saya, dirilis sebagai paket npm @rupa-ui/tokens dan @rupa-ui/react. Semua warna, tipografi, dan spasi berasal dari satu sumber token (Style Dictionary) yang dibangun menjadi CSS variable, preset Tailwind v3/v4, TypeScript, dan palet React Native, dengan dua brand (violet untuk Mini ERP, kuning untuk AgentGate) dalam mode terang dan gelap yang bisa disarangkan. 24 komponen React yang aksesibel (WCAG 2.2 AA) didokumentasikan di Storybook. Setiap story diuji axe di empat tema, interaksi keyboard diuji otomatis, 188 pasangan kontras dan palet grafik (aman buta warna) dicek setiap build, dan 196 screenshot dibandingkan di setiap pull request. Rilis lewat Changesets dan GitHub Actions dengan npm trusted publishing.',
+      en: 'Personal project: a multi-brand design system reused across my projects and released on npm as @rupa-ui/tokens and @rupa-ui/react. Every color, type size, and spacing value comes from one token source (Style Dictionary) built into CSS variables, Tailwind v3/v4 presets, TypeScript, and a React Native palette, with two brands (violet for Mini ERP, yellow for AgentGate) in light and dark modes that can be nested. 24 accessible React components (WCAG 2.2 AA) are documented in Storybook. Every story runs axe in four themes, keyboard interactions are tested automatically, 188 contrast pairs and a color-blind-safe chart palette are checked on every build, and 196 screenshots are compared on each pull request. Releases go through Changesets and GitHub Actions with npm trusted publishing.',
+    },
+    tech: ['React', 'TypeScript', 'Storybook', 'Style Dictionary', 'Design Tokens', 'Vitest', 'Playwright', 'axe-core', 'Changesets', 'GitHub Actions', 'npm'],
+    image: '/projects/rupa-storybook.png',
+    gallery: gallery('rupa', [
+      ['storybook-light', { id: 'Halaman approval yang seluruhnya dibangun dari komponen Rupa (brand violet)', en: 'An approval page built entirely from Rupa components (violet brand)' }],
+      ['storybook-dark', { id: 'Halaman yang sama dengan brand kuning AgentGate dalam mode gelap, cukup ganti dua atribut', en: 'The same page in AgentGate’s yellow brand and dark mode, by changing two attributes' }],
+      ['brands-and-modes', { id: 'Empat tema dalam satu halaman: brand dan mode bisa disarangkan per elemen', en: 'Four themes on one page: brand and mode can be nested per element' }],
+      ['accessibility-panel', { id: 'Setiap story diuji axe di CI; 0 pelanggaran di semua tema', en: 'Every story is tested with axe in CI; zero violations in every theme' }],
+      ['confirm-dialog', { id: 'ConfirmDialog: fokus awal di Batal untuk aksi berbahaya, tombol terkunci selama aksi berjalan', en: 'ConfirmDialog: focus starts on Cancel for destructive actions, buttons lock while the action runs' }],
+      ['component-docs', { id: 'Dokumentasi otomatis: props, kontrol interaktif, dan contoh setiap varian', en: 'Generated docs: props, interactive controls, and every variant' }],
+      ['tokens-colors', { id: 'Token warna semantik dengan nilai terang · gelap, dibaca langsung dari paket token', en: 'Semantic color tokens with light · dark values, read straight from the token package' }],
+      ['chart-palette', { id: 'Palet seri grafik yang divalidasi aman buta warna di setiap brand dan mode', en: 'Chart series palette validated for color-vision deficiency in every brand and mode' }],
+    ]),
+    link: 'https://raihan-evanza-rupa.vercel.app',
+    repo: 'https://github.com/raihanevanza/rupa',
+  },
   {
     title: 'AgentGate',
     category: 'personal',
