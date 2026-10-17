@@ -32,11 +32,11 @@ export const profile: Profile = {
   about: {
     id: [
       'Saya fullstack dan mobile developer dengan pengalaman lebih dari 6 tahun di bidang rekayasa perangkat lunak. Keahlian utama saya adalah ReactJS, VueJS, dan React Native, dan saat ini saya menjadi Lead Mobile Developer untuk aplikasi Madani Tumbuh di PT Permodalan Nasional Madani.',
-      'Saya berpengalaman mengembangkan backend dengan Laravel dan CodeIgniter, serta terbiasa mengintegrasikan REST API dan gRPC. Saat ini saya juga mempelajari dan memperdalam Go dan Flutter melalui proyek pribadi seperti AgentGate, Rupa (design system), Patungan, Mini ERP, Market Live, Bola Live, Logbook 42·50, dan chatbot AI. Saya senang menerjemahkan kebutuhan bisnis menjadi aplikasi web dan mobile yang fungsional dan mudah dirawat.',
+      'Saya berpengalaman mengembangkan backend dengan Laravel dan CodeIgniter, serta terbiasa mengintegrasikan REST API dan gRPC. Saat ini saya juga mempelajari dan memperdalam Go, Java (Spring Boot), Kafka, dan Flutter melalui proyek pribadi seperti BukuBesar (core banking), AgentGate, Rupa (design system), Patungan, Mini ERP, Market Live, Bola Live, Logbook 42·50, dan chatbot AI. Saya senang menerjemahkan kebutuhan bisnis menjadi aplikasi web dan mobile yang fungsional dan mudah dirawat.',
     ],
     en: [
       "I'm a fullstack and mobile developer with more than 6 years of experience in software engineering. My core strengths are ReactJS, VueJS, and React Native, and I'm currently the Lead Mobile Developer for the Madani Tumbuh app at PT Permodalan Nasional Madani.",
-      "I'm experienced in backend development with Laravel and CodeIgniter, and comfortable integrating REST APIs and gRPC. I'm currently learning Go and Flutter and building my skills through personal projects such as AgentGate, Rupa (a design system), Patungan, Mini ERP, Market Live, Bola Live, Logbook 42·50, and an AI chatbot. I enjoy turning business requirements into functional, maintainable web and mobile apps.",
+      "I'm experienced in backend development with Laravel and CodeIgniter, and comfortable integrating REST APIs and gRPC. I'm currently learning Go, Java (Spring Boot), Kafka, and Flutter and building my skills through personal projects such as BukuBesar (core banking), AgentGate, Rupa (a design system), Patungan, Mini ERP, Market Live, Bola Live, Logbook 42·50, and an AI chatbot. I enjoy turning business requirements into functional, maintainable web and mobile apps.",
     ],
   },
   // File CV di folder /public, dibuat otomatis dengan `npm run cv`. Kosongkan ('') untuk menyembunyikan tombol.
@@ -59,7 +59,7 @@ export const stats: Stat[] = [
   { value: '6+', label: { id: 'Tahun pengalaman', en: 'Years of experience' } },
   { value: '5', label: { id: 'Perusahaan', en: 'Companies' } },
   { value: '2', label: { id: 'Aplikasi perbankan & pembiayaan', en: 'Banking & financing apps' } },
-  { value: '8', label: { id: 'Proyek pribadi', en: 'Personal projects' } },
+  { value: '9', label: { id: 'Proyek pribadi', en: 'Personal projects' } },
 ]
 
 export const skills: SkillGroup[] = [
@@ -69,7 +69,7 @@ export const skills: SkillGroup[] = [
   },
   {
     group: 'Backend & Database',
-    items: ['Laravel', 'CodeIgniter', 'REST API', 'gRPC', 'MySQL', 'PostgreSQL', 'WatermelonDB', 'Redis', 'Node.js', 'Python', 'Go'],
+    items: ['Laravel', 'CodeIgniter', 'Java', 'Spring Boot', 'Kafka', 'REST API', 'gRPC', 'MySQL', 'PostgreSQL', 'WatermelonDB', 'Redis', 'Node.js', 'Python', 'Go'],
   },
   {
     group: { id: 'Tools & Lainnya', en: 'Tools & Others' },
@@ -247,6 +247,34 @@ function gallery(slug: string, items: [string, Localized][]): GalleryImage[] {
 }
 
 export const projects: Project[] = [
+  {
+    title: 'BukuBesar — Core Banking',
+    category: 'personal',
+    description: {
+      id: 'Proyek pribadi: core banking mini berbasis event. Tiga service Spring Boot (rekening dan buku besar, transfer, notifikasi) dengan database masing-masing saling bicara lewat Kafka. Setiap transfer adalah saga: dana ditahan, transfer besar menunggu supervisor, lalu jurnal double-entry diposting; bila jaringan antarbank menolak atau rekening tujuan dibekukan, dana dikembalikan otomatis (kompensasi). Event dikirim lewat transactional outbox dan diproses consumer yang idempoten, pesan yang gagal masuk dead letter topic, dan buku besar tidak bisa diubah serta selalu seimbang (dijaga trigger database). Teruji: 50 transfer bersamaan tidak pernah membuat saldo negatif, service yang dimatikan di tengah saga melanjutkan tanpa kehilangan data, dan 1.700+ event yang diputar ulang tidak mengubah apa pun. Back office Vue 3 dengan Event Inspector live (SSE), aplikasi nasabah React Native, dan demo yang menjalankan seluruh backend di browser.',
+      en: 'Personal project: an event-driven mini core banking system. Three Spring Boot services (accounts and ledger, transfers, notifications), each with its own database, talk over Kafka. Every transfer is a saga: funds are held, large transfers wait for a supervisor, then a double-entry journal is posted; when the interbank network rejects it or the destination is frozen, the funds are returned automatically (compensation). Events go through a transactional outbox to idempotent consumers, failed messages land in dead letter topics, and the ledger cannot be edited and always balances (enforced by database triggers). Tested: 50 concurrent transfers never overdraw an account, a service killed mid-saga resumes without losing anything, and replaying 1,700+ events changes nothing. A Vue 3 back office with a live Event Inspector (SSE), a React Native customer app, and a demo that runs the whole backend in the browser.',
+    },
+    tech: ['Java', 'Spring Boot', 'Kafka', 'PostgreSQL', 'Flyway', 'Testcontainers', 'Vue 3', 'Pinia', 'TanStack Query', 'React Native', 'TypeScript', 'Tailwind CSS', 'Docker'],
+    image: '/projects/bukubesar-web.png',
+    gallery: gallery('bukubesar', [
+      ['web-dashboard', { id: 'Dashboard: transfer per jam menurut hasil, persetujuan tertunda, dan status buku besar', en: 'Dashboard: hourly transfers by outcome, pending approvals, and the ledger check' }],
+      ['web-simulator', { id: 'Simulator: mainkan peran nasabah dan jalankan delapan skenario saga dari browser', en: 'Simulator: play the customer and run eight saga scenarios from the browser' }],
+      ['web-transfer-detail', { id: 'Timeline saga transfer antarbank: tahan dana, jaringan antarbank, posting ke buku besar', en: 'Saga timeline of an interbank transfer: hold, interbank network, ledger posting' }],
+      ['web-compensation', { id: 'Kompensasi: ditolak bank tujuan, dana yang ditahan dikembalikan otomatis', en: 'Compensation: rejected by the destination bank, the held funds are returned automatically' }],
+      ['web-approvals', { id: 'Maker-checker: supervisor tidak bisa menyetujui transfer yang ia buat sendiri', en: 'Maker-checker: a supervisor cannot approve a transfer they created' }],
+      ['web-inspector', { id: 'Event Inspector: setiap pesan Kafka live dengan topik, partisi, offset, dan payload', en: 'Event Inspector: every Kafka message live with topic, partition, offset, and payload' }],
+      ['web-ledger-entry', { id: 'Jurnal double-entry tiga baris: nasabah, settlement antarbank, dan pendapatan biaya', en: 'A three-line double-entry journal: customer, interbank settlement, and fee income' }],
+      ['web-trial-balance', { id: 'Neraca saldo: debit sama dengan kredit dan setiap saldo sama dengan jumlah barisnya', en: 'Trial balance: debits equal credits and every balance equals the sum of its lines' }],
+      ['web-account', { id: 'Rekening dengan saldo buku, dana ditahan, dan mutasi dengan saldo berjalan', en: 'An account with ledger balance, held funds, and a statement with running balance' }],
+      ['web-audit', { id: 'Log audit dari ketiga service, dengan nilai sebelum dan sesudah', en: 'Audit log from all three services, with before and after values' }],
+      ['web-dashboard-dark', { id: 'Mode gelap', en: 'Dark mode' }],
+      ['web-dashboard-en', { id: 'Dua bahasa: Indonesia dan Inggris', en: 'Two languages: Indonesian and English' }],
+      ['web-login', { id: 'Login dengan lima akun staf demo; nasabah memakai aplikasi mobile', en: 'Sign-in with five demo staff accounts; customers use the mobile app' }],
+    ]),
+    tutorial: '/projects/bukubesar/tutorial.mp4',
+    link: 'https://raihan-evanza-bukubesar.vercel.app/login?as=teller',
+    repo: '',
+  },
   {
     title: 'Rupa — Design System',
     category: 'personal',
