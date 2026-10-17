@@ -268,6 +268,8 @@ export const projects: Project[] = [
       ['web-login', { id: 'Login dengan lima akun demo per role', en: 'Sign-in with five demo accounts, one per role' }],
       ['web-dashboard-id', { id: 'Dua bahasa: Indonesia dan Inggris', en: 'Two languages: Indonesian and English' }],
     ]),
+    tutorial: '/projects/agentgate/tutorial.mp4',
+    doc: { id: '/projects/agentgate/agentgate-ID.pdf', en: '/projects/agentgate/agentgate-EN.pdf' },
     link: 'https://raihan-evanza-agentgate.vercel.app/?as=approver',
     repo: '',
   },
