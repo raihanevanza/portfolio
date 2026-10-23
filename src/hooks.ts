@@ -20,22 +20,6 @@ const storage = {
 export const prefersReducedMotion = () =>
   typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-/** Tema terang/gelap. Tanpa pilihan tersimpan, mengikuti sistem. */
-export function useTheme() {
-  const [theme, setTheme] = useState(() => storage.get('theme') || '')
-  useEffect(() => {
-    if (theme) document.documentElement.dataset.theme = theme
-    else delete document.documentElement.dataset.theme
-    if (theme) storage.set('theme', theme)
-  }, [theme])
-  return useCallback(() => {
-    setTheme((current) => {
-      const now = current || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-      return now === 'dark' ? 'light' : 'dark'
-    })
-  }, [])
-}
-
 /** Pilihan yang tersimpan menang; tanpa itu, ikuti bahasa browser pengunjung. */
 export function useLanguage() {
   const [lang, setLangState] = useState<Lang>(() => {
@@ -213,16 +197,10 @@ export function useCopy(promptLabel: string) {
   return { copied, copy }
 }
 
-// Jumlah dialog yang sedang terbuka; scroll halaman dikunci selama masih ada yang terbuka.
-let openDialogs = 0
-
-/** Mengunci scroll halaman selama komponen ini tampil (bisa bertumpuk: detail proyek + galeri). */
+/** Mengunci scroll halaman selama komponen ini tampil. Dialog Rupa sudah mengunci scroll sendiri. */
 export function useBodyLock() {
   useEffect(() => {
-    openDialogs++
     document.documentElement.classList.add('locked')
-    return () => {
-      if (--openDialogs === 0) document.documentElement.classList.remove('locked')
-    }
+    return () => document.documentElement.classList.remove('locked')
   }, [])
 }

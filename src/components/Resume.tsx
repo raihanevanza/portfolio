@@ -1,8 +1,10 @@
+import { Segmented } from '@rupa-ui/react'
 import { useRef, useState, type PointerEvent } from 'react'
 import { certifications, contacts, cv, education, experiences, profile, skills } from '../data.ts'
 import { prefersReducedMotion } from '../hooks.ts'
 import { LANGS, pick, useLang } from '../i18n.ts'
 import type { Lang, Localized } from '../types.ts'
+import { ButtonLink } from './ButtonLink.tsx'
 import { Icon } from './Icon.tsx'
 import { Reveal, Section } from './Section.tsx'
 
@@ -81,20 +83,20 @@ export function Resume() {
           {url && (
             <div className="resume-card">
               <p className="eyebrow">{t.cvIn}</p>
-              <div className="seg seg-full" role="group">
-                {LANGS.map((l) => (
-                  <button key={l} className={cvLang === l ? 'on' : ''} aria-pressed={cvLang === l} onClick={() => setCvLang(l)}>
-                    {t.langName[l]}
-                  </button>
-                ))}
-              </div>
+              <Segmented
+                label={t.cvIn}
+                block
+                value={cvLang}
+                onChange={setCvLang}
+                options={LANGS.map((l) => ({ value: l, label: t.langName[l] }))}
+              />
               <div className="resume-actions">
-                <a className="btn btn-primary" href={url} download>
-                  <Icon name="download" size={16} /> {t.downloadCv}
-                </a>
-                <a className="btn btn-outline" href={url} target="_blank" rel="noreferrer">
-                  {t.openCv} <Icon name="arrowUpRight" size={16} />
-                </a>
+                <ButtonLink variant="primary" href={url} iconStart={<Icon name="download" size={16} />} download>
+                  {t.downloadCv}
+                </ButtonLink>
+                <ButtonLink href={url} target="_blank" rel="noreferrer" iconEnd={<Icon name="arrowUpRight" size={16} />}>
+                  {t.openCv}
+                </ButtonLink>
               </div>
             </div>
           )}

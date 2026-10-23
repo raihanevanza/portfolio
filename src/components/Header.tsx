@@ -1,3 +1,4 @@
+import { IconButton } from '@rupa-ui/react'
 import { useEffect, useRef, useState } from 'react'
 import { profile } from '../data.ts'
 import { useActiveSection, useScrollProgress } from '../hooks.ts'
@@ -69,22 +70,31 @@ export function Header({ onToggleTheme, onOpenPalette }: { onToggleTheme: () => 
               </span>
             ))}
           </button>
-          <button className="icon-btn theme-btn" onClick={onToggleTheme} aria-label={t.toggleTheme} title={t.toggleTheme}>
-            <span className="theme-icon theme-icon-dark">
-              <Icon name="moon" />
-            </span>
-            <span className="theme-icon theme-icon-light">
-              <Icon name="sun" />
-            </span>
-          </button>
-          <button
-            className="icon-btn menu-btn"
+          <IconButton
+            className="theme-btn"
+            variant="secondary"
+            onClick={onToggleTheme}
+            label={t.toggleTheme}
+            icon={
+              <>
+                <span className="theme-icon theme-icon-dark">
+                  <Icon name="moon" />
+                </span>
+                <span className="theme-icon theme-icon-light">
+                  <Icon name="sun" />
+                </span>
+              </>
+            }
+          />
+          <IconButton
+            className="menu-btn"
+            variant="secondary"
             onClick={() => setOpen(!open)}
-            aria-label={t.menu}
+            label={t.menu}
+            tooltip={false}
             aria-expanded={open}
-          >
-            <Icon name={open ? 'close' : 'menu'} size={20} />
-          </button>
+            icon={<Icon name={open ? 'close' : 'menu'} size={20} />}
+          />
         </div>
       </div>
       <div className="progress" aria-hidden="true" />
