@@ -1,7 +1,7 @@
-// Isi PDF penjelasan proyek Logbook 42·50. Skema: lihat README.md di folder ini.
+// Isi PDF penjelasan proyek Jejak 42·50 (dulu Logbook 42·50). Skema: lihat README.md di folder ini.
 export default {
   slug: 'logbook',
-  title: 'Logbook 42·50',
+  title: 'Jejak 42·50',
   hero: '/projects/logbook/cover.jpg',
   tagline: {
     id: 'Aplikasi jadwal latihan dan jurnal lari yang menyusun program sendiri dari tanggal race, membaca data jam, dan memberi peringatan sebelum cedera, untuk perjalanan dari half marathon ke full marathon dan ultra 50 km.',
@@ -16,55 +16,48 @@ export default {
     en: 'PWA (iPhone, Android, desktop), installable on the Home Screen and usable offline',
   },
   links: [{ label: { id: 'Demo (data contoh)', en: 'Demo (sample data)' }, url: 'https://raihan-evanza-logbook.vercel.app' }],
-  tech: ['Vanilla JavaScript', 'PWA + Service Worker', 'Vercel Functions & Cron', 'Upstash Redis', 'Gemini API', 'intervals.icu API', 'Web Push', 'jsPDF', 'OpenStreetMap', 'Open-Meteo'],
+  tech: ['React 19', 'Vite', 'Rupa Design System', 'PWA + Service Worker', 'Vercel Functions & Cron', 'Supabase Auth & Postgres', 'Gemini API', 'intervals.icu API', 'Web Push', 'jsPDF', 'OpenStreetMap', 'Open-Meteo'],
 
   overview: {
     id: [
       'Aplikasi lari yang umum mencatat apa yang sudah terjadi, tetapi tidak menyusun program menuju beberapa target sekaligus: relay 14 km, full marathon, pendakian, lalu ultra 50 km. Rencana di spreadsheet juga tidak tahu kalau tidur kurang, nyeri muncul di tempat yang sama, atau volume naik terlalu cepat.',
-      'Logbook 42·50 menyusun jadwal mingguan otomatis dari tanggal race, lalu menyesuaikannya dengan check-in pagi, sesi yang tercatat, dan data jam (Huawei lewat intervals.icu). Aplikasi memberi peringatan beban, memprediksi waktu race, membuat rencana race day, dan punya AI coach (Gemini) untuk review harian, mingguan, dan bulanan.',
-      'Hasilnya satu file index.html tanpa framework dan tanpa build, ditambah 9 Vercel Function kecil dengan Upstash Redis sebagai database. Aplikasi bisa dipasang di Home Screen, tetap terbuka tanpa sinyal, dan sinkron antar perangkat. Saya memakainya sendiri setiap hari. Video dan screenshot di portofolio memakai data demo.',
+      'Jejak 42·50 menyusun jadwal mingguan otomatis dari race utama, lalu menyesuaikannya dengan check-in pagi, sesi yang tercatat, dan data jam (Huawei lewat intervals.icu). Aplikasi memberi peringatan beban, memprediksi waktu race, membuat rencana race day, dan punya AI coach (Gemini). Jadwal bisa diubah per hari atau per bulan dengan planner bulanan.',
+      'Awalnya satu file index.html untuk satu orang dengan satu kata sandi. Sekarang frontend React 19 dengan design system Rupa (brand latte), 12 Vercel Function, dan Supabase: setiap orang punya akun sendiri, data dijaga row-level security, dan superadmin mengurus akun tanpa bisa membuka data pribadi. Saya memakainya sendiri setiap hari; video dan screenshot di portofolio memakai data demo.',
     ],
     en: [
       "Typical running apps record what already happened, but they don't build a programme toward several goals at once: a 14 km relay leg, a full marathon, mountain hikes, then a 50 km ultra. A spreadsheet plan also can't tell when sleep is short, pain keeps coming back in the same spot, or volume climbs too fast.",
-      'Logbook 42·50 generates a weekly plan from the race dates and adjusts it using a morning check-in, logged sessions, and watch data (Huawei via intervals.icu). It warns about training load, predicts race times, builds a race-day plan, and has an AI coach (Gemini) for daily, weekly, and monthly reviews.',
-      'It is a single index.html with no framework and no build step, plus 9 small Vercel Functions backed by Upstash Redis. It installs to the Home Screen, opens without signal, and syncs across devices. I use it every day; the portfolio video and screenshots use demo data.',
+      'Jejak 42·50 generates a weekly plan from the main races and adjusts it using a morning check-in, logged sessions, and watch data (Huawei via intervals.icu). It warns about training load, predicts race times, builds a race-day plan, and has an AI coach (Gemini). The plan can be changed one day at a time or a whole month at once with the month planner.',
+      'It started as a single index.html for one person behind one password. It is now a React 19 frontend on the Rupa design system (latte brand), 12 Vercel Functions, and Supabase: everyone has their own account, row-level security guards the data, and a superadmin manages accounts without being able to open personal data. I use it every day; the portfolio video and screenshots use demo data.',
     ],
   },
 
   features: [
     {
-      title: { id: 'Jadwal otomatis dari tanggal race', en: 'Plan generated from race dates' },
+      title: { id: 'Jadwal otomatis dari race utama', en: 'Plan generated from the main races' },
       text: {
-        id: 'Fase latihan disusun mundur dari tanggal relay, full marathon, pendakian, dan ultra. Tiap minggu berisi sesi kualitas, long run, easy run, dan strength A/B. Mengubah tanggal atau menambah event langsung menyusun ulang seluruh musim, termasuk penyesuaian Ramadan dan puasa Senin–Kamis.',
-        en: 'Training phases are built backwards from the relay, marathon, hike, and ultra dates. Each week has quality sessions, a long run, easy runs, and strength A/B. Changing a date or adding an event rebuilds the whole season, including adjustments for Ramadan and Monday/Thursday fasting.',
+        id: 'Setiap race dan pendakian adalah event; tiga di antaranya ditandai race utama (relay, full marathon, ultra). Fase latihan disusun mundur dari tanggal itu, dengan sesi kualitas, long run, easy run, dan strength A/B tiap minggu, termasuk penyesuaian Ramadan dan hari puasa.',
+        en: 'Every race and hike is an event; three are marked as main races (relay, full marathon, ultra). Training phases are built backwards from their dates, with quality sessions, a long run, easy runs, and strength A/B each week, including adjustments for Ramadan and fasting days.',
       },
     },
     {
-      title: { id: 'Check-in pagi & rekomendasi', en: 'Morning check-in & readiness' },
+      title: { id: 'Planner bulanan', en: 'Month planner' },
       text: {
-        id: 'Tidur, stres, pegal, dan nyeri (dengan peta tubuh) diisi tiap pagi; tidur, HR istirahat, dan HRV dari jam terisi otomatis. Hasilnya rekomendasi hari itu: jalankan sesuai rencana, ringankan, atau ganti dengan easy pendek.',
-        en: 'Sleep, stress, soreness, and pain (with a body map) are logged each morning; sleep, resting HR, and HRV from the watch fill in automatically. The result is advice for the day: run as planned, go lighter, or swap for a short easy run.',
+        id: 'Selain tampilan mingguan, jadwal bisa dibuka per bulan: pilih menu (easy, tempo, long run, strength, libur, event) lalu ketuk tanggal-tanggal yang mau diganti. Ketuk tanggal tanpa menu untuk membuka detail harinya.',
+        en: 'Besides the weekly view, the plan opens as a month: pick a menu (easy, tempo, long run, strength, rest, event) and tap the dates to change. Tapping a date with no menu selected opens that day.',
+      },
+    },
+    {
+      title: { id: 'Check-in pagi & peringatan', en: 'Morning check-in & warnings' },
+      text: {
+        id: 'Tidur, stres, pegal, dan nyeri (dengan peta tubuh) diisi tiap pagi. Aplikasi menandai volume yang naik lebih dari 15%, lonjakan beban sRPE, dan nyeri berulang di area yang sama, lalu menawarkan versi ringan untuk sisa minggu.',
+        en: 'Sleep, stress, soreness, and pain (with a body map) are logged each morning. The app flags volume rising more than 15%, sRPE load spikes, and pain recurring in the same area, then offers a lighter version of the rest of the week.',
       },
     },
     {
       title: { id: 'Catat sesi tiga cara', en: 'Three ways to log a session' },
       text: {
-        id: 'Form manual menghitung pace dan kategori dari HR & pace. Screenshot Huawei Health dibaca Gemini (atau OCR Tesseract di browser jika tanpa API key). Sesi dari jam masuk sendiri lewat intervals.icu dan melengkapi sesi manual yang mirip, tidak dobel.',
-        en: 'The manual form works out pace and category from HR and pace. Huawei Health screenshots are read by Gemini (or Tesseract OCR in the browser without an API key). Watch sessions arrive by themselves through intervals.icu and merge with a similar manual entry instead of duplicating it.',
-      },
-    },
-    {
-      title: { id: 'Peringatan sebelum cedera', en: 'Warnings before injuries' },
-      text: {
-        id: 'Aplikasi menandai volume yang naik lebih dari 15%, lonjakan beban sRPE, nyeri berulang di area yang sama dalam 2 minggu, sesi terlewat, dan sepatu mendekati batas km, lalu menawarkan versi ringan untuk sisa minggu.',
-        en: 'The app flags volume rising more than 15%, sRPE load spikes, pain recurring in the same area within two weeks, missed sessions, and shoes nearing their mileage limit, then offers a lighter version of the rest of the week.',
-      },
-    },
-    {
-      title: { id: 'Progres & prediksi race', en: 'Progress & race predictions' },
-      text: {
-        id: 'Grafik volume mingguan, long run, HR easy, VO2max, dan Fitness · Fatigue · Form; pencapaian dan streak; Road to race; rekap bulanan; beban sRPE; serta prediksi waktu race dari rumus Riegel dibanding target.',
-        en: 'Charts for weekly volume, long runs, easy-run HR, VO2max, and Fitness · Fatigue · Form; achievements and streaks; Road to race; monthly recaps; sRPE load; and race-time predictions from the Riegel formula against targets.',
+        id: 'Form manual menghitung pace dan kategori dari HR & pace. Screenshot Huawei Health dibaca Gemini (atau OCR Tesseract di browser). Sesi dari jam masuk sendiri lewat intervals.icu dan melengkapi sesi manual yang mirip, tidak dobel.',
+        en: 'The manual form works out pace and category from HR and pace. Huawei Health screenshots are read by Gemini (or Tesseract OCR in the browser). Watch sessions arrive by themselves through intervals.icu and merge with a similar manual entry instead of duplicating it.',
       },
     },
     {
@@ -75,6 +68,13 @@ export default {
       },
     },
     {
+      title: { id: 'Progres & prediksi race', en: 'Progress & race predictions' },
+      text: {
+        id: 'Grafik volume mingguan, long run, HR easy, VO2max, dan Fitness · Fatigue · Form; pencapaian dan streak; Road to race; rekap bulanan; beban sRPE; serta prediksi waktu race dibanding target.',
+        en: 'Charts for weekly volume, long runs, easy-run HR, VO2max, and Fitness · Fatigue · Form; achievements and streaks; Road to race; monthly recaps; sRPE load; and race-time predictions against targets.',
+      },
+    },
+    {
       title: { id: 'Rencana race day', en: 'Race-day plan' },
       text: {
         id: 'Untuk tiap race: pace per segmen dari target waktu, jadwal gel dan minum per menit, dan target cairan per jam dari kalkulator sweat rate di Profil. Halaman ini bisa dicetak atau disimpan sebagai PDF.',
@@ -82,17 +82,17 @@ export default {
       },
     },
     {
-      title: { id: 'AI coach (Gemini)', en: 'AI coach (Gemini)' },
+      title: { id: 'Akun & superadmin', en: 'Accounts & superadmin' },
       text: {
-        id: 'Review harian, mingguan (otomatis tiap awal minggu), dan bulanan, plus tanya bebas dengan konteks jadwal, sesi 4 minggu terakhir, dan check-in. Prompt melarang mengarang data dan menyarankan fisioterapis untuk nyeri 4/10 ke atas.',
-        en: 'Daily, weekly (automatic at the start of each week), and monthly reviews, plus free-form questions with the plan, the last four weeks of sessions, and check-ins as context. The prompt forbids making up data and points to a physiotherapist for pain of 4/10 or more.',
+        id: 'Halaman masuk baru dengan Supabase Auth. Superadmin menambah, mengubah, mereset, dan menghapus akun, mencabut link coach dan kalender, serta membaca riwayat lari tiap akun (baca saja). Check-in, nyeri, profil, dan rencana tetap privat.',
+        en: 'A new sign-in page on Supabase Auth. A superadmin adds, edits, resets, and deletes accounts, revokes coach and calendar links, and reads each account’s run history (read-only). Check-ins, pain, profile, and plans stay private.',
       },
     },
     {
-      title: { id: 'Pengingat, kalender & laporan', en: 'Reminders, calendar & reports' },
+      title: { id: 'AI coach, pengingat & laporan', en: 'AI coach, reminders & reports' },
       text: {
-        id: 'Notifikasi push pagi dan malam lewat Vercel Cron, feed kalender .ics dengan alarm untuk Kalender iPhone/Google, link baca-saja untuk coach, laporan PDF (profil, rekor, semua sesi, detail per sesi), serta backup JSON dan ekspor CSV.',
-        en: 'Morning and evening push notifications via Vercel Cron, an .ics calendar feed with alarms for Apple/Google Calendar, a read-only coach link, a PDF report (profile, records, every session, per-session detail), plus JSON backup and CSV export.',
+        id: 'Review harian, mingguan, dan bulanan oleh Gemini plus tanya bebas; notifikasi push pagi dan malam lewat Vercel Cron; feed kalender .ics; link baca-saja untuk coach; laporan PDF; backup JSON dan ekspor CSV; tema terang dan gelap.',
+        en: 'Daily, weekly, and monthly reviews by Gemini plus free-form questions; morning and evening push notifications via Vercel Cron; an .ics calendar feed; a read-only coach link; a PDF report; JSON backup and CSV export; light and dark themes.',
       },
     },
   ],
@@ -100,24 +100,24 @@ export default {
   architecture: {
     flow: [
       {
-        name: 'PWA (index.html)',
+        name: 'PWA (React)',
         detail: {
-          id: 'Seluruh UI dan logika jadwal di browser; salinan data lokal + antrean tulis saat offline',
-          en: 'All UI and planning logic in the browser; local data copy + write queue while offline',
+          id: 'UI dan logika jadwal di browser; masuk langsung ke Supabase Auth; antrean tulis saat offline',
+          en: 'UI and planning logic in the browser; signs in straight to Supabase Auth; write queue while offline',
         },
       },
       {
         name: 'Vercel Functions',
         detail: {
-          id: '/api/data, /api/doc, intervals, import, review, ask, push, calendar, coach',
-          en: '/api/data, /api/doc, intervals, import, review, ask, push, calendar, coach',
+          id: '12 function: data, doc, account, admin, intervals, import, review, ask, push, calendar, coach, config',
+          en: '12 functions: data, doc, account, admin, intervals, import, review, ask, push, calendar, coach, config',
         },
       },
       {
-        name: 'Upstash Redis',
+        name: 'Supabase Postgres',
         detail: {
-          id: 'Satu hash per koleksi, satu record per field (sesi, check-in, minggu, event, review)',
-          en: 'One hash per collection, one record per field (sessions, check-ins, weeks, events, reviews)',
+          id: 'Tabel docs: satu baris per record (akun + koleksi + id + JSON), dijaga RLS',
+          en: 'A docs table: one row per record (account + collection + id + JSON), guarded by RLS',
         },
       },
       {
@@ -130,68 +130,68 @@ export default {
     ],
     notes: {
       id: [
-        'Halaman memuat semua data sekali lewat GET /api/data, lalu setiap perubahan dikirim per record lewat POST /api/doc. Perangkat lain mengambil perubahan tiap 30 detik, saat tab dibuka lagi, dan saat internet kembali.',
-        'Service worker menyimpan "kulit" aplikasi dengan strategi network-first, sedangkan /api tidak pernah di-cache. Tulisan saat offline masuk antrean di localStorage dan terkirim otomatis begitu online.',
-        'Semua API key (intervals.icu, Gemini, VAPID, Redis) hanya ada di env Vercel. Browser mengirim kata sandi aplikasi di header, dan server membandingkannya dengan timingSafeEqual.',
+        'Halaman memuat semua data akun sekali lewat GET /api/data, lalu setiap perubahan dikirim per record lewat POST /api/doc dengan access token Supabase. Function meneruskan token itu ke Supabase, sehingga row-level security memastikan setiap akun hanya membaca dan menulis barisnya sendiri.',
+        'Superadmin membaca riwayat sesi lewat fungsi SQL admin_user_logs (security definer, cek peran di database) yang hanya mengembalikan isi sesi soal larinya. Akun dibuat superadmin; pendaftaran terbuka dimatikan.',
+        'Service worker menyimpan kulit aplikasi, sedangkan /api tidak pernah di-cache. Tulisan saat offline masuk antrean dan terkirim begitu online. Secret key Supabase, Gemini, dan VAPID hanya ada di env Vercel.',
       ],
       en: [
-        'The page loads everything once through GET /api/data, then sends each change as a single record through POST /api/doc. Other devices pull changes every 30 seconds, when the tab is reopened, and when the connection comes back.',
-        'The service worker caches the app shell network-first, while /api is never cached. Writes made offline go into a localStorage queue and are sent automatically once online.',
-        'Every API key (intervals.icu, Gemini, VAPID, Redis) lives only in Vercel env. The browser sends the app password in a header, and the server compares it with timingSafeEqual.',
+        'The page loads all of an account’s data once through GET /api/data, then sends each change as a single record through POST /api/doc with the Supabase access token. Functions pass that token on to Supabase, so row-level security makes sure each account only reads and writes its own rows.',
+        'The superadmin reads run history through the admin_user_logs SQL function (security definer, role checked in the database), which returns only the running part of each session. Accounts are created by the superadmin; open sign-up is off.',
+        'The service worker caches the app shell, while /api is never cached. Writes made offline wait in a queue and go out once online. The Supabase secret key, Gemini, and VAPID keys live only in Vercel env.',
       ],
     },
   },
 
   stack: [
-    { layer: { id: 'Frontend', en: 'Frontend' }, items: ['HTML, CSS, JavaScript tanpa framework', 'Grafik SVG buatan sendiri', 'Tema terang & gelap'] },
-    { layer: { id: 'PWA', en: 'PWA' }, items: ['Service Worker (network-first)', 'Web App Manifest', 'Web Push (VAPID)', 'localStorage + antrean offline'] },
-    { layer: { id: 'Backend', en: 'Backend' }, items: ['Vercel Functions (Node.js)', 'Vercel Cron', 'web-push (satu-satunya dependency)'] },
-    { layer: { id: 'Data', en: 'Data' }, items: ['Upstash Redis (REST pipeline)', 'Backup JSON', 'Ekspor CSV'] },
+    { layer: { id: 'Frontend', en: 'Frontend' }, items: ['React 19 + Vite', 'Rupa Design System (@rupa-ui/react, @rupa-ui/tokens, brand latte)', 'Grafik SVG buatan sendiri', 'Tema terang & gelap'] },
+    { layer: { id: 'PWA', en: 'PWA' }, items: ['Service Worker', 'Web App Manifest', 'Web Push (VAPID)', 'Antrean tulis offline'] },
+    { layer: { id: 'Backend', en: 'Backend' }, items: ['Vercel Functions (Node.js)', 'Vercel Cron', 'web-push'] },
+    { layer: { id: 'Data & akun', en: 'Data & accounts' }, items: ['Supabase Auth', 'Supabase Postgres (RLS, fungsi SQL)', 'Tes RLS di Docker', 'Backup JSON, ekspor CSV'] },
     { layer: { id: 'Integrasi', en: 'Integrations' }, items: ['intervals.icu API', 'Gemini API (REST)', 'Tesseract.js (OCR cadangan)', 'Open-Meteo', 'OpenStreetMap'] },
     { layer: { id: 'Dokumen', en: 'Documents' }, items: ['jsPDF (dimuat saat dibutuhkan)', 'Feed kalender .ics'] },
   ],
 
   decisions: [
     {
-      title: { id: 'Satu file, tanpa framework dan tanpa build', en: 'One file, no framework, no build' },
+      title: { id: 'Dari satu file ke React + Rupa', en: 'From one file to React + Rupa' },
       text: {
-        id: 'Seluruh aplikasi ada di index.html. Deploy cukup push, tidak ada dependency frontend yang perlu diperbarui, dan service worker cukup menyimpan satu halaman agar aplikasi terbuka tanpa sinyal. Konsekuensinya file besar, jadi kode dikelompokkan per fitur dengan komentar penanda.',
-        en: 'The whole app lives in index.html. Deploying is just a push, there are no frontend dependencies to update, and the service worker only needs to cache one page for the app to open offline. The trade-off is a large file, so the code is grouped by feature with marker comments.',
+        id: 'Versi pertama satu index.html tanpa framework. Saat fitur akun, superadmin, dan planner bulanan masuk, file itu dipecah: logika jadwal dipindah apa adanya ke src/lib, tampilan menjadi satu komponen React per tab, dan semua warna serta komponen dasar memakai Rupa supaya konsisten dengan proyek saya yang lain.',
+        en: 'The first version was a single framework-free index.html. When accounts, a superadmin, and the month planner arrived, it was split up: the planning logic moved unchanged into src/lib, each tab became a React component, and every color and base component comes from Rupa to stay consistent with my other projects.',
       },
     },
     {
-      title: { id: 'Satu record per field Redis', en: 'One record per Redis field' },
+      title: { id: 'Supabase dengan RLS, bukan kata sandi bersama', en: 'Supabase with RLS instead of a shared password' },
       text: {
-        id: 'Setiap sesi, check-in, atau event disimpan sebagai field tersendiri di hash Redis dan ditulis satu per satu (maks. 64 KB). Dua perangkat yang mengubah record berbeda tidak saling menimpa, berbeda dengan menyimpan seluruh data sebagai satu dokumen.',
-        en: 'Each session, check-in, or event is its own field in a Redis hash and is written individually (64 KB max). Two devices editing different records never overwrite each other, unlike saving all the data as a single document.',
+        id: 'Satu kata sandi dan Upstash Redis cukup untuk satu orang. Untuk banyak akun, Supabase Auth memberi login per orang, dan row-level security menjaga data di database, bukan hanya di kode function. Data lama dipindahkan sekali ke satu akun dengan skrip migrasi.',
+        en: 'One password and Upstash Redis were enough for one person. For many accounts, Supabase Auth gives each person a login, and row-level security guards the data in the database rather than only in function code. The old data was moved once into one account with a migration script.',
+      },
+    },
+    {
+      title: { id: 'Satu baris per record', en: 'One row per record' },
+      text: {
+        id: 'Setiap sesi, check-in, atau event disimpan sebagai baris sendiri dan ditulis satu per satu. Dua perangkat yang mengubah record berbeda tidak saling menimpa, berbeda dengan menyimpan seluruh data sebagai satu dokumen.',
+        en: 'Each session, check-in, or event is its own row and is written individually. Two devices editing different records never overwrite each other, unlike saving all the data as a single document.',
       },
     },
     {
       title: { id: 'Rencana dihitung di browser', en: 'The plan is computed in the browser' },
       text: {
-        id: 'Server hanya menyimpan data mentah; jadwal, peringatan, dan prediksi dihitung ulang di browser dari data itu, sehingga tetap jalan saat offline. Untuk notifikasi push, halaman mengunggah jadwal beberapa minggu ke depan supaya cron tahu sesi hari itu.',
+        id: 'Server hanya menyimpan data mentah; jadwal, peringatan, dan prediksi dihitung ulang di browser, sehingga tetap jalan saat offline. Untuk notifikasi push, halaman mengunggah jadwal beberapa minggu ke depan supaya cron tahu sesi hari itu.',
         en: 'The server only stores raw data; the plan, warnings, and predictions are recomputed in the browser, so they still work offline. For push notifications the page uploads the next few weeks of the plan so the cron job knows the day’s session.',
+      },
+    },
+    {
+      title: { id: 'Superadmin hanya untuk pemeliharaan', en: 'A superadmin only for maintenance' },
+      text: {
+        id: 'Superadmin tidak menyimpan data latihan sendiri dan tidak bisa membuka check-in, nyeri, profil, atau rencana orang lain; riwayat lari dibaca lewat fungsi SQL yang memilih kolomnya sendiri. Superadmin ditambahkan hanya lewat SQL Editor.',
+        en: 'The superadmin keeps no training data and cannot open anyone’s check-ins, pain, profile, or plan; run history is read through an SQL function that picks its own columns. Superadmins are added only from the SQL Editor.',
       },
     },
     {
       title: { id: 'intervals.icu, bukan Strava', en: 'intervals.icu instead of Strava' },
       text: {
-        id: 'Jam Huawei tidak punya API publik, dan sejak Juni 2026 API Strava butuh langganan berbayar. intervals.icu gratis, bisa tersambung ke Huawei Health, dan menyediakan aktivitas, stream (peta, pace, HR), serta wellness (VO2max, tidur, HRV, Fitness/Fatigue).',
-        en: 'Huawei watches have no public API, and since June 2026 the Strava API requires a paid subscription. intervals.icu is free, connects to Huawei Health, and provides activities, streams (map, pace, HR), and wellness (VO2max, sleep, HRV, fitness/fatigue).',
-      },
-    },
-    {
-      title: { id: 'AI opsional dengan cadangan', en: 'Optional AI with fallbacks' },
-      text: {
-        id: 'Tanpa GEMINI_API_KEY aplikasi tetap lengkap: import screenshot beralih ke OCR di browser. Pemanggil Gemini mencoba beberapa model, memotong permintaan yang menggantung, dan berhenti sebelum batas 60 detik Vercel, lalu memberi tahu jika kuota harian habis.',
-        en: 'Without GEMINI_API_KEY the app still works: screenshot import falls back to in-browser OCR. The Gemini caller tries several models, cuts off hung requests, stops before Vercel’s 60-second limit, and tells the user when the daily quota runs out.',
-      },
-    },
-    {
-      title: { id: 'Link turunan dari kata sandi', en: 'Links derived from the password' },
-      text: {
-        id: 'Link coach (baca-saja) dan feed kalender memakai token HMAC dari APP_PASSWORD, karena aplikasi kalender tidak bisa mengirim header. Mengganti kata sandi otomatis mencabut semua link lama tanpa tabel token tambahan.',
-        en: 'The read-only coach link and the calendar feed use an HMAC token derived from APP_PASSWORD, since calendar apps can’t send headers. Changing the password revokes every old link automatically, with no extra token table.',
+        id: 'Jam Huawei tidak punya API publik, dan sejak Juni 2026 API Strava butuh langganan berbayar. intervals.icu gratis, tersambung ke Huawei Health, dan menyediakan aktivitas, stream (peta, pace, HR), serta wellness. Key-nya disimpan per akun di tabel khusus server.',
+        en: 'Huawei watches have no public API, and since June 2026 the Strava API requires a paid subscription. intervals.icu is free, connects to Huawei Health, and provides activities, streams (map, pace, HR), and wellness. Each account’s key is kept in a server-only table.',
       },
     },
   ],
@@ -200,42 +200,50 @@ export default {
     {
       title: { id: 'Buka tab Hari ini', en: 'Open the Today tab' },
       text: {
-        id: 'Lihat sesi hari ini sesuai fase, peringatan beban di atas, dan cuaca serta kualitas udara untuk jam lari berikutnya.',
-        en: 'See today’s session for the current phase, load warnings at the top, and the weather and air quality for your next run.',
+        id: 'Lihat sesi hari ini sesuai fase, peringatan beban di atas, cuaca dan kualitas udara untuk jam lari berikutnya, lalu isi check-in pagi.',
+        en: 'See today’s session for the current phase, load warnings at the top, and the weather and air quality for your next run, then fill in the morning check-in.',
       },
       image: 'step-1.jpg',
     },
     {
-      title: { id: 'Isi check-in pagi', en: 'Fill in the morning check-in' },
+      title: { id: 'Catat sesi', en: 'Log a session' },
       text: {
-        id: 'Masukkan jam tidur, lelah, pegal, dan nyeri, lalu tekan Simpan check-in. Rekomendasi di bawahnya langsung berubah.',
-        en: 'Enter sleep hours, fatigue, soreness, and pain, then press Save check-in. The advice below updates immediately.',
+        id: 'Tekan Catat sesi ini atau buka Catat latihan, isi jarak, durasi, dan HR. Pace dan kategori dihitung otomatis; tekan Simpan sesi.',
+        en: 'Press Log this session or open Log training, then enter distance, duration, and HR. Pace and category are calculated for you; press Save session.',
       },
       image: 'step-2.jpg',
     },
     {
-      title: { id: 'Cek jadwal mingguan', en: 'Check the weekly plan' },
-      text: {
-        id: 'Tab Jadwal mingguan menampilkan menu per hari, target km minggu itu, dan sesi yang sudah terlaksana.',
-        en: 'The weekly plan tab shows each day’s session, the week’s km target, and which sessions are done.',
-      },
-      image: 'step-3.jpg',
-    },
-    {
-      title: { id: 'Catat sesi', en: 'Log a session' },
-      text: {
-        id: 'Di Catat latihan, pilih jenis sesi lalu isi jarak, durasi, dan HR. Pace dan kategori dihitung otomatis; tekan Simpan sesi.',
-        en: 'In Log training, pick the session type and enter distance, duration, and HR. Pace and category are calculated for you; press Save session.',
-      },
-      image: 'step-4.jpg',
-    },
-    {
-      title: { id: 'Buka detail sesi', en: 'Open a session’s details' },
+      title: { id: 'Buka detail sesi dari jam', en: 'Open a watch session’s details' },
       text: {
         id: 'Tekan Detail di riwayat sesi. Sesi dari jam menampilkan peta, grafik pace/HR/cadence/elevasi, zona HR, dan split per km.',
         en: 'Press Detail in the session history. Watch sessions show the map, pace/HR/cadence/elevation charts, HR zones, and per-km splits.',
       },
+      image: 'step-3.jpg',
+    },
+    {
+      title: { id: 'Cek jadwal mingguan', en: 'Check the weekly plan' },
+      text: {
+        id: 'Tab Jadwal mingguan menampilkan menu per hari, target km minggu itu, dan sesi yang sudah terlaksana. Ketuk hari untuk melihat atau mengubah menunya.',
+        en: 'The weekly plan tab shows each day’s session, the week’s km target, and which sessions are done. Tap a day to see or change its menu.',
+      },
+      image: 'step-4.jpg',
+    },
+    {
+      title: { id: 'Atur sebulan sekaligus', en: 'Plan a whole month' },
+      text: {
+        id: 'Pilih Bulan di pojok kanan, pilih menu di Ganti menu, lalu ketuk tanggal-tanggal yang mau diganti. Ketuk menunya lagi untuk berhenti.',
+        en: 'Choose Month at the top right, pick a menu under Change menu, then tap the dates to change. Tap the menu again to stop.',
+      },
       image: 'step-5.jpg',
+    },
+    {
+      title: { id: 'Atur race & event', en: 'Set races & events' },
+      text: {
+        id: 'Di tab Target, tambahkan race, fun run, atau pendakian. Tiga race utama (relay, full marathon, ultra) menyusun seluruh musim.',
+        en: 'In the Target tab, add races, fun runs, or hikes. The three main races (relay, full marathon, ultra) shape the whole season.',
+      },
+      image: 'step-6.jpg',
     },
     {
       title: { id: 'Pantau progres', en: 'Track progress' },
@@ -243,21 +251,13 @@ export default {
         id: 'Tab Progres berisi volume mingguan, long run, VO2max, Fitness · Fatigue · Form, pencapaian, dan prediksi race.',
         en: 'The Progress tab has weekly volume, long runs, VO2max, Fitness · Fatigue · Form, achievements, and race predictions.',
       },
-      image: 'step-6.jpg',
+      image: 'step-7.jpg',
     },
     {
       title: { id: 'Siapkan race day', en: 'Plan race day' },
       text: {
-        id: 'Di Musim & bulanan, pilih race dan target waktu untuk mendapat pace per segmen dan jadwal makan-minum.',
-        en: 'In Season & monthly, pick a race and a target time to get pace per segment and an eating and drinking schedule.',
-      },
-      image: 'step-7.jpg',
-    },
-    {
-      title: { id: 'Profil & tema', en: 'Profile & theme' },
-      text: {
-        id: 'Profil menyimpan rekor pribadi, zona HR, dan peta nyeri. Tema terang/gelap diatur di Tampilan & notifikasi.',
-        en: 'The profile keeps personal records, HR zones, and the pain map. Light/dark theme is set under Display & notifications.',
+        id: 'Di Musim & bulanan, pilih race dan target waktu untuk mendapat pace per segmen dan jadwal makan-minum. Profil menyimpan rekor, zona HR, dan peta nyeri; tema gelap ada di tombol bulan di atas.',
+        en: 'In Season & monthly, pick a race and a target time to get pace per segment and an eating and drinking schedule. The profile keeps records, HR zones, and the pain map; dark mode is the moon button at the top.',
       },
       image: 'step-8.jpg',
     },
@@ -265,30 +265,30 @@ export default {
 
   limits: {
     id: [
-      'Satu pengguna per deploy: akses dikunci dengan satu kata sandi, tanpa sistem akun.',
       'Aturan jadwal dan peringatan adalah heuristik latihan pribadi, bukan saran medis.',
-      'Grafik Fitness · Fatigue · Form, detail sesi dengan peta, dan check-in otomatis butuh sinkron intervals.icu; sesi manual hanya menampilkan statistik.',
+      'Tidak ada pendaftaran terbuka: akun dibuat oleh superadmin. Kuota Gemini dan kunci VAPID dipakai bersama semua akun.',
+      'Grafik Fitness · Fatigue · Form, detail sesi dengan peta, dan data wellness butuh sinkron intervals.icu; sesi manual hanya menampilkan statistik.',
       'Paket gratis Gemini dibatasi sekitar 20 permintaan per hari untuk review, tanya, dan import bersama.',
       'Di paket Hobby, Vercel Cron berjalan sekali sehari dalam jam yang ditentukan, jadi jam notifikasi tidak presisi.',
-      'Aplikasi aslinya pribadi dan dilindungi kata sandi. Demo publik adalah build terpisah tanpa API: berjalan dalam mode lokal dengan data contoh yang direset setiap hari, sehingga sinkron jam, AI coach, dan notifikasi tidak aktif di sana.',
+      'Demo publik adalah build terpisah tanpa API dan tanpa akun: berjalan dalam mode lokal dengan data contoh yang direset setiap hari, sehingga sinkron jam, AI coach, notifikasi, dan halaman superadmin tidak aktif di sana. Screenshot halaman masuk dan superadmin memakai data tiruan.',
     ],
     en: [
-      'One user per deployment: access is locked with a single password, with no account system.',
       'The planning and warning rules are personal training heuristics, not medical advice.',
-      'The Fitness · Fatigue · Form chart, session detail with a map, and automatic check-ins need intervals.icu sync; manual sessions only show their stats.',
+      'There is no open sign-up: accounts are created by the superadmin. The Gemini quota and VAPID keys are shared by every account.',
+      'The Fitness · Fatigue · Form chart, session detail with a map, and wellness data need intervals.icu sync; manual sessions only show their stats.',
       'Gemini’s free tier allows roughly 20 requests per day across reviews, questions, and imports.',
       'On the Hobby plan, Vercel Cron runs once a day within the given hour, so notification times are not exact.',
-      'The real app is private and password-protected. The public demo is a separate build with no API: it runs in local mode with sample data that resets daily, so watch sync, the AI coach, and notifications are off there.',
+      'The public demo is a separate build with no API and no accounts: it runs in local mode with sample data that resets daily, so watch sync, the AI coach, notifications, and the superadmin page are off there. The sign-in and superadmin screenshots use mock data.',
     ],
   },
   next: {
     id: [
-      'Memecah index.html menjadi modul dengan tes untuk logika jadwal dan peringatan.',
-      'Dukungan multi-pengguna untuk dipakai bersama teman satu klub lari.',
+      'Tes otomatis untuk logika jadwal dan peringatan di src/lib.',
+      'Rencana latihan untuk ultra lebih jauh dari 50 km.',
     ],
     en: [
-      'Splitting index.html into modules with tests for the planning and warning logic.',
-      'Multi-user support so running-club friends can use it too.',
+      'Automated tests for the planning and warning logic in src/lib.',
+      'Training plans for ultras longer than 50 km.',
     ],
   },
 }
