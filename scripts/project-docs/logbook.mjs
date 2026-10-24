@@ -15,7 +15,7 @@ export default {
     id: 'PWA (iPhone, Android, desktop), bisa dipasang di Home Screen dan dibuka tanpa sinyal',
     en: 'PWA (iPhone, Android, desktop), installable on the Home Screen and usable offline',
   },
-  links: [{ label: { id: 'Demo (data contoh)', en: 'Demo (sample data)' }, url: 'https://raihan-evanza-logbook.vercel.app' }],
+  links: [{ label: { id: 'Demo (data contoh)', en: 'Demo (sample data)' }, url: 'https://raihan-evanza-jejak.vercel.app' }],
   tech: ['React 19', 'Vite', 'Rupa Design System', 'PWA + Service Worker', 'Vercel Functions & Cron', 'Supabase Auth & Postgres', 'Gemini API', 'intervals.icu API', 'Web Push', 'jsPDF', 'OpenStreetMap', 'Open-Meteo'],
 
   overview: {
@@ -35,8 +35,8 @@ export default {
     {
       title: { id: 'Jadwal otomatis dari race utama', en: 'Plan generated from the main races' },
       text: {
-        id: 'Setiap race dan pendakian adalah event; tiga di antaranya ditandai race utama (relay, full marathon, ultra). Fase latihan disusun mundur dari tanggal itu, dengan sesi kualitas, long run, easy run, dan strength A/B tiap minggu, termasuk penyesuaian Ramadan dan hari puasa.',
-        en: 'Every race and hike is an event; three are marked as main races (relay, full marathon, ultra). Training phases are built backwards from their dates, with quality sessions, a long run, easy runs, and strength A/B each week, including adjustments for Ramadan and fasting days.',
+        id: 'Setiap race dan pendakian adalah event; tiga di antaranya ditandai race utama (relay, full marathon, ultra). Fase latihan disusun mundur dari tanggal itu, dengan sesi kualitas, long run, easy run, dan strength A/B tiap minggu, termasuk penyesuaian Ramadan dan hari puasa. Fase ultra mengikuti jaraknya, dari build 50K sampai 180K (long run ±40 km, back-to-back, dan lari malam).',
+        en: 'Every race and hike is an event; three are marked as main races (relay, full marathon, ultra). Training phases are built backwards from their dates, with quality sessions, a long run, easy runs, and strength A/B each week, including adjustments for Ramadan and fasting days. The ultra phase scales with the distance, from a 50K build up to 180K (long runs of about 40 km, back-to-backs, and night runs).',
       },
     },
     {
@@ -238,10 +238,10 @@ export default {
       image: 'step-5.jpg',
     },
     {
-      title: { id: 'Atur race & event', en: 'Set races & events' },
+      title: { id: 'Lihat musim & event', en: 'See the season & events' },
       text: {
-        id: 'Di tab Target, tambahkan race, fun run, atau pendakian. Tiga race utama (relay, full marathon, ultra) menyusun seluruh musim.',
-        en: 'In the Target tab, add races, fun runs, or hikes. The three main races (relay, full marathon, ultra) shape the whole season.',
+        id: 'Di Musim & bulanan, peta musim menunjukkan fase sampai ultra, dan daftar Event & pendakian berisi race utama serta race tambahan. Tambah event untuk menyesuaikan jadwal minggu itu.',
+        en: 'In Season & monthly, the season map shows the phases up to the ultra, and the Events & hikes list holds the main and extra races. Add an event to adjust that week’s plan.',
       },
       image: 'step-6.jpg',
     },
@@ -270,7 +270,7 @@ export default {
       'Grafik Fitness · Fatigue · Form, detail sesi dengan peta, dan data wellness butuh sinkron intervals.icu; sesi manual hanya menampilkan statistik.',
       'Paket gratis Gemini dibatasi sekitar 20 permintaan per hari untuk review, tanya, dan import bersama.',
       'Di paket Hobby, Vercel Cron berjalan sekali sehari dalam jam yang ditentukan, jadi jam notifikasi tidak presisi.',
-      'Demo publik adalah build terpisah tanpa API dan tanpa akun: berjalan dalam mode lokal dengan data contoh yang direset setiap hari, sehingga sinkron jam, AI coach, notifikasi, dan halaman superadmin tidak aktif di sana. Screenshot halaman masuk dan superadmin memakai data tiruan.',
+      'Demo publik adalah build terpisah tanpa API dan tanpa akun: berjalan dalam mode lokal dengan data contoh yang direset setiap hari, tanpa tab Target (racenya tetap), sehingga sinkron jam, AI coach, notifikasi, dan halaman superadmin tidak aktif di sana. Screenshot halaman masuk dan superadmin memakai data tiruan.',
     ],
     en: [
       'The planning and warning rules are personal training heuristics, not medical advice.',
@@ -278,17 +278,17 @@ export default {
       'The Fitness · Fatigue · Form chart, session detail with a map, and wellness data need intervals.icu sync; manual sessions only show their stats.',
       'Gemini’s free tier allows roughly 20 requests per day across reviews, questions, and imports.',
       'On the Hobby plan, Vercel Cron runs once a day within the given hour, so notification times are not exact.',
-      'The public demo is a separate build with no API and no accounts: it runs in local mode with sample data that resets daily, so watch sync, the AI coach, notifications, and the superadmin page are off there. The sign-in and superadmin screenshots use mock data.',
+      'The public demo is a separate build with no API and no accounts: it runs in local mode with sample data that resets daily and has no Target tab (its races are fixed), so watch sync, the AI coach, notifications, and the superadmin page are off there. The sign-in and superadmin screenshots use mock data.',
     ],
   },
   next: {
     id: [
       'Tes otomatis untuk logika jadwal dan peringatan di src/lib.',
-      'Rencana latihan untuk ultra lebih jauh dari 50 km.',
+      'Mengizinkan coach mengubah jadwal atletnya, bukan hanya membaca.',
     ],
     en: [
       'Automated tests for the planning and warning logic in src/lib.',
-      'Training plans for ultras longer than 50 km.',
+      'Letting a coach edit an athlete’s plan, not just read it.',
     ],
   },
 }
