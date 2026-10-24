@@ -174,11 +174,11 @@ export default {
     },
     {
       layer: { id: 'Web', en: 'Web' },
-      items: ['React 18', 'TypeScript', 'Vite', 'Redux Toolkit (RTK Query)', 'React Router', 'react-hook-form + yup', 'Tailwind CSS', 'Vitest', 'Vercel'],
+      items: ['React 18', 'TypeScript', 'Vite', 'Redux Toolkit (RTK Query)', 'React Router', 'react-hook-form + yup', 'Tailwind CSS', 'Rupa Design System (@rupa-ui/react, signal)', 'Vitest', 'Vercel'],
     },
     {
       layer: { id: 'Mobile', en: 'Mobile' },
-      items: ['React Native 0.87 (New Architecture, Hermes)', 'React Navigation 7', 'RTK Query', 'react-native-keychain'],
+      items: ['React Native 0.87 (New Architecture, Hermes)', 'Rupa Design System (@rupa-ui/react-native, signal)', 'React Navigation 7', 'RTK Query', 'react-native-keychain'],
     },
   ],
 
