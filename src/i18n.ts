@@ -100,7 +100,7 @@ const id = {
     project: 'Buka proyek',
   },
   backToTop: 'Kembali ke atas',
-  builtWith: 'Dibuat dengan React + TypeScript',
+  builtWith: 'Dibuat dengan React, TypeScript, dan Rupa',
 }
 
 export type UiText = typeof id
@@ -198,7 +198,7 @@ const en: UiText = {
     project: 'Open project',
   },
   backToTop: 'Back to top',
-  builtWith: 'Built with React + TypeScript',
+  builtWith: 'Built with React, TypeScript, and Rupa',
 }
 
 export const ui: Record<Lang, UiText> = { id, en }

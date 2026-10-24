@@ -1,3 +1,4 @@
+import { Button, Field, Textarea, TextField } from '@rupa-ui/react'
 import { useState, type FormEvent } from 'react'
 import { contacts, profile } from '../data.ts'
 import { useClock, useCopy } from '../hooks.ts'
@@ -33,9 +34,9 @@ export function Contact() {
               <a href={email.href} className="contact-big">
                 {email.value}
               </a>
-              <button type="button" className="btn btn-outline btn-sm" onClick={() => copy(email.value)}>
-                <Icon name="copy" size={15} /> {copied ? t.copied : t.copyEmail}
-              </button>
+              <Button size="sm" iconStart={<Icon name="copy" size={15} />} onClick={() => copy(email.value)}>
+                {copied ? t.copied : t.copyEmail}
+              </Button>
             </div>
           )}
           <ul className="contact-links">
@@ -59,23 +60,23 @@ export function Contact() {
 
         {email && (
           <Reveal as="form" className="contact-form" delay={120} onSubmit={send}>
-            <label>
-              <span>{t.yourName}</span>
-              <input value={name} onChange={(e) => setName(e.target.value)} autoComplete="name" />
-            </label>
-            <label>
-              <span>{t.message}</span>
-              <textarea
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                placeholder={t.messagePlaceholder}
-                rows={5}
-                required
-              />
-            </label>
-            <button className="btn btn-primary" type="submit">
-              <Icon name="mail" size={16} /> {t.send}
-            </button>
+            <TextField label={t.yourName} value={name} onChange={(e) => setName(e.target.value)} autoComplete="name" />
+            <Field label={t.message}>
+              {({ id, describedBy }) => (
+                <Textarea
+                  id={id}
+                  aria-describedby={describedBy}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  placeholder={t.messagePlaceholder}
+                  rows={5}
+                  required
+                />
+              )}
+            </Field>
+            <Button variant="primary" type="submit" iconStart={<Icon name="mail" size={16} />}>
+              {t.send}
+            </Button>
           </Reveal>
         )}
       </div>

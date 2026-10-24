@@ -1,9 +1,11 @@
+import { Badge } from '@rupa-ui/react'
 import { useRef, type PointerEvent } from 'react'
 import { profile, skills, stats } from '../data.ts'
 import { prefersReducedMotion, useCountUp, useReveal, useTypewriter } from '../hooks.ts'
 import { useLang } from '../i18n.ts'
 import { initials } from '../lib.ts'
 import type { Stat } from '../types.ts'
+import { ButtonLink } from './ButtonLink.tsx'
 import { Icon } from './Icon.tsx'
 
 function StatItem({ stat, start }: { stat: Stat; start: boolean }) {
@@ -39,9 +41,9 @@ export function Hero() {
       <div className="container hero-inner">
         <div className="hero-text">
           {profile.available && (
-            <span className="badge rise" style={{ animationDelay: '0ms' }}>
-              <span className="dot" /> {t.available}
-            </span>
+            <Badge tone="success" pulse className="rise" style={{ animationDelay: '0ms' }}>
+              {t.available}
+            </Badge>
           )}
           <p className="hero-hello rise" style={{ animationDelay: '80ms' }}>
             {t.hello}
@@ -68,17 +70,17 @@ export function Hero() {
             {tr(profile.tagline)}
           </p>
           <div className="hero-cta rise" style={{ animationDelay: '420ms' }}>
-            <a href="#proyek" className="btn btn-primary">
-              {t.viewWork} <Icon name="arrowRight" size={16} />
-            </a>
+            <ButtonLink href="#proyek" variant="primary" size="lg" iconEnd={<Icon name="arrowRight" size={16} />}>
+              {t.viewWork}
+            </ButtonLink>
             {tr(profile.cvUrl) && (
-              <a href={tr(profile.cvUrl)} className="btn btn-outline" download>
-                <Icon name="download" size={16} /> {t.downloadCv}
-              </a>
+              <ButtonLink href={tr(profile.cvUrl)} size="lg" iconStart={<Icon name="download" size={16} />} download>
+                {t.downloadCv}
+              </ButtonLink>
             )}
-            <a href="#kontak" className="btn btn-text">
+            <ButtonLink href="#kontak" variant="ghost" size="lg">
               {t.contactMe}
-            </a>
+            </ButtonLink>
           </div>
         </div>
         <div className="hero-visual rise" style={{ animationDelay: '200ms' }}>

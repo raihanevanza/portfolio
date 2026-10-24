@@ -1,8 +1,10 @@
+import { Segmented } from '@rupa-ui/react'
 import { useState } from 'react'
 import { projects } from '../data.ts'
 import { useLang } from '../i18n.ts'
 import { initials } from '../lib.ts'
 import type { Project } from '../types.ts'
+import { ButtonLink } from './ButtonLink.tsx'
 import { Icon, type IconName } from './Icon.tsx'
 import { Reveal, Section, Tags } from './Section.tsx'
 
@@ -24,17 +26,19 @@ export function ProjectLinks({ project: p, compact = false }: { project: Project
   return (
     <div className={`project-links ${compact ? 'project-links-compact' : ''}`}>
       {links.map(([href, label, title, icon], i) => (
-        <a
+        <ButtonLink
           key={href}
           title={title || undefined}
-          className={`chip-link ${i === 0 ? 'chip-link-primary' : ''}`}
+          variant={i === 0 ? 'primary' : 'secondary'}
+          size={compact ? 'sm' : 'md'}
+          iconStart={<Icon name={icon} size={14} />}
           href={href}
           target="_blank"
           rel="noreferrer"
           onClick={(e) => e.stopPropagation()}
         >
-          <Icon name={icon} size={14} /> {label}
-        </a>
+          {label}
+        </ButtonLink>
       ))}
     </div>
   )
@@ -96,16 +100,22 @@ export function Projects({ onOpen }: { onOpen: (index: number) => void }) {
       title={t.projectsTitle}
       lead={t.projectsLead}
       aside={
-        <div className="seg" role="group" aria-label={t.projectsTitle}>
-          {filters.map(([key, label]) => (
-            <button key={key} className={filter === key ? 'on' : ''} aria-pressed={filter === key} onClick={() => setFilter(key)}>
-              {label}
-              <span className="seg-count">
-                {key === 'all' ? projects.length : projects.filter((p) => p.category === key).length}
-              </span>
-            </button>
-          ))}
-        </div>
+        <Segmented
+          label={t.projectsTitle}
+          value={filter}
+          onChange={setFilter}
+          options={filters.map(([key, label]) => ({
+            value: key,
+            label: (
+              <>
+                {label}
+                <span className="seg-count">
+                  {key === 'all' ? projects.length : projects.filter((p) => p.category === key).length}
+                </span>
+              </>
+            ),
+          }))}
+        />
       }
     >
       <div className="projects" key={filter}>

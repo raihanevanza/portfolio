@@ -13,6 +13,8 @@
     "og": "node scripts/og.mjs"
   },
   "dependencies": {
+    "@rupa-ui/react": "^0.7.0",
+    "@rupa-ui/tokens": "^0.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

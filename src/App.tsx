@@ -1,3 +1,4 @@
+import { useTheme } from '@rupa-ui/react'
 import { useCallback, useEffect, useState } from 'react'
 import { About } from './components/About.tsx'
 import { CommandPalette } from './components/CommandPalette.tsx'
@@ -11,12 +12,13 @@ import { Projects } from './components/Projects.tsx'
 import { Resume } from './components/Resume.tsx'
 import { TechStack } from './components/TechStack.tsx'
 import { profile, projects } from './data.ts'
-import { useLanguage, useTheme } from './hooks.ts'
+import { useLanguage } from './hooks.ts'
 import { LangContext, pick, ui } from './i18n.ts'
 
 export default function App() {
   const language = useLanguage()
-  const toggleTheme = useTheme()
+  const { resolvedMode, setMode } = useTheme()
+  const toggleTheme = useCallback(() => setMode(resolvedMode === 'dark' ? 'light' : 'dark'), [resolvedMode, setMode])
   const [palette, setPalette] = useState(false)
   const [project, setProject] = useState<number | null>(null)
   const t = ui[language.lang]
@@ -25,17 +27,17 @@ export default function App() {
     document.title = `${profile.name} — ${pick(profile.role, language.lang)}`
   }, [language.lang])
 
-  // ⌘K / Ctrl+K membuka palet perintah dari mana saja.
+  // ⌘K / Ctrl+K membuka palet perintah dari mana saja, kecuali saat detail proyek (Dialog Rupa) terbuka.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      if (project === null && (e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault()
         setPalette((open) => !open)
       }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [])
+  }, [project])
 
   const closePalette = useCallback(() => setPalette(false), [])
   const closeProject = useCallback(() => setProject(null), [])

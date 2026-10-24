@@ -1,6 +1,5 @@
+import { Dialog } from '@rupa-ui/react'
 import { useEffect, useRef, useState } from 'react'
-import { createPortal } from 'react-dom'
-import { useBodyLock } from '../hooks.ts'
 import { useLang } from '../i18n.ts'
 import type { GalleryImage } from '../types.ts'
 import { Icon } from './Icon.tsx'
@@ -13,70 +12,55 @@ export interface LightboxProps {
 }
 
 // Galeri layar penuh: ←/→ atau geser untuk pindah, klik gambar untuk ukuran asli, Esc untuk tutup.
+// Dialog Rupa juga saat dibuka dari detail proyek, supaya Esc dan klik hanya menutup yang paling atas.
 export function Lightbox({ title, images, start = 0, onClose }: LightboxProps) {
   const { t, tr } = useLang()
   const [index, setIndex] = useState(start)
   // Lebar gambar saat diperbesar (px); null = muat di layar
   const [zoomed, setZoomed] = useState<number | null>(null)
   const touchX = useRef<number | null>(null)
-  const closeRef = useRef<HTMLButtonElement>(null)
   const count = images.length
-  useBodyLock()
   const go = (step: number) => {
     setZoomed(null)
     setIndex((i) => (i + step + count) % count)
   }
 
   useEffect(() => {
-    const previousFocus = document.activeElement as HTMLElement | null
-    closeRef.current?.focus()
-    return () => previousFocus?.focus?.()
-  }, [])
-
-  useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        e.stopPropagation()
-        onClose()
-      } else if (e.key === 'ArrowRight' && count > 1) go(1)
+      if (e.key === 'ArrowRight' && count > 1) go(1)
       else if (e.key === 'ArrowLeft' && count > 1) go(-1)
     }
-    // capture: Esc menutup galeri dulu, bukan jendela detail proyek di belakangnya
-    window.addEventListener('keydown', onKey, true)
-    return () => window.removeEventListener('keydown', onKey, true)
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
   })
 
   const image = images[index]
-  return createPortal(
-    <div
+  return (
+    <Dialog
+      open
+      onOpenChange={(open) => !open && onClose()}
       className="lightbox"
-      role="dialog"
-      aria-modal="true"
-      aria-label={title}
-      onClick={(e) => e.target === e.currentTarget && onClose()}
-      onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
-      onTouchEnd={(e) => {
-        const dx = e.changedTouches[0].clientX - (touchX.current ?? e.changedTouches[0].clientX)
-        if (!zoomed && count > 1 && Math.abs(dx) > 50) go(dx < 0 ? 1 : -1)
-        touchX.current = null
-      }}
-    >
-      <div className="lightbox-bar">
-        <span className="lightbox-title">
+      closeLabel={t.close}
+      title={
+        <>
           {title}
           {count > 1 && (
             <span className="lightbox-count">
               {index + 1} / {count}
             </span>
           )}
-        </span>
-        <button ref={closeRef} className="lightbox-btn" onClick={onClose} aria-label={t.close}>
-          <Icon name="close" size={20} />
-        </button>
-      </div>
+        </>
+      }
+    >
       <div
         className={`lightbox-stage ${zoomed ? 'lightbox-zoomed' : ''}`}
         onClick={(e) => e.target === e.currentTarget && onClose()}
+        onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
+        onTouchEnd={(e) => {
+          const dx = e.changedTouches[0].clientX - (touchX.current ?? e.changedTouches[0].clientX)
+          if (!zoomed && count > 1 && Math.abs(dx) > 50) go(dx < 0 ? 1 : -1)
+          touchX.current = null
+        }}
       >
         <img
           key={image.src}
@@ -121,7 +105,6 @@ export function Lightbox({ title, images, start = 0, onClose }: LightboxProps) {
           </div>
         )}
       </div>
-    </div>,
-    document.body,
+    </Dialog>
   )
 }
