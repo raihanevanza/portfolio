@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/demo/pijak",
+      "destination": "/demo/pijak/index.html"
+    },
+    {
+      "source": "/demo/pijak/:path*",
+      "destination": "/demo/pijak/index.html"
+    }
+  ]
+}

@@ -126,3 +126,7 @@ vercel --prod
 - Email: raihan.evanza20@gmail.com
 - LinkedIn: [linkedin.com/in/raihan-evanza](https://www.linkedin.com/in/raihan-evanza)
 - GitHub: [github.com/raihanevanza](https://github.com/raihanevanza)
+
+## Pijak
+
+Pijak menyediakan demo panduan sepatu dan ruang lari di `/demo/pijak/`, galeri desktop/ponsel, video tutorial, dan PDF ID/EN. Demo menggunakan data ilustratif di browser dan tidak membutuhkan Supabase. Source tetap private. Lihat [panduan demo Pijak](docs/pijak-demo.md) untuk menjalankan atau memperbarui bundle.

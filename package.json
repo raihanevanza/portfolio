@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "cv": "node scripts/cv.mjs",
     "docs": "node scripts/project-docs.mjs",
-    "og": "node scripts/og.mjs"
+    "og": "node scripts/og.mjs",
+    "demo:pijak": "node scripts/import-pijak.mjs"
   },
   "dependencies": {
     "@rupa-ui/react": "^0.7.0",
