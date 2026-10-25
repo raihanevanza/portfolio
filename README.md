@@ -126,3 +126,7 @@ vercel --prod
 - Email: raihan.evanza20@gmail.com
 - LinkedIn: [linkedin.com/in/raihan-evanza](https://www.linkedin.com/in/raihan-evanza)
 - GitHub: [github.com/raihanevanza](https://github.com/raihanevanza)
+
+## Main Yuk
+
+Proyek Main Yuk menyediakan demo 12 game di /demos/main-yuk/, galeri, dan PDF ID/EN. Demo sudah dibundel di repo; build portfolio tidak membutuhkan backend atau repo tetangga. Lihat [panduan demo](docs/main-yuk-demo.md) untuk menjalankan, memperbarui snapshot, dan pengaturan Vercel.

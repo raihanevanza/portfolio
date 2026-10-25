@@ -1,0 +1,3 @@
+# Keep the generated demo byte-for-byte identical to its SHA-256 manifest.
+public/demos/main-yuk/** -text
+public/demos/main-yuk/assets/* -diff

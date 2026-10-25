@@ -1,0 +1,36 @@
+{
+  "source": "main-yuk",
+  "base": "/demos/main-yuk/",
+  "mode": "demo",
+  "storage": "IndexedDB: main-yuk-portfolio-demo",
+  "api": false,
+  "serviceWorker": false,
+  "rupa": {
+    "repository": "https://github.com/raihanevanza/rupa",
+    "baseCommit": "0729419efc292a1f47d0f6d524221053f304c625",
+    "includesLocalPartyChanges": true,
+    "packages": {
+      "tokens": {
+        "file": "rupa-ui-tokens-0.5.0.tgz",
+        "integrity": "sha512-rcPsHbdNBjTlW4fZ0jspJLmFyP5szgjRH6ByxcOnvAxmanKBS7iPcGUECdiF0UqA69cqeBLv2Cd9GIaeqVEbWg==",
+        "version": "0.5.0"
+      },
+      "react": {
+        "file": "rupa-ui-react-0.11.0.tgz",
+        "integrity": "sha512-A7syodHURvqLD7qGrVIV27PoU4fYui3WJcsa49dYdA1t9W2ewwCo+PuoRjX4h7R8LRETuAVXuQmrDl9+0sK69w==",
+        "version": "0.11.0"
+      },
+      "react-native": {
+        "file": "rupa-ui-react-native-0.3.2.tgz",
+        "integrity": "sha512-DSzj202jN1c69w95wisXjzsPk+rR6ERnNzIotymmOnaa1fkbf2D5XXrweVcinE01inzrYuBu6Wo6wZ15l7xSrQ==",
+        "version": "0.3.2"
+      }
+    }
+  },
+  "sha256": {
+    "assets/index-BwYhe1Yy.css": "046b3f575ae492447b6b9b1d30f53c2d2bbb57e0491611410b128809b37d8e69",
+    "assets/index-yVXXsfDa.js": "e7427354ae762dda6f4631082e19fbf52945784a28229f1345d98d76e0113641",
+    "icon.svg": "cc00115475c80f13c6e4ba96953c958311e4eb19291cd75681487dd496e5a8b3",
+    "index.html": "e025a9c5d3ec1d003f9a3c14cd9d78f56c6528835b1d8fdc8ab735724f1fd60a"
+  }
+}

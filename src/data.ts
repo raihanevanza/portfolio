@@ -32,11 +32,11 @@ export const profile: Profile = {
   about: {
     id: [
       'Saya fullstack dan mobile developer dengan pengalaman lebih dari 6 tahun di bidang rekayasa perangkat lunak. Keahlian utama saya adalah ReactJS, VueJS, dan React Native, dan saat ini saya menjadi Lead Mobile Developer untuk aplikasi Madani Tumbuh di PT Permodalan Nasional Madani.',
-      'Saya berpengalaman mengembangkan backend dengan Laravel dan CodeIgniter, serta terbiasa mengintegrasikan REST API dan gRPC. Saat ini saya juga mempelajari dan memperdalam Go, Java (Spring Boot), Kafka, dan Flutter melalui proyek pribadi seperti BukuBesar (core banking), AgentGate, Rupa (design system), Patungan, Mini ERP, Market Live, Bola Live, Jejak 42·50, Dompet Rumah, dan chatbot AI. Saya senang menerjemahkan kebutuhan bisnis menjadi aplikasi web dan mobile yang fungsional dan mudah dirawat.',
+      'Saya berpengalaman mengembangkan backend dengan Laravel dan CodeIgniter, serta terbiasa mengintegrasikan REST API dan gRPC. Saat ini saya juga mempelajari dan memperdalam Go, Java (Spring Boot), Kafka, dan Flutter melalui proyek pribadi seperti Main Yuk (party games), BukuBesar (core banking), AgentGate, Rupa (design system), Patungan, Mini ERP, Market Live, Bola Live, Jejak 42·50, Dompet Rumah, dan chatbot AI. Saya senang menerjemahkan kebutuhan bisnis menjadi aplikasi web dan mobile yang fungsional dan mudah dirawat.',
     ],
     en: [
       "I'm a fullstack and mobile developer with more than 6 years of experience in software engineering. My core strengths are ReactJS, VueJS, and React Native, and I'm currently the Lead Mobile Developer for the Madani Tumbuh app at PT Permodalan Nasional Madani.",
-      "I'm experienced in backend development with Laravel and CodeIgniter, and comfortable integrating REST APIs and gRPC. I'm currently learning Go, Java (Spring Boot), Kafka, and Flutter and building my skills through personal projects such as BukuBesar (core banking), AgentGate, Rupa (a design system), Patungan, Mini ERP, Market Live, Bola Live, Jejak 42·50, Dompet Rumah, and an AI chatbot. I enjoy turning business requirements into functional, maintainable web and mobile apps.",
+      "I'm experienced in backend development with Laravel and CodeIgniter, and comfortable integrating REST APIs and gRPC. I'm currently learning Go, Java (Spring Boot), Kafka, and Flutter and building my skills through personal projects such as Main Yuk (party games), BukuBesar (core banking), AgentGate, Rupa (a design system), Patungan, Mini ERP, Market Live, Bola Live, Jejak 42·50, Dompet Rumah, and an AI chatbot. I enjoy turning business requirements into functional, maintainable web and mobile apps.",
     ],
   },
   // File CV di folder /public, dibuat otomatis dengan `npm run cv`. Kosongkan ('') untuk menyembunyikan tombol.
@@ -59,7 +59,7 @@ export const stats: Stat[] = [
   { value: '6+', label: { id: 'Tahun pengalaman', en: 'Years of experience' } },
   { value: '5', label: { id: 'Perusahaan', en: 'Companies' } },
   { value: '2', label: { id: 'Aplikasi perbankan & pembiayaan', en: 'Banking & financing apps' } },
-  { value: '9', label: { id: 'Proyek pribadi', en: 'Personal projects' } },
+  { value: '11', label: { id: 'Proyek pribadi', en: 'Personal projects' } },
 ]
 
 export const skills: SkillGroup[] = [
@@ -69,7 +69,7 @@ export const skills: SkillGroup[] = [
   },
   {
     group: 'Backend & Database',
-    items: ['Laravel', 'CodeIgniter', 'Java', 'Spring Boot', 'Kafka', 'REST API', 'gRPC', 'MySQL', 'PostgreSQL', 'WatermelonDB', 'Redis', 'Node.js', 'Python', 'Go'],
+    items: ['Laravel', 'CodeIgniter', 'Java', 'Spring Boot', 'Kafka', 'REST API', 'gRPC', 'MySQL', 'PostgreSQL', 'WatermelonDB', 'Ruby on Rails', 'Redis', 'Node.js', 'Python', 'Go'],
   },
   {
     group: { id: 'Tools & Lainnya', en: 'Tools & Others' },
@@ -247,6 +247,27 @@ function gallery(slug: string, items: [string, Localized][]): GalleryImage[] {
 }
 
 export const projects: Project[] = [
+  {
+    title: 'Main Yuk',
+    category: 'personal',
+    description: {
+      id: 'Proyek pribadi: 12 party game untuk nongkrong dengan satu HP, dari Tebak Kata dan Impostor sampai Kuis Kilat, Ingat Urutan, dan Sambung Kata. Ada 245 kartu bawaan, paket buatan sendiri, favorit, timer, skor, dan riwayat sesi yang bisa dilanjutkan setelah reload. Semua layar web dan mobile berasal dari komponen Rupa; aplikasi hanya mengirim props dan callback dari mesin game TypeScript yang dipakai bersama. WatermelonDB menyimpan data lokal, sementara API Ruby on Rails dan PostgreSQL menyediakan sinkronisasi akun pada aplikasi lengkap. Demo portfolio berjalan di browser tanpa akun atau server API.',
+      en: 'Personal project: 12 party games for sharing one phone, from word guessing and Impostor to quick quizzes, sequence memory, and word chains. Includes 245 built-in cards, custom packs, favorites, timers, scores, and sessions that resume after a reload. Every web and mobile screen comes from Rupa components; the app supplies props and callbacks from a shared TypeScript game engine. WatermelonDB stores data locally, while a Ruby on Rails API and PostgreSQL provide account synchronization in the full app. The portfolio demo runs in the browser without an account or API server.',
+    },
+    tech: ['React', 'React Native', 'TypeScript', 'Rupa Design System', 'WatermelonDB', 'Ruby on Rails', 'PostgreSQL', 'RxJS', 'Vite', 'Vitest', 'Playwright', 'Docker'],
+    image: '/projects/main-yuk/cover.jpg',
+    gallery: gallery('main-yuk', [
+      ['catalog', { id: 'Katalog 12 game dengan tampilan Rupa', en: 'Twelve-game catalog built with Rupa' }],
+      ['mobile', { id: 'Katalog responsif di layar ponsel', en: 'Responsive catalog on a phone' }],
+      ['setup', { id: 'Pilih paket dan nama pemain sebelum mulai', en: 'Pick a pack and player names before starting' }],
+      ['play', { id: 'Sambung Kata: masukkan jawaban langsung di papan permainan', en: 'Word Chain: enter an answer directly on the game board' }],
+      ['packs', { id: 'Paket bawaan dan paket buatan sendiri untuk setiap game', en: 'Built-in and custom packs for each game' }],
+    ]),
+    link: '/demos/main-yuk/',
+    video: '/projects/main-yuk/demo.webm',
+    doc: { id: '/projects/main-yuk/main-yuk-ID.pdf', en: '/projects/main-yuk/main-yuk-EN.pdf' },
+    repo: '',
+  },
   {
     title: 'Dompet Rumah',
     category: 'personal',
