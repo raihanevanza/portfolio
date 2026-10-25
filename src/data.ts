@@ -263,7 +263,7 @@ export const projects: Project[] = [
       ['play', { id: 'Sambung Kata: masukkan jawaban langsung di papan permainan', en: 'Word Chain: enter an answer directly on the game board' }],
       ['packs', { id: 'Paket bawaan dan paket buatan sendiri untuk setiap game', en: 'Built-in and custom packs for each game' }],
     ]),
-    link: '/demos/main-yuk/',
+    link: 'https://raihan-evanza-main-yuk.vercel.app',
     video: '/projects/main-yuk/demo.webm',
     doc: { id: '/projects/main-yuk/main-yuk-ID.pdf', en: '/projects/main-yuk/main-yuk-EN.pdf' },
     repo: '',

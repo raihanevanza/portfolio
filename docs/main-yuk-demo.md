@@ -1,6 +1,7 @@
 # Main Yuk dalam portfolio
 
-Demo interaktif tersedia di **/demos/main-yuk/** dan ditautkan dari proyek Main Yuk.
+Tombol Demo pada proyek Main Yuk membuka [demo live](https://raihan-evanza-main-yuk.vercel.app).
+Snapshot demo yang dibundel tetap tersedia di **/demos/main-yuk/** untuk pengujian lokal.
 Seluruh 12 game dan 245 kartu bawaan dapat dimainkan langsung. Paket kustom,
 favorit, dan sesi disimpan lewat WatermelonDB/IndexedDB di browser pengunjung.
 Game dimainkan bergantian pada satu perangkat; bukan multiplayer antar-HP.

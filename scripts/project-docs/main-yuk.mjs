@@ -14,7 +14,7 @@ export default {
     id: 'Web responsif dan React Native; demo portfolio berbasis browser',
     en: 'Responsive web and React Native; browser-based portfolio demo',
   },
-  links: [],
+  links: [{ label: { id: 'Demo live', en: 'Live demo' }, url: 'https://raihan-evanza-main-yuk.vercel.app' }],
   tech: [
     'React',
     'React Native',
