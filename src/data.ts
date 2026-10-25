@@ -32,11 +32,11 @@ export const profile: Profile = {
   about: {
     id: [
       'Saya fullstack dan mobile developer dengan pengalaman lebih dari 6 tahun di bidang rekayasa perangkat lunak. Keahlian utama saya adalah ReactJS, VueJS, dan React Native, dan saat ini saya menjadi Lead Mobile Developer untuk aplikasi Madani Tumbuh di PT Permodalan Nasional Madani.',
-      'Saya berpengalaman mengembangkan backend dengan Laravel dan CodeIgniter, serta terbiasa mengintegrasikan REST API dan gRPC. Saat ini saya juga mempelajari dan memperdalam Go, Java (Spring Boot), Kafka, dan Flutter melalui proyek pribadi seperti Main Yuk (party games), BukuBesar (core banking), AgentGate, Rupa (design system), Patungan, Mini ERP, Market Live, Bola Live, Jejak 42·50, Dompet Rumah, dan chatbot AI. Saya senang menerjemahkan kebutuhan bisnis menjadi aplikasi web dan mobile yang fungsional dan mudah dirawat.',
+      'Saya berpengalaman mengembangkan backend dengan Laravel dan CodeIgniter, serta terbiasa mengintegrasikan REST API dan gRPC. Saat ini saya juga mempelajari dan memperdalam Go, Java (Spring Boot), Kafka, dan Flutter melalui proyek pribadi seperti Main Yuk (party games), BukuBesar (core banking), AgentGate, Rupa (design system), Patungan, Mini ERP, Pijak, Market Live, Bola Live, Jejak 42·50, Dompet Rumah, dan chatbot AI. Saya senang menerjemahkan kebutuhan bisnis menjadi aplikasi web dan mobile yang fungsional dan mudah dirawat.',
     ],
     en: [
       "I'm a fullstack and mobile developer with more than 6 years of experience in software engineering. My core strengths are ReactJS, VueJS, and React Native, and I'm currently the Lead Mobile Developer for the Madani Tumbuh app at PT Permodalan Nasional Madani.",
-      "I'm experienced in backend development with Laravel and CodeIgniter, and comfortable integrating REST APIs and gRPC. I'm currently learning Go, Java (Spring Boot), Kafka, and Flutter and building my skills through personal projects such as Main Yuk (party games), BukuBesar (core banking), AgentGate, Rupa (a design system), Patungan, Mini ERP, Market Live, Bola Live, Jejak 42·50, Dompet Rumah, and an AI chatbot. I enjoy turning business requirements into functional, maintainable web and mobile apps.",
+      "I'm experienced in backend development with Laravel and CodeIgniter, and comfortable integrating REST APIs and gRPC. I'm currently learning Go, Java (Spring Boot), Kafka, and Flutter and building my skills through personal projects such as Main Yuk (party games), BukuBesar (core banking), AgentGate, Rupa (a design system), Patungan, Mini ERP, Pijak, Market Live, Bola Live, Jejak 42·50, Dompet Rumah, and an AI chatbot. I enjoy turning business requirements into functional, maintainable web and mobile apps.",
     ],
   },
   // File CV di folder /public, dibuat otomatis dengan `npm run cv`. Kosongkan ('') untuk menyembunyikan tombol.
@@ -59,7 +59,7 @@ export const stats: Stat[] = [
   { value: '6+', label: { id: 'Tahun pengalaman', en: 'Years of experience' } },
   { value: '5', label: { id: 'Perusahaan', en: 'Companies' } },
   { value: '2', label: { id: 'Aplikasi perbankan & pembiayaan', en: 'Banking & financing apps' } },
-  { value: '11', label: { id: 'Proyek pribadi', en: 'Personal projects' } },
+  { value: '12', label: { id: 'Proyek pribadi', en: 'Personal projects' } },
 ]
 
 export const skills: SkillGroup[] = [
@@ -247,6 +247,36 @@ function gallery(slug: string, items: [string, Localized][]): GalleryImage[] {
 }
 
 export const projects: Project[] = [
+  {
+    title: 'Pijak',
+    category: 'personal',
+    description: {
+      id: 'Proyek pribadi: panduan sepatu dan ruang lari untuk menghubungkan pilihan sepatu dengan pemakaian sehari-hari. Katalog 24 model dari tujuh merek, termasuk On, memiliki sumber produsen, filter aktivitas, pembanding tiga model, dan kuis kebutuhan. Ruang lari mencakup easy run, long run, tempo, interval, recovery, race, serta trail; kalender memisahkan rencana dari hasil aktual. Kalkulator pace tiga arah, split per kilometer, grafik delapan minggu, target mingguan, rotasi sepatu, biaya per kilometer, dan ekspor CSV/JSON terhubung ke catatan aktivitas. Dibangun dengan TanStack Start, React, TypeScript, dan komponen Rupa. Pengujian memakai Vitest, React Testing Library, Playwright, dan axe. Demo publik berjalan di browser dengan data ilustratif yang dapat di-reset; skema Supabase Auth, PostgreSQL, Storage, serta RLS disiapkan untuk mode akun. Source repository tetap private.',
+      en: 'Personal project: a shoe guide and running workspace connecting shoe selection with actual use. A catalog of 24 models across seven brands, including On, has manufacturer sources, activity filters, three-shoe comparison, and a preference finder. The running workspace covers easy, long, tempo, interval, recovery, race, and trail sessions; its calendar separates plans from recorded results. A three-way pace calculator, kilometer splits, eight-week charts, weekly goals, shoe rotation, cost per kilometer, and CSV/JSON exports connect to the activity log. Built with TanStack Start, React, TypeScript, and Rupa components. Tested with Vitest, React Testing Library, Playwright, and axe. The public demo runs in the browser with resettable illustrative data; Supabase Auth, PostgreSQL, Storage, and RLS schemas are prepared for account mode. The source repository remains private.',
+    },
+    tech: ['TanStack Start', 'React', 'TypeScript', 'Rupa Design System', 'CSS Modules', 'TanStack Query', 'Zod', 'Supabase', 'Vitest', 'Playwright', 'axe-core'],
+    image: '/projects/pijak/cover.jpg',
+    gallery: gallery('pijak', [
+      ['web-home', { id: 'Beranda: sepatu harian, jalan raya, dan trail dengan komponen Rupa', en: 'Home: daily, road, and trail shoes with Rupa components' }],
+      ['web-on', { id: 'Katalog On: Cloud 6, Cloudsurfer 2, dan Cloudultra 3', en: 'On catalog: Cloud 6, Cloudsurfer 2, and Cloudultra 3' }],
+      ['web-long-run', { id: 'Filter sepatu untuk long run dengan sumber spesifikasi', en: 'Long-run shoe filtering with specification sources' }],
+      ['web-compare', { id: 'Pembanding tiga model dengan data berbeda yang ditandai', en: 'Three-shoe comparison with highlighted differences' }],
+      ['web-running', { id: 'Kalender sesi: rencana dan hasil aktual tersimpan terpisah', en: 'Session calendar: plans and actual results stored separately' }],
+      ['web-rotation', { id: 'Rotasi dari koleksi pribadi dan pilihan sepatu menurut sesi', en: 'Personal collection rotation and session-based shoe choices' }],
+      ['web-calculator', { id: 'Kalkulator pace, jarak, waktu finis, dan split per kilometer', en: 'Pace, distance, finish-time calculator, and kilometer splits' }],
+      ['web-stats', { id: 'Target mingguan, pace tertimbang, dan grafik delapan minggu', en: 'Weekly goals, weighted pace, and eight-week charts' }],
+      ['web-collection', { id: 'Koleksi contoh dengan target kilometer pribadi dan riwayat sesi', en: 'Illustrative collection with personal mileage targets and session history' }],
+      ['web-dark', { id: 'Statistik dalam tema gelap Rupa', en: 'Statistics in the Rupa dark theme' }],
+      ['mobile-home', { id: 'Ponsel: beranda dan navigasi responsif', en: 'Mobile: responsive home and navigation' }],
+      ['mobile-running', { id: 'Ponsel: kalender dan rencana long run', en: 'Mobile: calendar and long-run plans' }],
+      ['mobile-calculator', { id: 'Ponsel: kalkulator pace dan waktu finis', en: 'Mobile: pace and finish-time calculator' }],
+    ]),
+    link: '/demo/pijak/',
+    tutorial: '/projects/pijak/tutorial.webm',
+    doc: { id: '/projects/pijak/pijak-ID.pdf', en: '/projects/pijak/pijak-EN.pdf' },
+    repo: '',
+  },
+
   {
     title: 'Main Yuk',
     category: 'personal',
