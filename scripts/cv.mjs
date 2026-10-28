@@ -72,7 +72,7 @@ function renderExperience(lang, L) {
               <div class="row"><span class="role">${esc(r.role)}</span><span class="date">${period}</span></div>
               <p>${esc(pick(r.summary, lang))}</p>
               ${highlights.length ? `<ul>${highlights.map((h) => `<li>${esc(h)}</li>`).join('')}</ul>` : ''}
-              ${r.tech?.length ? `<p class="tech">${r.tech.map(esc).join(' · ')}</p>` : ''}
+              ${r.tech?.length ? `<p class="tech">${r.tech.map(esc).join(', ')}</p>` : ''}
             </div>`
           })
           .join('')}
@@ -90,7 +90,7 @@ function renderProjects(lang, category) {
       <div class="entry">
         <div class="row"><span class="role">${esc(pick(p.title, lang))}</span>${url ? `<a class="date" href="${esc(url)}">${esc(stripProtocol(url))}</a>` : ''}</div>
         <p>${esc(pick(p.description, lang))}</p>
-        <p class="tech">${p.tech.map(esc).join(' · ')}</p>
+        <p class="tech">${p.tech.map(esc).join(', ')}</p>
       </div>`
     })
     .join('')
@@ -102,7 +102,7 @@ function renderEducation(lang) {
       const note = pick(e.note, lang)
       return `
       <div class="entry">
-        <div class="row"><span class="role">${esc(pick(e.degree, lang))} <span class="muted">— ${esc(e.school)}</span></span><span class="date">${esc(pick(e.period, lang))}</span></div>
+        <div class="row"><span class="role">${esc(pick(e.degree, lang))} <span class="muted">– ${esc(e.school)}</span></span><span class="date">${esc(pick(e.period, lang))}</span></div>
         ${note ? `<p class="muted">${esc(note)}</p>` : ''}
       </div>`
     })
@@ -111,7 +111,6 @@ function renderEducation(lang) {
 
 function renderHtml(lang) {
   const L = labels[lang]
-  const photo = profile.photo && join(root, 'public', profile.photo)
   // Baris 1: kontak langsung. Baris 2: link (portofolio, lalu contacts selain email).
   const email = contacts.find((c) => c.href.startsWith('mailto:'))
   const contactRows = [
@@ -121,7 +120,7 @@ function renderHtml(lang) {
       `<span>${esc(pick(profile.location, lang))}</span>`,
     ],
     [
-      cv?.website && `<a class="web" href="${esc(cv.website)}">${esc(stripProtocol(cv.website))}</a>`,
+      cv?.website && `<a href="${esc(cv.website)}">${esc(stripProtocol(cv.website))}</a>`,
       ...contacts.filter((c) => c !== email).map((c) => `<a href="${esc(c.href)}">${esc(c.value)}</a>`),
     ],
   ].map((row) => row.filter(Boolean))
@@ -139,53 +138,45 @@ function renderHtml(lang) {
 <head>
 <meta charset="utf-8" />
 <title>${esc(profile.name)} — CV</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet" />
 <style>
-  @page { size: A4; margin: 14mm 15mm; }
+  @page { size: A4; margin: 13mm 15mm; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: 'Plus Jakarta Sans', 'Helvetica Neue', Arial, sans-serif;
-    font-size: 9.6pt; line-height: 1.45; color: #0f1e2b;
-    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
+    font-size: 8.6pt; font-weight: 300; line-height: 1.5; color: #111;
   }
   a { color: inherit; text-decoration: none; }
-  header { display: flex; align-items: center; gap: 18px; padding-bottom: 12px; border-bottom: 2px solid #0b6bcb; }
-  header .id { flex: 1; }
-  header h1 { font-size: 24pt; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
-  header .title { font-size: 12pt; font-weight: 600; color: #0b6bcb; margin-top: 2px; }
-  header .contacts { font-size: 8.8pt; color: #4d6474; }
-  header .title + .contacts { margin-top: 8px; }
-  header .contacts > * { white-space: nowrap; }
-  header .contacts .web { color: #0b6bcb; font-weight: 600; }
-  header .contacts > * + *::before { content: '·'; margin: 0 7px; color: #9bb3c0; }
-  header img { width: 78px; height: 78px; border-radius: 50%; object-fit: cover; }
-  section { margin-top: 13px; }
+  strong, .role, h1, h2, h3 { font-weight: 700; }
+  header { text-align: center; }
+  header h1 { font-size: 20pt; line-height: 1.2; }
+  header .title { font-size: 10.5pt; margin-top: 2px; }
+  header .contacts { font-size: 8.2pt; margin-top: 3px; }
+  header .title + .contacts { margin-top: 6px; }
+  section { margin-top: 12px; }
   h2 {
-    font-size: 9pt; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #0b6bcb;
-    padding-bottom: 3px; margin-bottom: 7px; border-bottom: 1px solid #d5e3ea; break-after: avoid;
+    font-size: 10.5pt; text-transform: uppercase; letter-spacing: 0.02em;
+    padding-bottom: 2px; margin-bottom: 6px; border-bottom: 1px solid #111; break-after: avoid;
   }
-  h3 { font-size: 10.5pt; font-weight: 700; margin-bottom: 2px; break-after: avoid; }
-  .company + .company { margin-top: 10px; }
+  h3 { font-size: 9.6pt; margin-bottom: 1px; break-after: avoid; }
+  .company + .company { margin-top: 9px; }
   .entry { break-inside: avoid; }
   .entry + .entry { margin-top: 7px; }
   .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
-  .role { font-weight: 600; }
-  .date { flex-shrink: 0; font-size: 8.8pt; color: #4d6474; }
-  .muted { color: #4d6474; font-weight: 400; }
-  .tech { font-size: 8.6pt; color: #0891b2; margin-top: 2px; }
-  ul { margin: 3px 0 0 14px; }
+  .date { flex-shrink: 0; }
+  .company .role { font-weight: 400; font-style: italic; }
+  .muted { font-weight: 300; }
+  .tech { margin-top: 1px; font-style: italic; }
+  ul { margin: 2px 0 0 13px; }
   li + li { margin-top: 1px; }
   section > p + p { margin-top: 2px; }
 </style>
 </head>
 <body>
   <header>
-    <div class="id">
-      <h1>${esc(profile.name)}</h1>
-      <p class="title">${esc(pick(profile.role, lang))}</p>
-      ${contactRows.map((row) => `<p class="contacts">${row.join('')}</p>`).join('')}
-    </div>
-    ${photo && existsSync(photo) ? `<img src="${pathToFileURL(photo)}" alt="" />` : ''}
+    <h1>${esc(profile.name)}</h1>
+    <p class="title">${esc(pick(profile.role, lang))}</p>
+    ${contactRows.map((row) => `<p class="contacts">${row.join(' | ')}</p>`).join('')}
   </header>
   ${section(L.summary, pick(profile.about, lang).map((p) => `<p>${esc(p)}</p>`).join(''))}
   ${section(L.experience, renderExperience(lang, L))}
@@ -202,6 +193,8 @@ function renderHtml(lang) {
 function findChrome() {
   const candidates = [
     process.env.CHROME_PATH,
+    'C:/Program Files/Google/Chrome/Application/chrome.exe',
+    'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
     '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
     '/Applications/Chromium.app/Contents/MacOS/Chromium',
     '/usr/bin/google-chrome',
