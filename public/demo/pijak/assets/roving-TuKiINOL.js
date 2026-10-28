@@ -1,0 +1,1 @@
+function e(e,t,n,r=`horizontal`){let i=r===`horizontal`?`ArrowLeft`:`ArrowUp`,a=r===`horizontal`?`ArrowRight`:`ArrowDown`,o=n.length,s=(e,t)=>{for(let r=1;r<=o;r++){let i=(e+t*r+o)%o;if(!n[i])return i}return e};switch(e.key){case i:return s(t,-1);case a:return s(t,1);case`Home`:return s(-1,1);case`End`:return s(o,-1);default:return null}}export{e as t};

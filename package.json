@@ -11,7 +11,8 @@
     "cv": "node scripts/cv.mjs",
     "docs": "node scripts/project-docs.mjs",
     "og": "node scripts/og.mjs",
-    "demo:main-yuk": "node scripts/import-main-yuk.mjs"
+    "demo:main-yuk": "node scripts/import-main-yuk.mjs",
+    "demo:pijak": "node scripts/import-pijak.mjs"
   },
   "dependencies": {
     "@rupa-ui/react": "^0.7.0",

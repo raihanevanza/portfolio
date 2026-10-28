@@ -130,3 +130,7 @@ vercel --prod
 ## Main Yuk
 
 Proyek Main Yuk menyediakan demo 12 game di /demos/main-yuk/, galeri, dan PDF ID/EN. Demo sudah dibundel di repo; build portfolio tidak membutuhkan backend atau repo tetangga. Lihat [panduan demo](docs/main-yuk-demo.md) untuk menjalankan, memperbarui snapshot, dan pengaturan Vercel.
+
+## Pijak
+
+Pijak menyediakan demo panduan sepatu dan ruang lari di `/demo/pijak/`, galeri desktop/ponsel, video tutorial, dan PDF ID/EN. Demo menggunakan data ilustratif di browser dan tidak membutuhkan Supabase. Source tetap private. Lihat [panduan demo Pijak](docs/pijak-demo.md) untuk menjalankan atau memperbarui bundle.
