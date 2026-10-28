@@ -170,6 +170,7 @@ function renderHtml(lang) {
   ul { margin: 2px 0 0 13px; }
   li + li { margin-top: 1px; }
   section > p + p { margin-top: 2px; }
+  section p, section li { text-align: justify; }
 </style>
 </head>
 <body>
