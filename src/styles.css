@@ -710,6 +710,7 @@ kbd {
   font-size: 1.15rem;
   line-height: 1.7;
   color: var(--rupa-color-ink-3);
+  text-align: justify;
 }
 .about-text p:first-child {
   color: var(--rupa-color-ink);
@@ -891,6 +892,7 @@ kbd {
 .exp-summary {
   margin-top: 20px;
   font-size: 1.05rem;
+  text-align: justify;
 }
 .exp-list {
   display: grid;
@@ -901,6 +903,7 @@ kbd {
   position: relative;
   padding-left: 22px;
   color: var(--rupa-color-ink-3);
+  text-align: justify;
   animation: rise 0.6s var(--rupa-motion-easing-standard) both;
 }
 .exp-list li::before {
@@ -1094,6 +1097,7 @@ kbd {
 .project-desc {
   color: var(--rupa-color-ink-3);
   font-size: 0.94rem;
+  text-align: justify;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -1239,6 +1243,7 @@ kbd {
   margin: 20px 0 16px;
   font-size: 1.02rem;
   line-height: 1.7;
+  text-align: justify;
 }
 
 /* ---------- Tech stack ---------- */
@@ -1433,6 +1438,7 @@ kbd {
 }
 .paper-p {
   color: #333;
+  text-align: justify;
 }
 .paper-p + .paper-p {
   margin-top: 3px;
