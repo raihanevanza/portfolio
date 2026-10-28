@@ -6,7 +6,7 @@
 
 ## Cara kerja demo
 
-Build mode demo Angular mengganti environment dan memasang HTTP interceptor yang menjawab setiap panggilan `/api` di browser, dengan envelope, kode status, validasi, paginasi, filter, jumlah pemakaian, dan statistik yang sama dengan API Go. Data disimpan di localStorage (`ootd.demo.v1`); foto yang diunggah diperkecil lalu disimpan sebagai data URL. Hapus data situs untuk reset. Tidak ada backend, database, cookie akun, atau service worker.
+Build mode demo Angular mengganti environment dan memasang HTTP interceptor yang menjawab setiap panggilan `/api` di browser, dengan envelope, kode status, validasi, paginasi, filter, jumlah pemakaian, dan statistik yang sama dengan API Go. Data disimpan di localStorage (`ootd.demo.v2`); isi lemari bawaan memakai foto pakaian asli (potongan foto Unsplash tanpa latar, sumbernya di `web/src/demo-garments/CREDITS.md` repo ootd-planner) yang ikut di bundle sebagai `demo-garments/*.webp`; foto yang diunggah diperkecil lalu disimpan sebagai data URL. Hapus data situs untuk reset. Tidak ada backend, database, cookie akun, atau service worker.
 
 Routing demo memakai hash (`/demo/ootd-planner/#/calendar`), jadi deep link tidak membutuhkan fallback server. Bundle dibuild dengan base `/demo/ootd-planner/`; vercel.json dan plugin fallback di vite.config.ts hanya mengarahkan `/demo/ootd-planner` (tanpa garis miring) ke index.html demo.
 
