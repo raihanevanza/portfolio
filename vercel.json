@@ -8,6 +8,10 @@
     {
       "source": "/demo/pijak/:path*",
       "destination": "/demo/pijak/index.html"
+    },
+    {
+      "source": "/demo/ootd-planner",
+      "destination": "/demo/ootd-planner/index.html"
     }
   ]
 }

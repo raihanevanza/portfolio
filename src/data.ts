@@ -248,6 +248,34 @@ function gallery(slug: string, items: [string, Localized][]): GalleryImage[] {
 
 export const projects: Project[] = [
   {
+    title: 'OOTD Planner',
+    category: 'personal',
+    description: {
+      id: 'Proyek pribadi: perencana outfit harian. Pakaian difoto masuk ke lemari digital lengkap dengan kategori, warna, merek, harga, tanggal beli, dan tag, lalu bisa dicari dan difilter. Outfit disusun di kanvas dengan drag, ubah ukuran, dan urutan lapisan; posisi disimpan dalam persen sehingga outfit tampil sama di builder, kartu, dan sel kalender. Kalender menampung satu outfit per hari, dan hari yang ditandai sudah dipakai membentuk riwayat pemakaian. Jumlah pemakaian tidak disimpan, melainkan dihitung dari riwayat itu, sehingga statistik (isi lemari, paling sering dan jarang dipakai, item nganggur 30 hari, cost per wear) selalu benar. Backend Go (Gin, GORM, SQL Server) berlapis controller, use case, dan repository dengan JWT, audit log dalam transaksi yang sama dengan setiap perubahan, error terjemahan ID/EN, Swagger, dan pengujian GoMock; setiap query dibatasi ke data milik pengguna yang login. Frontend Angular 22 (standalone, signals, zoneless) dengan token Rupa di Tailwind CSS 4 dan Angular CDK, dalam dua bahasa serta mode terang dan gelap. Demo portfolio menjawab setiap panggilan API di browser dengan validasi, paginasi, dan statistik yang sama dengan API asli.',
+      en: 'Personal project: a daily outfit planner. Clothes are photographed into a digital wardrobe with category, color, brand, price, purchase date, and tags, then searched and filtered. Outfits are composed on a canvas with drag, resize, and layer order; positions are stored as percentages, so an outfit renders the same in the builder, on cards, and in calendar cells. The calendar holds one outfit per day, and days marked as worn build the wear history. Wear counts are never stored but derived from that history, so the stats (closet mix, most and least worn, items unworn for 30 days, cost per wear) are always correct. A Go backend (Gin, GORM, SQL Server) is layered into controllers, use cases, and repositories with JWT, an audit log written in the same transaction as every change, translated ID/EN errors, Swagger, and GoMock tests; every query is scoped to the signed-in user. The Angular 22 frontend (standalone, signals, zoneless) uses Rupa tokens in Tailwind CSS 4 and Angular CDK, in two languages with light and dark modes. The portfolio demo answers every API call in the browser with the same validation, pagination, and stats as the real API.',
+    },
+    tech: ['Angular', 'TypeScript', 'Angular CDK', 'Tailwind CSS', 'Rupa Design System', 'Go', 'Gin', 'GORM', 'SQL Server', 'JWT', 'Swagger', 'Vitest', 'Docker'],
+    image: '/projects/ootd-planner/cover.jpg',
+    gallery: gallery('ootd-planner', [
+      ['web-wardrobe', { id: 'Lemari: item dengan kategori, warna, dan jumlah pemakaian', en: 'Wardrobe: items with category, color, and wear count' }],
+      ['web-filter', { id: 'Filter lemari per kategori, warna, dan tag', en: 'Wardrobe filters by category, color, and tag' }],
+      ['web-item', { id: 'Form item: foto, warna, tag, harga, dan riwayat pemakaian', en: 'Item form: photo, color, tags, price, and wear history' }],
+      ['web-outfits', { id: 'Daftar outfit dengan kolase dari posisi kanvas', en: 'Outfit list with collages rendered from canvas positions' }],
+      ['web-builder', { id: 'Outfit builder: drag, ubah ukuran, dan atur lapisan di kanvas', en: 'Outfit builder: drag, resize, and layer pieces on the canvas' }],
+      ['web-calendar', { id: 'Kalender bulanan: rencana dan outfit yang sudah dipakai', en: 'Monthly calendar: planned and worn outfits' }],
+      ['web-day', { id: 'Detail hari: tandai sudah dipakai, ganti, atau hapus rencana', en: 'Day sheet: mark as worn, change, or remove the plan' }],
+      ['web-stats', { id: 'Statistik: isi lemari, paling sering dan jarang dipakai, cost per wear', en: 'Stats: closet mix, most and least worn, cost per wear' }],
+      ['web-dark', { id: 'Statistik dalam mode gelap', en: 'Stats in dark mode' }],
+      ['mobile-wardrobe', { id: 'Ponsel: lemari dengan navigasi bawah', en: 'Mobile: wardrobe with bottom navigation' }],
+      ['mobile-builder', { id: 'Ponsel: outfit builder', en: 'Mobile: outfit builder' }],
+      ['mobile-calendar', { id: 'Ponsel: kalender outfit', en: 'Mobile: outfit calendar' }],
+      ['mobile-stats', { id: 'Ponsel: statistik', en: 'Mobile: stats' }],
+    ]),
+    // Demo: build Angular mode demo dari repo ootd-planner (npm run demo:ootd-planner), API dijawab di browser.
+    link: '/demo/ootd-planner/',
+    repo: '',
+  },
+  {
     title: 'Pijak',
     category: 'personal',
     description: {

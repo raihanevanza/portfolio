@@ -134,3 +134,7 @@ Proyek Main Yuk menyediakan demo 12 game di /demos/main-yuk/, galeri, dan PDF ID
 ## Pijak
 
 Pijak menyediakan demo panduan sepatu dan ruang lari di `/demo/pijak/`, galeri desktop/ponsel, video tutorial, dan PDF ID/EN. Demo menggunakan data ilustratif di browser dan tidak membutuhkan Supabase. Source tetap private. Lihat [panduan demo Pijak](docs/pijak-demo.md) untuk menjalankan atau memperbarui bundle.
+
+## OOTD Planner
+
+OOTD Planner menyediakan demo perencana outfit di `/demo/ootd-planner/` (lemari, outfit builder, kalender, statistik) dan galeri desktop/ponsel. Demo adalah build mode demo Angular yang menjawab semua panggilan API di browser, jadi tidak membutuhkan backend Go atau SQL Server. Lihat [panduan demo OOTD Planner](docs/ootd-planner-demo.md) untuk menjalankan atau memperbarui bundle.
